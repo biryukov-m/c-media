@@ -1,0 +1,65 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ block.super }} - {{ post.title }}{% endblock %}
+{% block content %}
+    {% include 'blog/post-single.html' %}
+    <nav class="article-bottom">
+        <span class="comment-counter">3 комментария</span>
+        <button type="button" class="button load-next clearfix">Следующая запись ></button>
+    </nav>
+    <div class="writecomment-container">
+        <form class="writecomment clearfix" id="writecomment" action="" method="post">
+            <label for="name" class="forname">Как вас зовут?</label>
+            <input id="name" name="name" placeholder="Онуфрий">
+            <label for="email" class="foremail">Мы не украдем ваш E-mail</label>
+            <input type="email" id="email" name="email" placeholder="otec.onufree@gmail.com">
+            <label for="comment-field" class="forcomment-field">Напишите хороший комментарий</label>
+            <textarea form="writecomment" id="comment-field" name="comment-field"
+                      placeholder="Я вас категорически приветствую..."></textarea>
+            <input type="submit" class="comment-submit genbutton" value="Отправить">
+        </form>
+    </div>
+    <div class="comments-container">
+        <div class="comment-container">
+            <div class="comment-col-left">
+                <div class="commentator-portrait"></div>
+            </div>
+            <div class="comment-col-right">
+                <div class="comment-info">
+                    <a href="#">Santa Claus</a>
+                    <span>@</span>
+                    <span class="datetime">18.01.2018 18:06</span>
+                </div>
+                <div class="comment-text">Хо-хо-хо!<br>С Рождеством!</div>
+                <a href ="#" class="comment-reply">Ответить</a>
+            </div>
+        </div>
+        <div class="comment-container">
+                <div class="comment-col-left">
+                    <div class="commentator-portrait second"></div>
+                </div>
+                <div class="comment-col-right">
+                    <div class="comment-info">
+                        <a href="#">B3nd3r</a>
+                        <span>@</span>
+                        <span class="datetime">18.01.2018 18:08</span>
+                    </div>
+                    <div class="comment-text">Bite my shiny little ass!</div>
+                    <a href ="#" class="comment-reply">Ответить</a>
+                </div>
+            </div>
+        <div class="comment-container">
+            <div class="comment-col-left">
+                <div class="commentator-portrait third"></div>
+            </div>
+            <div class="comment-col-right">
+                <div class="comment-info">
+                    <a href="#">Real Santa Claus</a>
+                    <span>@</span>
+                    <span class="datetime">18.01.2018 18:15</span>
+                </div>
+                <div class="comment-text">Вы все очень плохо себя вели! Время крушить!<br>Хо_хо_хо</div>
+                <a href ="#" class="comment-reply">Ответить</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}Cat Media{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "blog/css/head.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tinos&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro:700&amp;subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+    <header class="page-header clearfix">
+        <div class="header-container clearfix preview">
+            <div class="col-left">
+                <div class="row-top"></div>
+                <div class="row-bottom">
+                    <div class="text-logo"><a href="#">Cat media</a></div>
+                </div>
+            </div>
+            <div class="col-right"></div>
+        </div>
+        <div class="clearfix">
+        <nav class="top-menu left">
+            <ul>
+                <li><a href="#">Блог</a></li>
+                <li><a href="#">Новое</a></li>
+            </ul>
+        </nav>
+        <nav class="top-menu right">
+            <ul>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="round-logo-layout">
+            <div class="round-logo"></div>
+        </div>
+        <section class="greeting-top">
+            <div class="intro"><span>cледуй за нами</span></div>
+        </section>
+    </header>
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="content-footer">
+        <div class="copyright-footer">
+            <a href="#">Copyright by Luigy</a>
+        </div>
+    </footer>
+    {% block footer %}{% endblock %}
+</body>
+</html>
