@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -26,8 +27,8 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=50)
     text = models.TextField(max_length=30000)
-    create_date = models.DateField(blank=True, auto_now_add=True)
-    pub_date = models.DateField(blank=True)
+    create_date = models.DateTimeField(blank=True, auto_now_add=True)
+    pub_date = models.DateTimeField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)

@@ -1,0 +1,13 @@
+{% extends 'blog/post-base.html' %}
+
+{% block article_body %}
+    <section class="article-content">
+        {{ post.text|truncatewords_html:50 }}
+    </section>
+
+    <a class="read-more" href="#">Читать дальше</a>
+{% endblock %}
+
+{% block article_separator %}
+    <div class="post-container-preview-after"></div>
+{% endblock %}

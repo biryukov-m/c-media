@@ -9,4 +9,9 @@ from django.utils import timezone
 
 def test(request):
     posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('pub_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    return render(request, 'blog/index.html', {'posts': posts})
+
+
+def single(request):
+    post = Post.objects.filter(pub_date__lte=timezone.now()).order_by('pub_date').first()
+    return render(request, 'blog/single.html', {'post': post})

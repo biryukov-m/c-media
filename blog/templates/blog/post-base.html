@@ -1,0 +1,37 @@
+<div class="post-container clearfix">
+    <aside class="post-col-left">
+            <div class="date-circle">
+                <div class="circle-date-layout">
+                    <span>{{ post.pub_date|date:"d M" }}</span>
+                </div>
+            </div>
+    </aside>
+    <div class="post-col-right">
+        <div class="post-info">
+            <div class="category indicator">
+                <span>Раздел: </span>
+                <a class="category-name" href="#">{{ post.category.name.capitalize }}</a>
+            </div>
+            <div class="likes indicator">
+                <div class="indicator-icon-heart"></div>
+                <span class="likes-counter">136</span>
+                <span>одобрений</span>
+            </div>
+            <div class="comments indicator">
+                <div class="indicator-icon-comment"></div>
+                <span class="comment-counter">21</span>
+                <span>комментарий</span>
+            </div>
+        </div>
+        <article>
+            <header>
+                <h1>{{ post.title }}</h1>
+            </header>
+            {% block article_body %}
+
+            {% endblock %}
+        </article>
+    </div>
+</div>
+{% block article_separator %}
+{% endblock %}
