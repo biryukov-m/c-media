@@ -208,10 +208,12 @@ article {
 }
 
 article .read-more {
+    display: inline-block;
     color: #3eb3a5;
     font-size: 1.1em;
     box-shadow: 0 1px 0 0 #bcbcbc;
     font-weight: bold;
+    margin-top: 15px;
 }
 article .read-more:hover {
     /* Додумать ховер */
@@ -269,10 +271,10 @@ button,
 .article-tags a {
     color: #3eb3a5;
 }
-.article-tags a:not(:last-of-type)::after{
-    display: inline;
-    content: ",";
-}
+/*.article-tags a:not(:last-of-type)::after{*/
+    /*display: inline;*/
+    /*content: ",";*/
+/*}*/
 .article-tags {
     margin-bottom: 30px;
 }

@@ -2,6 +2,7 @@
 {% block title %}Cat Media{% endblock %}
 {% block content %}
     {% for post in posts %}
+        {% include 'blog/post-teaser.html' %}
     {% endfor %}
     <button type="button" class="button load-more">Ещё публикации</button>
 {% endblock %}
