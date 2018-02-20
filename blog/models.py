@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 class Category(models.Model):
@@ -28,10 +29,16 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     text = models.TextField(max_length=30000)
     create_date = models.DateTimeField(blank=True, auto_now_add=True)
-    pub_date = models.DateTimeField(blank=True)
+    pub_date = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
+
+    def ispublished(self):
+        try:
+            return self.pub_date < timezone.now()
+        except TypeError:
+            return False
 
     def __str__(self):
         return self.title
