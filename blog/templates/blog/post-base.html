@@ -2,7 +2,7 @@
     <aside class="post-col-left">
             <div class="date-circle">
                 <div class="circle-date-layout">
-                    <span>{{ post.pub_date|date:"d M" }}</span>
+                    <span><a href="#" name="top">{{ post.pub_date|date:"d M" }}</a></span>
                 </div>
             </div>
     </aside>
@@ -25,7 +25,7 @@
         </div>
         <article>
             <header>
-                <h1>{{ post.title }}</h1>
+                <h1><a href="{% url 'blog:detail' post.pk %}#top">{{ post.title }}</a></h1>
             </header>
             {% block article_body %}
 

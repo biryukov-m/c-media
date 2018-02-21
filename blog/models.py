@@ -40,5 +40,9 @@ class Post(models.Model):
         except TypeError:
             return False
 
+    def publish(self):
+        self.pub_date = timezone.now()
+        self.save()
+
     def __str__(self):
         return self.title

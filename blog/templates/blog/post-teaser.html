@@ -5,7 +5,7 @@
         {{ post.text|linebreaks|truncatewords_html:50 }}
     </section>
 
-    <a class="read-more" href="{{ post.pk }}">Читать дальше</a>
+    <a class="read-more" href="{% url 'blog:detail' post.pk %}#top">Читать дальше</a>
 {% endblock %}
 
 {% block article_separator %}

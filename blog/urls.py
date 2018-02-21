@@ -1,13 +1,9 @@
 from django.urls import path, include
 from . import views
 
+
+app_name = 'blog'
 urlpatterns = [
-    path('', views.test),
-    path('question/<int:question_id>/', views.test),
-    path('login/', views.test),
-    path('signup/', views.test),
-    path('ask/', views.test),
-    path('popular/', views.test),
-    path('new/', views.test),
-    path('single/', views.single),
+    path('', views.IndexView.as_view(), name='home'),
+    path('<int:pk>', views.DetailView.as_view(), name='detail'),
 ]
