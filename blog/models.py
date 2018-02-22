@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=40)
+    slug = models.SlugField(max_length=60, unique=True, default='')
 
     def __str__(self):
         return self.name
@@ -12,6 +13,7 @@ class Category(models.Model):
 
 class Pseudo(models.Model):
     name = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=60, unique=True, default='')
     create_date = models.DateField(auto_created=True)
 
     def __str__(self):
@@ -20,6 +22,7 @@ class Pseudo(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=60, unique=True, default='')
 
     def __str__(self):
         return self.name
@@ -27,6 +30,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=60, unique=True, default='')
     text = models.TextField(max_length=30000)
     create_date = models.DateTimeField(blank=True, auto_now_add=True)
     pub_date = models.DateTimeField(blank=True, null=True)

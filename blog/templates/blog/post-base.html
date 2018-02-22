@@ -25,7 +25,7 @@
         </div>
         <article>
             <header>
-                <h1><a href="{% url 'blog:detail' post.pk %}#top">{{ post.title }}</a></h1>
+                <h1><a href="{% url 'blog:article-detail' post.slug %}#top">{{ post.title }}</a></h1>
             </header>
             {% block article_body %}
 

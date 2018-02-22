@@ -7,7 +7,7 @@ from django.views import generic
 
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
-    context_object_name = 'last_posts'
+    context_object_name = 'posts'
 
     def get_queryset(self):
         return Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
