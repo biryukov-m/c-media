@@ -45,10 +45,7 @@ a{
     font-family: 'Audiowide', cursive;
     font-size: 5.2em;
     color: rgba(0, 0, 0, 0.6);
-    /*text-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);*/
     text-shadow: 0 0 6px -2px #34495e;
-
-    /*box-shadow: 0 0 6px -2px #34495e;*/
 }
 .header-container .col-left .text-logo:hover{
     color: rgba(0, 0, 0, 0.75);
@@ -94,8 +91,6 @@ a{
     padding: 18px 32px;
     font-size: 1.6em;
     font-weight: bold;
-    /*font-family: 'Tinos', serif;*/
-    /*font-family: 'Open Sans', sans-serif;*/
     font-family: 'Anonymous Pro', monospace;
     color: #bcbcbc;
 }
@@ -130,8 +125,6 @@ a{
     text-align: center;
     color: #bcbcbc;
     font-size: 1.3em;
-    /*font-family: 'Tinos', serif;*/
-    /*font-family: 'Open Sans', sans-serif;*/
     font-family: 'Anonymous Pro', monospace;
 }
 .greeting-top span {
@@ -207,6 +200,7 @@ article {
     margin-bottom: 70px;
 }
 
+
 article .read-more {
     display: inline-block;
     color: #3eb3a5;
@@ -259,8 +253,17 @@ button,
 .post-container.single .article-content {
     margin-bottom: 30px;
 }
-.article-tags {
 
+.article-tags {
+    margin-top: 30px;
+}
+.article-tags.compact {
+    position: relative;
+    top: -138px;
+    left: 140px;
+}
+.article-tags.compact span {
+    display: none;
 }
 .article-tags span {
     font-size: 1.1em;
@@ -271,13 +274,15 @@ button,
 .article-tags a {
     color: #3eb3a5;
 }
+
+.article-author {
+    text-align: right;
+}
 /*.article-tags a:not(:last-of-type)::after{*/
     /*display: inline;*/
     /*content: ",";*/
 /*}*/
-.article-tags {
-    margin-bottom: 30px;
-}
+
 nav.article-bottom {
     display: table;
     width: 100%;

@@ -10,7 +10,7 @@
         <div class="post-info">
             <div class="category indicator">
                 <span>Раздел: </span>
-                <a class="category-name" href="#">{{ post.category.name.capitalize }}</a>
+                <a class="category-name" href="{% url 'blog:by-category' post.category.slug %}">{{ post.category.name.capitalize }}</a>
             </div>
             <div class="likes indicator">
                 <div class="indicator-icon-heart"></div>

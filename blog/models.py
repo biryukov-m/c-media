@@ -7,6 +7,10 @@ class Category(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=60, unique=True, default='')
 
+    def get_related_posts(self):
+        query = self.post_set.all().order_by('-pub_date')
+        return query
+
     def __str__(self):
         return self.name
 
@@ -23,6 +27,10 @@ class Pseudo(models.Model):
 class Tag(models.Model):
     name = models.CharField(max_length=20)
     slug = models.SlugField(max_length=60, unique=True, default='')
+
+    def get_related_posts(self):
+        query = self.post_set.all().order_by('-pub_date')
+        return query
 
     def __str__(self):
         return self.name

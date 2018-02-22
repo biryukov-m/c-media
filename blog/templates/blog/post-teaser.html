@@ -4,10 +4,8 @@
     <section class="article-content">
         {{ post.text|linebreaks|truncatewords_html:50 }}
     </section>
-
     <a class="read-more" href="{% url 'blog:article-detail' post.slug %}#top">Читать дальше</a>
 {% endblock %}
-
 {% block article_separator %}
     <div class="post-container-preview-after"></div>
 {% endblock %}
