@@ -67,17 +67,17 @@ a{
     width: 50%;
     float: left;
 }
-.top-menu ul {
+.top-menu > ul {
     padding: 0;
     margin: 0;
 }
-.top-menu.left ul {
+.top-menu.left > ul {
     float: right;
 }
-.top-menu.right ul {
+.top-menu.right > ul {
     float: left;
 }
-.top-menu ul li {
+.top-menu > ul li {
     display: inline-block;
 }
 .top-menu.left ul li:last-of-type{
@@ -86,7 +86,7 @@ a{
 .top-menu.right ul li:first-of-type{
     margin-left: 106px;
 }
-.top-menu ul li a {
+.top-menu > ul li a {
     display: block;
     padding: 18px 32px;
     font-size: 1.6em;
@@ -97,6 +97,23 @@ a{
 .top-menu ul li a:hover {
     color: #3eb3a5;
     text-shadow: 0 1px #bcbcbc66;
+}
+.sub-menu {
+    position: absolute;
+    z-index: 200;
+}
+.sub-menu ul {
+    /*margin-top: 10px;*/
+    /*background-color: #3eb3a5;*/
+    /*opacity: 0.8;*/
+}
+.sub-menu ul li {
+    display: block;
+    /*padding: 0;*/
+}
+.sub-menu ul li a {
+    padding: 2px 0;
+    font-size: 1.3em;
 }
 .round-logo-layout {
     position: relative;

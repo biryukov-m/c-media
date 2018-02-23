@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 {% block title %}{{ block.super }} - {{ post.title }}{% endblock %}
-{% block headcrumbs %}{{ post.category.name }}: {{ post.title }}{% endblock %}
+{% block breadcrumbs %}<a href="#" name="top"></a>{{ post.category.name }}: {{ post.title }}{% endblock %}
 {% block content %}
     {% include 'blog/post-single.html' %}
     <nav class="article-bottom">

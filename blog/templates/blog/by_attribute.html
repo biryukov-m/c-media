@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 {% block title %}{{ block.super }} - {{ object.name }}{% endblock %}
-{% block breadcrumbs %}{{ type.lower }}: {{ object.name.lower }}{% endblock %}
+{% block breadcrumbs %}<a href="#" name="top"></a>{{ type.lower }}: {{ object.name.lower }} | публикаций - {{ object.get_related_posts.count }}{% endblock %}
 {% block content %}
     {% for post in object.get_related_posts %}
         {% include 'blog/post-teaser.html' %}

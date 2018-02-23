@@ -26,7 +26,17 @@
         <div class="clearfix">
         <nav class="top-menu left">
             <ul>
-                <li><a href="{% url 'blog:home' %}">Блог</a></li>
+                <li>
+                    <a href="{% url 'blog:home' %}">Разделы</a>
+                    <nav class="sub-menu">
+                        <ul>
+                            <li><a href="#">Web</a></li>
+                            <li><a href="#">Мир</a></li>
+                            <li><a href="#">Приготовление</a></li>
+                            <li><a href="#">Олимпиада</a></li>
+                        </ul>
+                    </nav>
+                </li>
                 <li><a href="#">Новое</a></li>
             </ul>
         </nav>
@@ -36,6 +46,7 @@
                 <li><a href="#">Контакты</a></li>
             </ul>
         </nav>
+
         </div>
         <div class="round-logo-layout">
             <div class="round-logo"></div>
@@ -53,6 +64,5 @@
             <a href="#">Copyright by Luigy</a>
         </div>
     </footer>
-    {% block footer %}{% endblock %}
 </body>
 </html>
