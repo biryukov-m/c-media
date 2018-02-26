@@ -26,26 +26,44 @@
         <div class="clearfix">
         <nav class="top-menu left">
             <ul>
-                <li>
-                    <a class="category-menu" href="{% url 'blog:home' %}">Разделы <span class="arrow">&#9660;</span></a>
-                    <nav class="sub-menu">
-                        <ul>
-                            {% for category in category_list %}
-                                <li><a href="{% url 'blog:by-category' category.slug %}">{{ category.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </nav>
-                </li>
-                <li><a href="#">Новое</a></li>
+                {% for menuitem in menu_left_list %}
+                    <li>
+                        <a href="#">{{ menuitem }}
+                            {% if menuitem.submenu.first %}<span class="arrow">&#9660;</span>{% endif %}
+                        </a>
+                        {% if menuitem.submenu.first %}
+                            <nav class="sub-menu">
+                                    <ul>
+                                        {% for item in menuitem.submenu.all %}
+                                            <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                            </nav>
+                        {% endif %}
+                    </li>
+                {% endfor %}
             </ul>
         </nav>
         <nav class="top-menu right">
             <ul>
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Контакты</a></li>
+                {% for menuitem in menu_right_list %}
+                    <li>
+                        <a href="#">{{ menuitem }}
+                            {% if menuitem.submenu.first %}<span class="arrow">&#9660;</span>{% endif %}
+                        </a>
+                        {% if menuitem.submenu.first %}
+                            <nav class="sub-menu">
+                                    <ul>
+                                        {% for item in menuitem.submenu.all %}
+                                            <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                            </nav>
+                        {% endif %}
+                    </li>
+                {% endfor %}
             </ul>
         </nav>
-
         </div>
         <div class="round-logo-layout">
             <div class="round-logo"></div>
