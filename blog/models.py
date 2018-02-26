@@ -62,3 +62,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Menu(models.Model):
+    name = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=130, unique=True, default='')
+    submenu = models.ManyToManyField(Category, default='', blank=True, null=True)
+
+    def __str__(self):
+        return self.name

@@ -4,7 +4,7 @@
 {% block content %}
     {% for post in object.get_related_posts %}
         {% include 'blog/post-teaser.html' %}
-        {% include 'blog/post-tags-footer.html' with style=' compact' %}
+
     {% endfor %}
     {#    <button type="button" class="button load-more">Ещё публикации</button>#}
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Pseudo, Category, Tag
+from .models import Post, Pseudo, Category, Tag, Menu
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -18,8 +18,12 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 
+class MenuAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+
 # Register your models here.
 admin.site.register(Post, PostAdmin)
 admin.site.register(Pseudo, PseudoAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(Menu, MenuAdmin)

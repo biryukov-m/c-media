@@ -27,13 +27,12 @@
         <nav class="top-menu left">
             <ul>
                 <li>
-                    <a href="{% url 'blog:home' %}">Разделы</a>
+                    <a class="category-menu" href="{% url 'blog:home' %}">Разделы <span class="arrow">&#9660;</span></a>
                     <nav class="sub-menu">
                         <ul>
-                            <li><a href="#">Web</a></li>
-                            <li><a href="#">Мир</a></li>
-                            <li><a href="#">Приготовление</a></li>
-                            <li><a href="#">Олимпиада</a></li>
+                            {% for category in category_list %}
+                                <li><a href="{% url 'blog:by-category' category.slug %}">{{ category.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </nav>
                 </li>
