@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.shortcuts import reverse
 
 
 class Category(models.Model):
@@ -59,6 +60,10 @@ class Post(models.Model):
     def publish(self):
         self.pub_date = timezone.now()
         self.save()
+
+
+    def get_absolute_url(self):
+        return reverse('blog:article-detail', args=[str(self.slug)])
 
     def __str__(self):
         return self.title

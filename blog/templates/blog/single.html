@@ -5,7 +5,13 @@
     {% include 'blog/post-single.html' %}
     <nav class="article-bottom">
         <span class="comment-counter">3 комментария</span>
-        <button type="button" class="button load-next clearfix">Следующая запись ></button>
+        <div class="load-next clearfix">
+            <a href="{{ post.get_next_by_create_date.get_absolute_url }}"
+               title="{{ post.get_next_by_create_date.title }}">
+                Следующая запись >
+            </a>
+        </div>
+
     </nav>
     <div class="writecomment-container">
         <form class="writecomment clearfix" id="writecomment" action="" method="post">

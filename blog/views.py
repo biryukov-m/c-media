@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from .models import Post, Category, Tag, Pseudo
 from django.utils import timezone
 from django.views import generic
+from .forms import PostForm
+from django.shortcuts import render, redirect, get_object_or_404
 
 
 class IndexView(generic.ListView):
@@ -44,7 +44,6 @@ class TagView(generic.DetailView):
 class PseudoView(generic.DetailView):
     model = Pseudo
     template_name = 'blog/by_attribute.html'
-    # context_object_name = object
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -52,6 +51,30 @@ class PseudoView(generic.DetailView):
         return context
 
 
+def create_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.pub_date = timezone.now()
+            post.save()
+            return redirect(post.get_absolute_url())
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def edit_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect(post.get_absolute_url())
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form})
 #
 # def single(request, article_pk):
 #     post = get_object_or_404(Post, pk=article_pk)

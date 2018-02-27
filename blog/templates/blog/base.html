@@ -21,7 +21,13 @@
                     <div class="text-logo"><a href="{% url 'blog:home' %}">Cat media</a></div>
                 </div>
             </div>
-            <div class="col-right"></div>
+            <div class="col-right">
+                {% if user.is_authenticated %}
+                <div class="admin-buttons">
+                    <a href="{% url 'blog:create-post' %}" class="add-post"></a>
+                </div>
+                {% endif %}
+            </div>
         </div>
         <div class="clearfix">
         <nav class="top-menu left">

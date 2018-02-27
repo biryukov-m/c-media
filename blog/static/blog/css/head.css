@@ -1,15 +1,15 @@
+input, ul, li, a, form, textarea {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    border: none;
+}
 body {
     min-width: 320px;
     max-width: 1890px;
     margin: 0;
 }
-input, form, textarea {
-    padding: 0;
-    margin: 0;
-    border: none;
-}
 a{
-    text-decoration: none;
     color: inherit;
 }
 .header-container {
@@ -57,6 +57,22 @@ a{
     background: url("/static/blog/img/black-evil-cat.svg") 90% 50% no-repeat;
     background-size: 270px;
     opacity: 0.6;
+    position: relative;
+}
+.header-container .col-right .admin-buttons {
+    position: absolute;
+    bottom: 5px;
+    left: 100px;
+    height: 32px;
+    z-index: 200;
+    float: left;
+}
+.header-container .col-right .admin-buttons .add-post {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url("/static/blog/img/add-post.png") no-repeat;
+    background-size: 32px;
 }
 .clearfix::after {
     display: table;
@@ -80,40 +96,53 @@ a{
 .top-menu > ul li {
     display: inline-block;
 }
-.top-menu.left ul li:last-of-type{
+.top-menu.left > ul > li:last-of-type{
     margin-right: 106px;
 }
-.top-menu.right ul li:first-of-type{
+.top-menu.right > ul > li:first-of-type{
     margin-left: 106px;
 }
-.top-menu > ul li a {
+.top-menu ul li a {
     display: block;
-    padding: 18px 32px;
+    padding: 18px 22px;
     font-size: 1.6em;
     font-weight: bold;
     font-family: 'Anonymous Pro', monospace;
     color: #bcbcbc;
 }
+.top-menu .arrow {
+    font-size:0.55em;
+    margin-left: -9px;
+}
 .top-menu ul li a:hover {
     color: #3eb3a5;
     text-shadow: 0 1px #bcbcbc66;
 }
+.top-menu a {
+    transition:all linear 0.15s;
+}
+.top-menu ul li:hover .sub-menu {
+    visibility: visible;
+    opacity: 1;
+}
 .sub-menu {
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     z-index: 200;
 }
-.sub-menu ul {
-    /*margin-top: 10px;*/
-    /*background-color: #3eb3a5;*/
-    /*opacity: 0.8;*/
-}
 .sub-menu ul li {
     display: block;
-    /*padding: 0;*/
 }
 .sub-menu ul li a {
-    padding: 2px 0;
-    font-size: 1.3em;
+	padding: 5px 32px;
+	font-size: 1.3em;
+}
+.sub-menu ul li a:hover {
+    background: #3eb3a5;
+    color: white;
+    box-shadow:0 2px 2px rgba(0,0,0,0.2);
+
 }
 .round-logo-layout {
     position: relative;
@@ -214,10 +243,18 @@ article {
     font-weight: normal;
     line-height: 140%;
     word-wrap: break-word;
-    margin-bottom: 70px;
+    margin-bottom: 35px;
 }
-
-
+article a.edit-post{
+    /*margin-bottom: -3px;*/
+    vertical-align: middle;
+    height: 1em;
+    width: 1em;
+    background: url("/static/blog/img/edit-post.png") no-repeat;
+    background-size: 1em;
+    display: inline-block;
+    opacity: 0.7;
+}
 article .read-more {
     display: inline-block;
     color: #3eb3a5;
@@ -265,19 +302,15 @@ button,
     font-weight: bold;
     color: white;
 }
-
 /* Single article */
 .post-container.single .article-content {
     margin-bottom: 30px;
 }
-
 .article-tags {
-    margin-top: 30px;
+    margin-top: 25px;
 }
 .article-tags.compact {
-    position: relative;
-    top: -138px;
-    left: 140px;
+    margin-bottom: -15px;
 }
 .article-tags.compact span {
     display: none;
@@ -291,7 +324,6 @@ button,
 .article-tags a {
     color: #3eb3a5;
 }
-
 .article-author {
     text-align: right;
 }
@@ -299,7 +331,6 @@ button,
     /*display: inline;*/
     /*content: ",";*/
 /*}*/
-
 nav.article-bottom {
     display: table;
     width: 100%;
@@ -315,12 +346,56 @@ nav.article-bottom .comment-counter {
     font-weight: bold;
     color: black;
 }
-nav.article-bottom button.load-next{
+nav.article-bottom div.load-next{
+    display: block;
     float: right;
     height: 60px;
+    padding: 0 10px;
     margin-top: 20px;
+    border: none;
+    background: #3eb3a5;
+    color: white;
+    border-radius: 3px;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 0 6px -2px #34495e;
 }
+nav.article-bottom div.load-next a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    margin-top: 17px;
+}
+
+
 /* End Single article */
+.main-content .post-form {
+    box-sizing: border-box;
+    width: 100%;
+    background: rgba(69, 179, 164, 0.14);
+    color: black;
+    border-radius: 7px;
+    box-shadow: 0 0 6px -2px #34495e;
+    padding: 15px;
+    font-size: 1.1em;
+    margin-bottom: 100px;
+}
+.main-content .post-form textarea, select, input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    box-shadow: 0 0 6px -3px #34495e;
+    padding: 10px;
+}
+.main-content .post-form textarea {
+    height: 400px;
+    resize: vertical;
+    outline: none;
+    overflow: auto;
+}
+.main-content .post-form select#id_tags {
+    height: 85px;
+}
 /* Comment write */
 .writecomment-container {
     border-bottom: 2px solid #ebebeb;
@@ -392,7 +467,6 @@ textarea::placeholder {
     opacity: 0.2;
 }
 /* End comment write */
-
 /* Article comments */
 .comment-container {
     display: flex;
@@ -472,10 +546,10 @@ textarea::placeholder {
         height: 106px;
         margin-left: -53px;
     }
-    .top-menu.left ul li:last-of-type {
+    .top-menu.left > ul > li:last-of-type {
         margin-right: 53px;
     }
-    .top-menu.right ul li:first-of-type {
+    .top-menu.right > ul > li:first-of-type {
         margin-left: 53px;
     }
     .greeting-top {
@@ -543,10 +617,10 @@ textarea::placeholder {
         float: none;
         margin: 0 auto;
     }
-    .top-menu.left ul li:last-of-type {
+    .top-menu.left > ul > li:last-of-type {
         margin-right: 35px;
     }
-    .top-menu.right ul li:first-of-type {
+    .top-menu.right > ul > li:first-of-type {
         margin-left: 35px;
     }
     .top-menu ul li a {
@@ -592,10 +666,10 @@ textarea::placeholder {
         padding: 9px 4px;
         font-size: 1.8em;
     }
-    .top-menu.left ul li:last-of-type {
+    .top-menu.left > ul > li:last-of-type {
         margin-right: 0;
     }
-    .top-menu.right ul li:first-of-type {
+    .top-menu.right > ul > li:first-of-type {
         margin-left: 0;
     }
     .greeting-top {
