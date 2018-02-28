@@ -56,7 +56,6 @@ def create_post(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.pub_date = timezone.now()
             post.save()
             return redirect(post.get_absolute_url())
     else:
@@ -75,7 +74,17 @@ def edit_post(request, slug):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
-#
-# def single(request, article_pk):
-#     post = get_object_or_404(Post, pk=article_pk)
-#     return render(request, 'blog/single.html', {'post': post})
+
+
+def publish_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.publish()
+    return redirect(post.get_absolute_url())
+
+
+class PostDraftList(generic.ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.exclude(pub_date__lt=timezone.now()).order_by('-pub_date')[:10]

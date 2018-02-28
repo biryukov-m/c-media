@@ -4,6 +4,7 @@
 {% block content %}
     {% include 'blog/post-single.html' %}
     <nav class="article-bottom">
+    {% if post.pub_date %}
         <span class="comment-counter">3 комментария</span>
         <div class="load-next clearfix">
             <a href="{{ post.get_next_by_create_date.get_absolute_url }}"
@@ -11,7 +12,15 @@
                 Следующая запись >
             </a>
         </div>
-
+    {% else %}
+        <span class="comment-counter">Создан: {{ post.create_date|date:"j E H:i" }}</span>
+        <div class="load-next clearfix">
+            <a href="{% url 'blog:publish-post' slug=post.slug %}"
+               title="{{ datetime.now }}">
+                Опубликовать сейчас
+            </a>
+        </div>
+    {% endif %}
     </nav>
     <div class="writecomment-container">
         <form class="writecomment clearfix" id="writecomment" action="" method="post">

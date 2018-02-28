@@ -67,13 +67,21 @@ a{
     z-index: 200;
     float: left;
 }
-.header-container .col-right .admin-buttons .add-post {
-    display: block;
+.header-container .col-right .admin-buttons a {
+    display: inline-block;
     width: 32px;
     height: 32px;
+}
+
+.header-container .col-right .admin-buttons a.add-post {
     background: url("/static/blog/img/add-post.png") no-repeat;
     background-size: 32px;
 }
+.header-container .col-right .admin-buttons a.draft-list {
+    background: url("/static/blog/img/add-post.png") no-repeat;
+    background-size: 32px;
+}
+
 .clearfix::after {
     display: table;
     content: "";
