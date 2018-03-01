@@ -61,7 +61,6 @@ class Post(models.Model):
         self.pub_date = timezone.now()
         self.save()
 
-
     def get_absolute_url(self):
         return reverse('blog:article-detail', args=[str(self.slug)])
 

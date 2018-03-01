@@ -82,6 +82,12 @@ def publish_post(request, slug):
     return redirect(post.get_absolute_url())
 
 
+def remove_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.delete()
+    return redirect('blog:home')
+
+
 class PostDraftList(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'

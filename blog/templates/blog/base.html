@@ -24,8 +24,10 @@
             <div class="col-right">
                 {% if user.is_authenticated %}
                 <div class="admin-buttons">
-                    <a href="{% url 'blog:create-post' %}" class="add-post"></a>
-                    <a href="{% url 'blog:post-draft-list' %}" class="draft-list"></a>
+                    <a href="{% url 'blog:create-post' %}" title="Создать публикацию"
+                       class="add-post"></a>
+                    <a href="{% url 'blog:post-draft-list' %}" title="Ожидающие публикации"
+                       class="draft-list"></a>
                 </div>
                 {% endif %}
             </div>

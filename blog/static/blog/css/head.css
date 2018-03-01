@@ -253,15 +253,20 @@ article {
     word-wrap: break-word;
     margin-bottom: 35px;
 }
-article a.edit-post{
-    /*margin-bottom: -3px;*/
+article header h1 a.admin {
     vertical-align: middle;
     height: 1em;
     width: 1em;
-    background: url("/static/blog/img/edit-post.png") no-repeat;
-    background-size: 1em;
     display: inline-block;
     opacity: 0.7;
+}
+article header h1 a.admin.edit-post{
+    background: url("/static/blog/img/edit-post.png") no-repeat;
+    background-size: 1em;
+}
+article header h1 a.admin.remove-post {
+    background: url("/static/blog/img/remove-post.png") no-repeat;
+    background-size: 1em;
 }
 article .read-more {
     display: inline-block;
