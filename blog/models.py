@@ -51,12 +51,6 @@ class Post(models.Model):
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
 
-    def ispublished(self):
-        try:
-            return self.pub_date < timezone.now()
-        except TypeError:
-            return False
-
     def publish(self):
         self.pub_date = timezone.now()
         self.save()

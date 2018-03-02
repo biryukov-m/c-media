@@ -72,7 +72,6 @@ a{
     width: 32px;
     height: 32px;
 }
-
 .header-container .col-right .admin-buttons a.add-post {
     background: url("/static/blog/img/add-post.png") no-repeat;
     background-size: 32px;
@@ -81,7 +80,14 @@ a{
     background: url("/static/blog/img/add-post.png") no-repeat;
     background-size: 32px;
 }
-
+.header-container .col-right .admin-buttons a.login-link {
+    background: url("/static/blog/img/login.png") no-repeat;
+    background-size: 32px;
+}
+.header-container .col-right .admin-buttons a.logout-link {
+    background: url("/static/blog/img/logout.png") no-repeat;
+    background-size: 32px;
+}
 .clearfix::after {
     display: table;
     content: "";
@@ -287,14 +293,14 @@ article .read-more:hover {
     margin-bottom: 110px;
 }
 button,
-.genbutton {
+.genbutton, input[type='submit'] {
     border: none;
     display: block;
     background: #3eb3a5;
     color: white;
     border-radius: 3px;
     font-size: 1em;
-    font-weight: bold;
+    /*font-weight: bold;*/
     box-shadow: 0 0 6px -2px #34495e;
 }
 .post-container-preview-after~button.load-more {
@@ -379,10 +385,8 @@ nav.article-bottom div.load-next a{
     width: 100%;
     margin-top: 17px;
 }
-
-
 /* End Single article */
-.main-content .post-form {
+.main-content form {
     box-sizing: border-box;
     width: 100%;
     background: rgba(69, 179, 164, 0.14);
@@ -393,20 +397,22 @@ nav.article-bottom div.load-next a{
     font-size: 1.1em;
     margin-bottom: 100px;
 }
-.main-content .post-form textarea, select, input {
+.main-content form textarea,
+.main-content form select,
+.main-content form input {
     box-sizing: border-box;
     width: 100%;
     height: 40px;
     box-shadow: 0 0 6px -3px #34495e;
     padding: 10px;
 }
-.main-content .post-form textarea {
+.main-content form textarea {
     height: 400px;
     resize: vertical;
     outline: none;
     overflow: auto;
 }
-.main-content .post-form select#id_tags {
+.main-content form select#id_tags {
     height: 85px;
 }
 /* Comment write */
@@ -480,6 +486,25 @@ textarea::placeholder {
     opacity: 0.2;
 }
 /* End comment write */
+.main-content .login-form,
+.main-content .form-error {
+    max-width: 400px;
+    margin: 0 auto 100px;
+}
+.main-content .form-error {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.main-content .login-form .errorlist {
+    font-size: 0.8em;
+    list-style: none;
+    color: #b3514b;
+}
+.main-content .login-form input[type="submit"] {
+    display: block;
+    max-width: 100px;
+    margin: 30px auto 0;
+}
 /* Article comments */
 .comment-container {
     display: flex;

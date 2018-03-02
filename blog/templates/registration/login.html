@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ block.super }} - авторизация{% endblock %}
+{% block breadcrumbs %}
+    {% if form.errors %}
+        <p class="form-error">Неверные данные для входа.</p>
+    {% else %}
+        Авторизация
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <form class="login-form" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Войти" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+{% endblock %}

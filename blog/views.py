@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.views import generic
 from .forms import PostForm
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 class IndexView(generic.ListView):
@@ -10,7 +12,7 @@ class IndexView(generic.ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
+        return Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
 
 
 class DetailView(generic.DetailView):
@@ -37,7 +39,6 @@ class TagView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['type'] = "#тэг"
-        context['style'] = True
         return context
 
 
@@ -51,6 +52,7 @@ class PseudoView(generic.DetailView):
         return context
 
 
+@login_required
 def create_post(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -63,6 +65,7 @@ def create_post(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
+@login_required
 def edit_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     if request.method == "POST":
@@ -76,21 +79,24 @@ def edit_post(request, slug):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
+@login_required
 def publish_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.publish()
     return redirect(post.get_absolute_url())
 
 
+@login_required
 def remove_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('blog:home')
 
 
+@method_decorator(login_required, name='dispatch')
 class PostDraftList(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.exclude(pub_date__lt=timezone.now()).order_by('-pub_date')[:10]
+        return Post.objects.exclude(pub_date__lte=timezone.now()).order_by('-pub_date')

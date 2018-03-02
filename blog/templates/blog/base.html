@@ -22,14 +22,19 @@
                 </div>
             </div>
             <div class="col-right">
-                {% if user.is_authenticated %}
                 <div class="admin-buttons">
+                    {% if user.is_authenticated %}
                     <a href="{% url 'blog:create-post' %}" title="Создать публикацию"
                        class="add-post"></a>
                     <a href="{% url 'blog:post-draft-list' %}" title="Ожидающие публикации"
                        class="draft-list"></a>
+                    <a href="{% url 'logout' %}" title="Выйти из учетной записи"
+                       class="logout-link"></a>
+                    {% else %}
+                    <a href="{% url 'login' %}" title="Войти с учетной записью"
+                       class="login-link"></a>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
         <div class="clearfix">
@@ -37,7 +42,7 @@
             <ul>
                 {% for menuitem in menu_left_list %}
                     <li>
-                        <a href="#">{{ menuitem }}
+                        <a href="/{{ menuitem.slug }}">{{ menuitem }}
                             {% if menuitem.submenu.first %}<span class="arrow">&#9660;</span>{% endif %}
                         </a>
                         {% if menuitem.submenu.first %}
@@ -57,7 +62,7 @@
             <ul>
                 {% for menuitem in menu_right_list %}
                     <li>
-                        <a href="#">{{ menuitem }}
+                        <a href="/{{ menuitem.slug }}">{{ menuitem }}
                             {% if menuitem.submenu.first %}<span class="arrow">&#9660;</span>{% endif %}
                         </a>
                         {% if menuitem.submenu.first %}
