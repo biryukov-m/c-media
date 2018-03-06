@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+        return Post.objects.published()
 
 
 class DetailView(generic.DetailView):
@@ -99,4 +99,4 @@ class PostDraftList(generic.ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.exclude(pub_date__lte=timezone.now()).order_by('-pub_date')
+        return Post.objects.drafted()

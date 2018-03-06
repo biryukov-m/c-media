@@ -41,6 +41,14 @@ class Tag(models.Model):
         return self.name
 
 
+class PostManager(models.Manager):
+    def published(self):
+        return self.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+
+    def drafted(self):
+        return self.exclude(pub_date__lte=timezone.now()).order_by('-pub_date')
+
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=130, unique=True, default='')
@@ -50,6 +58,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
+    objects = PostManager()
 
     def publish(self):
         self.pub_date = timezone.now()
