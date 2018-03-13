@@ -64,8 +64,14 @@ class Post(models.Model):
         self.pub_date = timezone.now()
         self.save()
 
+    def is_published(self):
+        return self.pub_date <= timezone.now()
+
     def get_absolute_url(self):
         return reverse('blog:article-detail', args=[str(self.slug)])
+
+    def get_comments(self):
+        return self.comment_set.all().order_by('-created_date')
 
     def __str__(self):
         return self.title
@@ -78,3 +84,19 @@ class Menu(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.CharField(max_length=200)
+    email = models.EmailField(null='example@mail.com')
+    text = models.TextField(max_length=5000)
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return ': '.join([self.author, self.text])

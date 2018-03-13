@@ -386,7 +386,8 @@ nav.article-bottom div.load-next a{
     margin-top: 17px;
 }
 /* End Single article */
-.main-content form {
+.main-content form.post-form,
+.main-content form.login-form {
     box-sizing: border-box;
     width: 100%;
     background: rgba(69, 179, 164, 0.14);
@@ -418,7 +419,7 @@ nav.article-bottom div.load-next a{
 /* Comment write */
 .writecomment-container {
     border-bottom: 2px solid #ebebeb;
-    margin-bottom: 44px;
+    margin-bottom: 10px;
 }
 form.writecomment {
     color: #ccc;
@@ -427,8 +428,9 @@ form.writecomment {
     position: relative;
     font-family: 'Open Sans', sans-serif;
 }
-form.writecomment #name,
-form.writecomment #email {
+
+form.writecomment #id_author,
+form.writecomment #id_email {
     box-sizing: border-box;
     height: 40px;
     padding: 0 8px;
@@ -438,11 +440,11 @@ form.writecomment #email {
     box-shadow: 0 0 6px -2px #34495e;
     font-family: inherit;
 }
-form.writecomment #name {
+form.writecomment #id_author {
     margin-right: 10px;
     width: 140px;
 }
-form.writecomment #email {
+form.writecomment #id_email {
     width: 180px;
 }
 form.writecomment textarea {
@@ -471,15 +473,15 @@ form.writecomment label{
     font-weight: bold;
     top: 8px;
 }
-form.writecomment label.forname{
+form.writecomment label[for="id_author"]{
     left: -131px;
 }
-form.writecomment label.foremail{
-    right: -231px;
+form.writecomment label[for="id_email"]{
+    right: -233px;
 }
-form.writecomment label.forcomment-field{
+form.writecomment label[for="id_text"]{
     top: 68px;
-    left: -305px;
+    left: -302px;
 }
 form.writecomment input::placeholder,
 textarea::placeholder {
@@ -553,12 +555,17 @@ textarea::placeholder {
 .comment-container .comment-col-right .comment-text {
     background: #ebebeb;
     border-radius: 7px;
-    padding: 10px 15px;
+    padding: 5px 15px;
     margin-bottom: 10px;
 }
 .comment-container .comment-col-right a.comment-reply {
     color: #3eb3a5;
     font-size: 0.9rem;
+}
+.comments-container .no_comments {
+    text-align: center;
+    color: #000;
+    font-size: 1.2em;
 }
 @media screen and (max-width: 1280px) {
     body {
@@ -622,8 +629,8 @@ textarea::placeholder {
         display: block;
         margin-bottom: 5px;
     }
-    form.writecomment #name,
-    form.writecomment #email,
+    form.writecomment #id_author,
+    form.writecomment #id_email,
     form.writecomment textarea,
     form.writecomment label,
     form.writecomment input.comment-submit,

@@ -1,0 +1,14 @@
+<div class="comment-container">
+    <div class="comment-col-left">
+        <div class="commentator-portrait"></div>
+    </div>
+    <div class="comment-col-right">
+        <div class="comment-info">
+            <a href="#">{{ comment.author }}</a>
+            <span>@</span>
+            <span class="datetime">{{ comment.created_date|date:"G:i d.m.y" }}</span>
+        </div>
+        <div class="comment-text">{{ comment.text|linebreaks }}</div>
+        <a href ="#" class="comment-reply">Ответить</a>
+    </div>
+</div>

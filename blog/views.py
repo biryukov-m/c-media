@@ -1,7 +1,7 @@
 from .models import Post, Category, Tag, Pseudo
 from django.utils import timezone
 from django.views import generic
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -14,10 +14,24 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Post.objects.published()
 
-
+# На всякий случай
 class DetailView(generic.DetailView):
     model = Post
     template_name = 'blog/single.html'
+
+
+def detail_view(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect(post.get_absolute_url())
+    else:
+        form = CommentForm()
+    return render(request, 'blog/single.html', {'post': post, 'form': form})
 
 
 class CategoryView(generic.DetailView):
