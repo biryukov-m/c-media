@@ -1,8 +1,9 @@
-from .models import Post, Category, Tag, Pseudo
+from .models import Post, Category, Tag, Pseudo, Comment
 from django.utils import timezone
 from django.views import generic
 from .forms import PostForm, CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -114,3 +115,20 @@ class PostDraftList(generic.ListView):
 
     def get_queryset(self):
         return Post.objects.drafted()
+
+
+@login_required
+def comment_approve(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.approve()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    return redirect('blog:article-detail', slug=comment.post.slug)
+
+
+@login_required
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    slug = comment.post.slug
+    comment.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    return redirect('blog:article-detail', slug=slug)

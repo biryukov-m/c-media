@@ -4,7 +4,7 @@
         {{ post.text|linebreaks }}
     </section>
     <section class="article-author">
-        <a title="Все публикации - {{ post.pseudo.name }}"
+        Автор: <a title="Все публикации - {{ post.pseudo.name }}"
            href="{% url 'blog:by-author' post.pseudo.slug %}">{{ post.pseudo.name }}</a>
     </section>
 {% endblock %}

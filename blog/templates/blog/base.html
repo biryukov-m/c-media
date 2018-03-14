@@ -22,6 +22,7 @@
                 </div>
             </div>
             <div class="col-right">
+            <div class="right-logo"></div>
                 <div class="admin-buttons">
                     {% if user.is_authenticated %}
                     <a href="{% url 'blog:create-post' %}" title="Создать публикацию"
@@ -92,7 +93,16 @@
     </main>
     <footer class="content-footer">
         <div class="copyright-footer">
-            <a href="#">Copyright by Luigy</a>
+            Сайт делает -
+            <a href="#">Максим</a>
+        </div>
+        <div class="icons-rights">
+            Автор иконок
+            <a href="https://www.flaticon.com/authors/chanut" title="Chanut">Chanut</a>
+            из
+            <a href="https://www.flaticon.com/" title="Flaticon">flaticon.com</a>
+            лицензия
+            <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
         </div>
     </footer>
 </body>

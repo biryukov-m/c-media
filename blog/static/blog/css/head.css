@@ -6,8 +6,8 @@ input, ul, li, a, form, textarea {
 }
 body {
     min-width: 320px;
-    max-width: 1890px;
-    margin: 0;
+    max-width: 1920px;
+    margin: 0 auto;
 }
 a{
     color: inherit;
@@ -54,39 +54,65 @@ a{
     float: right;
     width: 50%;
     height: 100%;
-    background: url("/static/blog/img/black-evil-cat.svg") 90% 50% no-repeat;
-    background-size: 270px;
-    opacity: 0.6;
     position: relative;
 }
+.header-container .col-right .right-logo {
+    background: url("/static/blog/img/black-evil-cat.svg") 90% 50% no-repeat;
+    background-size: 270px;
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+}
+
 .header-container .col-right .admin-buttons {
     position: absolute;
     bottom: 5px;
     left: 100px;
-    height: 32px;
+    height: 38px;
     z-index: 200;
     float: left;
 }
 .header-container .col-right .admin-buttons a {
     display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
+    opacity: 0.7;
 }
 .header-container .col-right .admin-buttons a.add-post {
-    background: url("/static/blog/img/add-post.png") no-repeat;
-    background-size: 32px;
+    background: url("/static/blog/img/plus.png") no-repeat;
+    background-size: 38px;
 }
 .header-container .col-right .admin-buttons a.draft-list {
-    background: url("/static/blog/img/add-post.png") no-repeat;
-    background-size: 32px;
+    background: url("/static/blog/img/document.png") no-repeat;
+    background-size: 38px;
 }
 .header-container .col-right .admin-buttons a.login-link {
     background: url("/static/blog/img/login.png") no-repeat;
-    background-size: 32px;
+    background-size: 38px;
+    transform: rotate(-90deg);
 }
 .header-container .col-right .admin-buttons a.logout-link {
     background: url("/static/blog/img/logout.png") no-repeat;
-    background-size: 32px;
+    background-size: 38px;
+    transform: rotate(-90deg);
+}
+.header-container .col-right .admin-buttons a.login-link:hover,
+.header-container .col-right .admin-buttons a.logout-link:hover {
+    opacity: 0.75;
+    transition: all linear 0.21s;
+    transform: rotate(-90deg) scale(1.15) translateX(0.2em);
+}
+.header-container .col-right .admin-buttons a:hover {
+    opacity: 0.75;
+    transition: all linear 0.21s;
+    transform: scale(1.15) translateY(-0.2em);
+
+}
+.header-container .col-right .admin-buttons a:active {
+    /*opacity: 0.7;*/
+    transition: all linear 0.05s;
+    transform: scale(0.95);
+
 }
 .clearfix::after {
     display: table;
@@ -133,7 +159,7 @@ a{
     text-shadow: 0 1px #bcbcbc66;
 }
 .top-menu a {
-    transition:all linear 0.15s;
+    transition: color ease-in 0.2s;
 }
 .top-menu ul li:hover .sub-menu {
     visibility: visible;
@@ -173,6 +199,10 @@ a{
     box-sizing: border-box;
     border: 10px solid white;
     box-shadow: 0 0 6px 0 #343434;
+}
+.round-logo:active {
+    transition: all ease-out 5s;
+    transform: rotate(-7214deg);
 }
 .greeting-top {
     height: 250px;
@@ -312,12 +342,16 @@ button,
     width: 100%;
     height: 150px;
     background: linear-gradient(-30deg, lightblue, #3eb3a5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
-.content-footer .copyright-footer {
-    text-align: center;
+.content-footer div{
+    margin-left: 2em;
 }
 .content-footer a {
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
     color: white;
 }
@@ -340,12 +374,14 @@ button,
     text-transform: capitalize;
     margin-right: 15px;
 }
-.article-tags a {
+.article-tags a,
+.article-author a{
     color: #3eb3a5;
 }
 .article-author {
     text-align: right;
 }
+
 /*.article-tags a:not(:last-of-type)::after{*/
     /*display: inline;*/
     /*content: ",";*/
@@ -548,10 +584,30 @@ textarea::placeholder {
     margin-top: 53px;
     margin-bottom: 10px;
 }
+.comment-container .comment-col-right .comment-info .admin-buttons{
+    margin-left: 0.3em;
+}
 .comment-container .comment-col-right .comment-info a{
     font-size: 1.3em;
     color: #3eb3a5;
 }
+.comment-container .comment-col-right .comment-info .admin-buttons a{
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+    opacity: 0.7;
+}
+.comment-container .comment-col-right .comment-info .admin-buttons a.approve-comment{
+    background: url("/static/blog/img/checked.png") no-repeat;
+    background-size: 1em;
+}
+.comment-container .comment-col-right .comment-info .admin-buttons a.remove-comment {
+    background: url("/static/blog/img/remove-post.png") no-repeat;
+    background-size: 1em;
+}
+
+
+
 .comment-container .comment-col-right .comment-text {
     background: #ebebeb;
     border-radius: 7px;
@@ -581,7 +637,7 @@ textarea::placeholder {
     .header-container .col-left .text-logo{
         font-size: 4em;
     }
-    .header-container .col-right {
+    .header-container .col-right .right-logo {
         background: url("/static/blog/img/black-evil-cat.svg") 90% 50% no-repeat;
         background-size: 135px;
     }
@@ -658,7 +714,7 @@ textarea::placeholder {
     .post-container .post-col-left {
         display: none;
     }
-    .post-container .post-col-right {
+    .post-container .post-col-right .right-logo {
         float: none;
         margin: 0 auto;
     }
@@ -701,7 +757,7 @@ textarea::placeholder {
         background-position: 5px 5px, 35px 5px, 65px 5px, 95px 5px, 125px 5px;
         background-size: 25px;
     }
-    .header-container .col-right {
+    .header-container .col-right .right-logo {
         background-size: 85px;
     }
     .top-menu {

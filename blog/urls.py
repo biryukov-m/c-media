@@ -13,6 +13,7 @@ urlpatterns = [
     path('category/<slug:slug>/', views.CategoryView.as_view(), name='by-category'),
     path('tag/<slug:slug>/', views.TagView.as_view(), name='by-tag'),
     path('author/<slug:slug>/', views.PseudoView.as_view(), name='by-author'),
-
+    path('comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
+    path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
 ]
 app_name = 'blog'
