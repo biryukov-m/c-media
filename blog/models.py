@@ -58,6 +58,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
+    likes = models.IntegerField(default=0)
     objects = PostManager()
 
     def publish(self):

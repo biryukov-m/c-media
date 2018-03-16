@@ -15,6 +15,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Post.objects.published()
 
+
 # На всякий случай
 class DetailView(generic.DetailView):
     model = Post
@@ -72,7 +73,7 @@ def create_post(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
+            post = form.save()
             post.save()
             return redirect(post.get_absolute_url())
     else:
@@ -106,6 +107,13 @@ def remove_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('blog:home')
+
+
+def vote_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.likes += 1
+    post.save()
+    return redirect(post.get_absolute_url())
 
 
 @method_decorator(login_required, name='dispatch')

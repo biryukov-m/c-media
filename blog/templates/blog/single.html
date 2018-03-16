@@ -4,31 +4,32 @@
 {% block content %}
     {% include 'blog/post-single.html' %}
     <nav class="article-bottom">
-        {% if post.pub_date %}
-            <span class="comment-counter">
+        <div class="info">
+            <span class="likes">
+                Одобрений: {{ post.likes }}
+            </span>
+            <span class="comments">
                 {% if post.get_approved_comments.first %}
-                    Комментировали - {{ post.get_approved_comments.count }}
-                {% else %}
-                    Прокомментируете?
+                    Комментариев: {{ post.get_approved_comments.count }}
                 {% endif %}
             </span>
+        </div>
+        <div class="control">
+            {% if post.pub_date %}
+                <a class="article-vote" href="{% url 'blog:article-vote' post.slug %}"><span>Луиза!</span></a>
                 {% if post.get_next_by_create_date.is_published %}
-                    <div class="load-next clearfix">
-                        <a href="{{ post.get_next_by_create_date.get_absolute_url }}"
-                           title="{{ post.get_next_by_create_date.title }}">
-                            Следующая запись >
-                        </a>
-                    </div>
+                    <a class="next-post" href="{{ post.get_next_by_create_date.get_absolute_url }}"
+                       title="{{ post.get_next_by_create_date.title }}">
+                        Следующая запись >
+                    </a>
                 {% endif %}
-        {% else %}
-            <span class="comment-counter">Создан: {{ post.create_date|date:"j E H:i" }}</span>
-            <div class="load-next clearfix">
-                <a href="{% url 'blog:publish-post' slug=post.slug %}"
-                   title="{{ datetime.now }}">
+            {% else %}
+                Создан: {{ post.create_date|date:"j E H:i" }}
+                <a href="{% url 'blog:publish-post' slug=post.slug %}" title="{{ datetime.now }}">
                     Опубликовать сейчас
                 </a>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </nav>
     <div class="writecomment-container">
         <form class="writecomment clearfix" id="writecomment" action="" method="post">
@@ -48,8 +49,8 @@
             {% if user.is_authenticated or comment.approved_comment %}
                 {% include 'blog/comment.html' %}
             {% endif %}
-            {% empty %}
-                <p class="no_comments">Ваш комментарий будет первым!</p>
+        {% empty %}
+            <p class="no_comments">Ваш комментарий будет первым!</p>
         {% endfor %}
     </div>
 {% endblock %}
