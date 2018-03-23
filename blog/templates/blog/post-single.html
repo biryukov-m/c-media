@@ -9,11 +9,11 @@
     </section>
 {% endblock %}
 {% block article_footer %}
-    <footer class="article-tags{{ style }}">
-        <span>#ТЭГИ: </span>
-            {% for tag in post.tags.all %}
-                <a href="{% url 'blog:by-tag' tag.slug %}">#{{ tag.name|lower }}</a>
-                {% if tag.pk != post.tags.all.last.pk %},{% endif %}
-            {% endfor %}
-    </footer>
+{#    <footer class="article-tags{{ style }}">#}
+{#        <span>#ТЭГИ: </span>#}
+{#            {% for tag in post.tags.all %}#}
+{#                <a href="{% url 'blog:by-tag' tag.slug %}">#{{ tag.name|lower }}</a>#}
+{#                {% if tag.pk != post.tags.all.last.pk %},{% endif %}#}
+{#            {% endfor %}#}
+{#    </footer>#}
 {% endblock %}

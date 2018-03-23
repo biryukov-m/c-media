@@ -270,7 +270,7 @@ a{
 .post-info .indicator {
     font-size: 0.90em;
     display: inline-block;
-    padding: 6px 10px 4px 10px;
+    padding: 6px 2px 4px 10px;
 }
 .post-info .indicator:not(:first-of-type){
     border-left: 1px solid #ebebeb;
@@ -397,21 +397,57 @@ button,
 .article-bottom .info {
     display: flex;
     flex-wrap: wrap;
-    height: 50px;
+    justify-content: space-evenly;
+    min-height: 50px;
     align-items: center;
     border-bottom: 1px dotted #ebebeb;
     font-size: 1rem;
-    font-weight: bold;
     color: black;
 }
 .article-bottom .info .likes {
     background: url("/static/blog/img/heart.png") left center no-repeat;
     padding-left: 1.3rem;
+    /*margin-right: 15px;*/
 }
 .article-bottom .info .comments {
     background: url("/static/blog/img/comment.png") left center no-repeat;
-    padding-left: 1.4rem;
-    margin-left: 1.4rem;
+    padding-left: 25px;
+    margin-left: 15px;
+}
+.article-bottom .info  a{
+    color: #3eb3a5;
+    margin-left: 15px;
+}
+.article-bottom .info a.article-vote {
+    width: 37px;
+    height: 30px;
+    padding: 10px 0 0 34px;
+    margin-left: 0;
+    text-align: left;
+    vertical-align: middle;
+    background: url("/static/blog/img/heart_vote.png") left no-repeat;
+    background-size: 30px;
+    color: black;
+}
+.article-bottom .info a.article-vote span{
+    padding-left: 5px;
+}
+.article-bottom .info a.article-vote:hover {
+    position: relative;
+    box-shadow: 0 1px 4px 3px rgba(62, 179, 165, 0.6);
+    padding: 10px 34px 0 0;
+    color: rgba(255,255,255,0);
+    background-position: 88% center;
+    transition:  box-shadow cubic-bezier(.1,.9,.9,.1) 0.2s, background-position ease-in-out 0.2s;
+}
+.article-bottom .info a.article-vote:hover span:before {
+    display: inline;
+    position: absolute;
+    content: "+1";
+    color: #3eb3a5;
+    top: 8px;
+    left: 9px;
+    transform: scale(1.5);
 }
 .article-bottom .control {
     display: flex;
@@ -424,26 +460,12 @@ button,
     color: #3eb3a5;
     /*color: rgba(62, 179, 165, 0.6);*/
 }
-
-.article-bottom .control a.article-vote:hover {
-    box-shadow: 0 1px 4px 3px rgba(62, 179, 165, 0.7);
-    padding-left: 45px;
-    padding-right: 5px;
-    background-position: 12% center;
-    transition:  all ease-in-out 0.3s, box-shadow cubic-bezier(.1,.9,.9,.1) 0.6s, background-position ease-in-out 0.6s;
-}
 .article-bottom .control a.article-vote:active {
     transform: scale(1.3);
     /*box-shadow: 0 0 1px 1px rgba(62, 179, 165, 1);*/
     box-shadow: none;
     transition: transform 0.03s linear;
 }
-.article-bottom .control a:hover span {
-    transform: rotate(30deg);
-    color: hotpink;
-    transition: color ease-in 6s;
-}
-
 .article-bottom .control .next-post {
     display: inline-block;
     padding: 15px 10px;
@@ -454,15 +476,6 @@ button,
     font-weight: bold;
     box-shadow: 0 0 6px -2px #34495e;
 }
-.article-bottom .control .article-vote {
-    background: url("/static/blog/img/heart_vote.png") right no-repeat;
-    padding-right: 34px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    background-size: 30px;
-
-}
-
 /* End Single article */
 .main-content form.post-form,
 .main-content form.login-form {
@@ -512,7 +525,7 @@ form.writecomment #id_email {
     height: 40px;
     padding: 0 8px;
     border-radius: 7px;
-    background: #ebebeb;
+    background: rgba(69, 179, 164, 0.14);
     margin-bottom: 18px;
     box-shadow: 0 0 6px -2px #34495e;
     font-family: inherit;
@@ -527,7 +540,7 @@ form.writecomment #id_email {
 form.writecomment textarea {
     resize: vertical;
     box-sizing: border-box;
-    background: #ebebeb;
+    background: rgba(69, 179, 164, 0.14);
     border-radius: 7px;
     padding: 10px 8px;
     width: 100%;

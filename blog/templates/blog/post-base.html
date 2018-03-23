@@ -13,12 +13,14 @@
                 <a class="category-name" title="Перейти к разделу - {{ post.category.name.lower }}"
                    href="{% url 'blog:by-category' post.category.slug %}">{{ post.category.name.capitalize }}</a>
             </div>
+            {% if post.likes %}
             <div class="likes indicator">
                 <div class="indicator-icon-heart"></div>
-                <span class="likes-counter">136</span>
+                <span class="likes-counter">{{ post.likes }}</span>
                 <span>одобрений</span>
             </div>
-            {% if post.get_approved_commets.first %}
+            {% endif %}
+            {% if post.get_approved_comments.last %}
             <div class="comments indicator">
                 <div class="indicator-icon-comment"></div>
                 <span class="comment-counter">{{ post.get_approved_comments.count }}</span>
@@ -28,8 +30,8 @@
             {% if post.get_drafted_comments.first and user %}
                 <div class="comments indicator">
                     <div class="indicator-icon-comment"></div>
-                    <span class="comment-counter">{{ post.get_approved_comments.count }}</span>
-                    <span>прокомментировали</span>
+                    <span class="comment-counter"></span>
+                    <span>{{ post.get_drafted_comments.count }} ожидают</span>
                 </div>
 
             {% endif %}
