@@ -5,32 +5,31 @@
     {% include 'blog/post-single.html' %}
     <nav class="article-bottom">
         <div class="info">
-        <a class="article-vote" href="{% url 'blog:article-vote' post.slug %}">
-            <span>{% if post.likes %}{{ post.likes }}{% else %}Лайк!{% endif %}</span>
-        </a>
-    {% if post.get_approved_comments.first %}
-        <span class="comments">{{ post.get_approved_comments.count }}</span>
-    {% endif %}
-            {% for tag in post.tags.all %}
-                <a href="{% url 'blog:by-tag' tag.slug %}">#{{ tag.name|lower }}</a>
-
-            {% endfor %}
-        </div>
-        <div class="control">
-            {% if post.pub_date %}
-
-                {% if post.get_next_by_create_date.is_published %}
+            <div class="layout">
+                <a class="article-vote" href="{% url 'blog:article-vote' post.slug %}">
+                    {% if post.likes %}
+                        {{ post.likes }}
+                    {% else %}
+                        <span>Лайк!</span>
+                    {% endif %}
+                </a>
+                {% if post.get_approved_comments.first %}
+                    <span class="comments">{{ post.get_approved_comments.count }}</span>
+                {% endif %}
+                {% if post.pub_date %}
+                    {% if post.get_next_by_create_date.is_published %}
                     <a class="next-post" href="{{ post.get_next_by_create_date.get_absolute_url }}"
-                       title="{{ post.get_next_by_create_date.title }}">
-                        Следующая запись >
+                    title="{{ post.get_next_by_create_date.title }}">
+                    Следующая запись >
+                    </a>
+                    {% endif %}
+                {% else %}
+                    Создан: {{ post.create_date|date:"j E H:i" }}
+                    <a href="{% url 'blog:publish-post' slug=post.slug %}" title="{{ datetime.now }}">
+                    Опубликовать сейчас
                     </a>
                 {% endif %}
-            {% else %}
-                Создан: {{ post.create_date|date:"j E H:i" }}
-                <a href="{% url 'blog:publish-post' slug=post.slug %}" title="{{ datetime.now }}">
-                    Опубликовать сейчас
-                </a>
-            {% endif %}
+            </div>
         </div>
     </nav>
     <div class="writecomment-container">

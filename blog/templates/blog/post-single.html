@@ -3,10 +3,13 @@
     <section class="article-content">
         {{ post.text|linebreaks }}
     </section>
-    <section class="article-author">
+    {% for tag in post.tags.all %}
+        <a class="tag" href="{% url 'blog:by-tag' tag.slug %}">#{{ tag.name|lower }}</a>
+    {% endfor %}
+    <span class="article-author">
         Автор: <a title="Все публикации - {{ post.pseudo.name }}"
-           href="{% url 'blog:by-author' post.pseudo.slug %}">{{ post.pseudo.name }}</a>
-    </section>
+        href="{% url 'blog:by-author' post.pseudo.slug %}">{{ post.pseudo.name }}</a>
+    </span>
 {% endblock %}
 {% block article_footer %}
 {#    <footer class="article-tags{{ style }}">#}

@@ -283,8 +283,9 @@ a{
     padding-left: 26px;
 }
 .post-info .comments {
-    background: url("/static/blog/img/comment.png") no-repeat 5px 8px;
-    padding-left: 26px;
+    background: url("/static/blog/img/comment.png") no-repeat 5px 3px;
+    padding-left: 32px;
+    background-size: 23px;
 }
 article {
     color: black;
@@ -365,6 +366,7 @@ button,
 }
 .article-tags {
     margin-top: 25px;
+
 }
 .article-tags.compact {
     margin-bottom: -15px;
@@ -377,98 +379,87 @@ button,
     font-weight: bold;
     text-transform: capitalize;
     margin-right: 15px;
+
 }
-.article-tags a,
+article a.tag{
+    display: inline-block;
+    color: #3eb3a5;
+    margin: 0 5px 3px;
+}
+article a.tag:hover {
+    opacity: 1;
+    color: tomato;
+}
+.article-author {
+    float: right;
+}
 .article-author a{
     color: #3eb3a5;
 }
-.article-author {
-    text-align: right;
-}
 .article-bottom {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
     border-top: 1px solid #ebebeb;
     border-bottom: 2px solid #ebebeb;
     margin-bottom: 35px;
-    flex-wrap: wrap;
 }
 .article-bottom .info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    min-height: 50px;
-    align-items: center;
-    border-bottom: 1px dotted #ebebeb;
+    min-height: 40px;
     font-size: 1rem;
     color: black;
+    margin: 10px 0;
 }
-.article-bottom .info .likes {
-    background: url("/static/blog/img/heart.png") left center no-repeat;
-    padding-left: 1.3rem;
-    /*margin-right: 15px;*/
+.article-bottom .info .layout {
+    height: 40px;
 }
-.article-bottom .info .comments {
-    background: url("/static/blog/img/comment.png") left center no-repeat;
-    padding-left: 25px;
+.article-bottom .info .layout > a {
+    padding: 10px;
+    display: inline-block;
+    margin: auto 0;
     margin-left: 15px;
 }
-.article-bottom .info  a{
-    color: #3eb3a5;
-    margin-left: 15px;
+.article-bottom .info .layout > span {
+    margin-left: 5px;
 }
-.article-bottom .info a.article-vote {
-    width: 37px;
-    height: 30px;
-    padding: 10px 0 0 34px;
-    margin-left: 0;
-    text-align: left;
-    vertical-align: middle;
-    background: url("/static/blog/img/heart_vote.png") left no-repeat;
-    background-size: 30px;
+.article-bottom .info .layout a.article-vote {
+    padding-left: 40px;
     color: black;
-}
-.article-bottom .info a.article-vote span{
-    padding-left: 5px;
-}
-.article-bottom .info a.article-vote:hover {
     position: relative;
-    box-shadow: 0 1px 4px 3px rgba(62, 179, 165, 0.6);
-    padding: 10px 34px 0 0;
-    color: rgba(255,255,255,0);
-    background-position: 88% center;
-    transition:  box-shadow cubic-bezier(.1,.9,.9,.1) 0.2s, background-position ease-in-out 0.2s;
 }
-.article-bottom .info a.article-vote:hover span:before {
-    display: inline;
+.article-bottom .info .layout a.article-vote:before{
+    content: "";
+    display: block;
     position: absolute;
-    content: "+1";
-    color: #3eb3a5;
-    top: 8px;
-    left: 9px;
-    transform: scale(1.5);
+    height: 32px;
+    width: 32px;
+    left: 0;
+    top: 5px;
+    background: url("/static/blog/img/heart_vote.png") left no-repeat;
+    background-size: 32px;
 }
-.article-bottom .control {
-    display: flex;
-    flex-wrap: wrap;
-    height: 70px;
-    align-items: center;
-    justify-content: space-between;
-    align-content: space-around;
-    font-size: 1.1rem;
-    color: #3eb3a5;
-    /*color: rgba(62, 179, 165, 0.6);*/
-}
-.article-bottom .control a.article-vote:active {
+.article-bottom .info .layout a.article-vote:active {
     transform: scale(1.3);
     /*box-shadow: 0 0 1px 1px rgba(62, 179, 165, 1);*/
     box-shadow: none;
     transition: transform 0.03s linear;
 }
-.article-bottom .control .next-post {
-    display: inline-block;
-    padding: 15px 10px;
+.article-bottom .info .layout .comments {
+    padding-left: 40px;
+    position: relative;
+}
+.article-bottom .info .layout .comments:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: url("/static/blog/img/comment.png") left no-repeat;
+    background-size: 32px;
+    left: 0;
+    top: -5px;
+    height: 32px;
+    width: 32px;
+}
+.article-bottom .info .layout .next-post {
+    float: right;
+    display: block;
+    padding: 10px;
     background: #3eb3a5;
     color: white;
     border-radius: 3px;
@@ -850,11 +841,9 @@ textarea::placeholder {
     .content-footer {
         height: 50px;
     }
-    nav.article-bottom .comment-counter {
-    font-size: 1.1em;
-    }
-    nav.article-bottom button.load-next{
-    height: 30px;
-    margin-top: 36px;
+    .article-bottom .info .layout .next-post {
+        padding: 8px;
+        font-size: 0.8rem;
+        margin-top: 4px;
     }
 }

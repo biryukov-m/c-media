@@ -17,14 +17,12 @@
             <div class="likes indicator">
                 <div class="indicator-icon-heart"></div>
                 <span class="likes-counter">{{ post.likes }}</span>
-                <span>одобрений</span>
             </div>
             {% endif %}
             {% if post.get_approved_comments.last %}
             <div class="comments indicator">
                 <div class="indicator-icon-comment"></div>
                 <span class="comment-counter">{{ post.get_approved_comments.count }}</span>
-                <span>прокомментировали</span>
             </div>
             {% endif %}
             {% if post.get_drafted_comments.first and user %}
@@ -33,7 +31,6 @@
                     <span class="comment-counter"></span>
                     <span>{{ post.get_drafted_comments.count }} ожидают</span>
                 </div>
-
             {% endif %}
 
         </div>
