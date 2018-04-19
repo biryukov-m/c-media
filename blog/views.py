@@ -6,14 +6,29 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
+    paginate_by = 1
+    queryset = Post.objects.published()
 
-    def get_queryset(self):
-        return Post.objects.published()
+
+
+# def index_view(request):
+#     queryset = Post.objects.published()
+#     page = request.GET.get('page', 1)
+#     paginator = Paginator(queryset, 10)
+#     try:
+#         posts = paginator.page(page)
+#     except PageNotAnInteger:
+#         posts = paginator.page(1)
+#     except EmptyPage:
+#         users = paginator.page(paginator.num_pages)
+#     return render(request, 'blog/index.html', {'posts': posts})
+
 
 
 # На всякий случай
