@@ -1,5 +1,20 @@
 {% extends 'blog/base.html' %}
-{% block title %}{{ block.super }} - главная{% endblock %}
+{% block title %}
+    {{ block.super }} -
+    {% if type %}
+        {{ model_attribute.name }}
+    {% else %}
+        главная
+    {% endif %}
+{% endblock %}
+{% block breadcrumbs %}
+    <a href="#" name="top"></a>
+    {% if type %}
+        {{ type.lower }}: {{ model_attribute.name}} | публикаций - {{ model_attribute.get_related_posts.count }}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
 {% block content %}
     {% for post in object_list %}
         {% include 'blog/post-teaser.html' %}

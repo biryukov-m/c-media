@@ -23,6 +23,8 @@ class CategoryView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        model_attribute = get_object_or_404(Category, slug=self.kwargs['slug'])
+        context['model_attribute'] = model_attribute
         context['type'] = "категория"
         return context
 
@@ -38,6 +40,8 @@ class TagView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        model_attribute = get_object_or_404(Tag, slug=self.kwargs['slug'])
+        context['model_attribute'] = model_attribute
         context['type'] = "#тэг"
         return context
 
@@ -53,6 +57,8 @@ class PseudoView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        model_attribute = get_object_or_404(Pseudo, slug=self.kwargs['slug'])
+        context['model_attribute'] = model_attribute
         context['type'] = "автор"
         return context
 
