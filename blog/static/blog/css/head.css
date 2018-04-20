@@ -9,9 +9,10 @@ body {
     max-width: 1920px;
     margin: 0 auto;
 }
-a{
+a {
     color: inherit;
 }
+
 .header-container {
     height: 300px;
     background: linear-gradient(-30deg, lightblue, #3eb3a5);
@@ -275,7 +276,7 @@ a{
 .post-info .indicator:not(:first-of-type){
     border-left: 1px solid #ebebeb;
 }
-.post-info .category .category-name {
+.post-info .category a {
     color: #3eb3a5;
 }
 .post-info .likes {
@@ -287,12 +288,19 @@ a{
     padding-left: 32px;
     background-size: 23px;
 }
+.post-info .indicator a:hover {
+    color: #FF6347;
+    width: 1000px;
+}
 article {
     color: black;
     font-weight: normal;
     line-height: 140%;
     word-wrap: break-word;
     margin-bottom: 35px;
+}
+article header h1 a:hover{
+    color: #eb6d4a;
 }
 article header h1 a.admin {
     vertical-align: middle;
@@ -318,7 +326,7 @@ article .read-more {
     margin-top: 15px;
 }
 article .read-more:hover {
-    /* Додумать ховер */
+    color: #eb6d4a;
 }
 .main-content .post-container-preview-after {
     height: 1px;
@@ -339,24 +347,51 @@ button,
     box-shadow: 0 0 6px -2px #34495e;
 }
 .pagination {
+    margin-top: -100px;
+    margin-bottom: 30px;
+
     /*width: 100%;*/
-    border: 3px solid #00acea;
-    padding: 5px 10px;
-    width: 100%;
-    text-align: center;
+    /*padding: 5px 10px;*/
+    /*width: 100%;*/
+    /*text-align: center;*/
     color: black;
-    font-size: 22px;
+    /*font-size: 22px;*/
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
 
+
+}
+.pagination > .full{
+    width: 100%;
+}
+.pagination > .half {
+    width: 50%;
+}
+
+.pagination > div:hover a{
+    border-color: tomato;
 }
 .pagination .previous_page a,
 .pagination .next_page a {
     display: block;
-    
-}
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    /*width: 100%;*/
+    border: 3px solid #3eb3a5;
+    box-sizing: border-box;
 
+}
+.pagination .half.previous_page a{
+    border-right: none;
+}
+.pagination .half.next_page a{
+    border-left: none;
+}
 .content-footer {
     width: 100%;
     height: 150px;

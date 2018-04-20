@@ -5,14 +5,6 @@
         {% include 'blog/post-teaser.html' %}
     {% endfor %}
 
-    {% if is_paginated %}
-        <div class="pagination">
-            {% if page_obj.has_previous %}
-              <div class="previous_page"><a href="?page={{ page_obj.previous_page_number }}">Предыдущая страница</a></div>
-            {% endif %}
-            {% if page_obj.has_next %}
-              <div class="next_page"><a href="?page={{ page_obj.next_page_number }}">Следующая страница</a></div>
-            {% endif %}
-        </div>
-    {% endif %}
+    {% include 'blog/post-paginator.html' %}
+
 {% endblock %}

@@ -12,29 +12,53 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    paginate_by = 1
+    paginate_by = 2
     queryset = Post.objects.published()
 
 
+class CategoryView(generic.ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    paginate_by = 2
 
-# def index_view(request):
-#     queryset = Post.objects.published()
-#     page = request.GET.get('page', 1)
-#     paginator = Paginator(queryset, 10)
-#     try:
-#         posts = paginator.page(page)
-#     except PageNotAnInteger:
-#         posts = paginator.page(1)
-#     except EmptyPage:
-#         users = paginator.page(paginator.num_pages)
-#     return render(request, 'blog/index.html', {'posts': posts})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type'] = "категория"
+        return context
+
+    def get_queryset(self):
+        query = get_object_or_404(Category, slug=self.kwargs['slug'])
+        return query.get_related_posts()
 
 
+class TagView(generic.ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    paginate_by = 2
 
-# На всякий случай
-class DetailView(generic.DetailView):
-    model = Post
-    template_name = 'blog/single.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type'] = "#тэг"
+        return context
+
+    def get_queryset(self):
+        query = get_object_or_404(Tag, slug=self.kwargs['slug'])
+        return query.get_related_posts()
+
+
+class PseudoView(generic.ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    paginate_by = 2
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type'] = "автор"
+        return context
+
+    def get_queryset(self):
+        query = get_object_or_404(Pseudo, slug=self.kwargs['slug'])
+        return query.get_related_posts()
 
 
 def detail_view(request, slug):
@@ -49,38 +73,6 @@ def detail_view(request, slug):
     else:
         form = CommentForm()
     return render(request, 'blog/single.html', {'post': post, 'form': form})
-
-
-class CategoryView(generic.DetailView):
-    model = Category
-    template_name = 'blog/by_attribute.html'
-    # context_object_name = object
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['type'] = "категория"
-        return context
-
-
-class TagView(generic.DetailView):
-    model = Tag
-    template_name = 'blog/by_attribute.html'
-    # context_object_name = object
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['type'] = "#тэг"
-        return context
-
-
-class PseudoView(generic.DetailView):
-    model = Pseudo
-    template_name = 'blog/by_attribute.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['type'] = "автор"
-        return context
 
 
 @login_required

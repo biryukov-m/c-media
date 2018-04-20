@@ -1,0 +1,12 @@
+{% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous and page_obj.has_next %}
+            <div class="previous_page half"><a href="?page={{ page_obj.previous_page_number }}">< Предыдущая страница</a></div>
+            <div class="next_page half"><a href="?page={{ page_obj.next_page_number }}">Следующая страница > </a></div>
+        {% elif  page_obj.has_previous %}
+            <div class="previous_page full"><a href="?page={{ page_obj.previous_page_number }}">Предыдущая страница</a></div>
+        {% elif  page_obj.has_next %}
+            <div class="next_page full"><a href="?page={{ page_obj.next_page_number }}">Следующая страница</a></div>
+        {% endif %}
+    </div>
+{% endif %}
