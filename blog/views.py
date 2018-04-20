@@ -12,14 +12,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 10
     queryset = Post.objects.published()
 
 
 class CategoryView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,7 +36,7 @@ class CategoryView(generic.ListView):
 class TagView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -53,7 +53,7 @@ class TagView(generic.ListView):
 class PseudoView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

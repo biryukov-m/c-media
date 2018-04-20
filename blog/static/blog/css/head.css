@@ -210,13 +210,13 @@ a {
     transform: rotate(-7214deg);
 }
 .greeting-top {
-    height: 250px;
+    height: 175px;
     border-top: solid 2px #dfdfdf;
     width: 100%;
 }
 .greeting-top .intro {
     position: relative;
-    top: 33%;
+    top: 85px;
     text-align: center;
     color: #bcbcbc;
     font-size: 1.3em;
@@ -433,8 +433,12 @@ button,
 article a.tag{
     display: inline-block;
     color: #3eb3a5;
-    margin: 0 5px 3px;
+    margin: 3px 5px 0 0;
 }
+article a.tag:first-of-type{
+    /*margin-left: 0;*/
+}
+
 article a.tag:hover {
     opacity: 1;
     color: tomato;

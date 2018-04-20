@@ -100,10 +100,12 @@ class Comment(models.Model):
     text = models.TextField(max_length=5000)
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
 
     def approve(self):
         self.approved_comment = True
         self.save()
 
     def __str__(self):
-        return ': '.join([self.author, self.text])
+        return ': '.join([self.author, self.text[0:30]])
