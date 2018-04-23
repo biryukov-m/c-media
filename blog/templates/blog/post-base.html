@@ -25,7 +25,7 @@
                 <span class="comment-counter">{{ post.get_approved_comments.count }}</span>
             </div>
             {% endif %}
-            {% if post.get_drafted_comments.first and user %}
+            {% if post.get_drafted_comments.first and user.is_authenticated %}
                 <div class="comments indicator">
                     <div class="indicator-icon-comment"></div>
                     <span class="comment-counter"></span>

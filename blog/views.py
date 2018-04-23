@@ -13,7 +13,7 @@ class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     paginate_by = 10
-    queryset = Post.objects.published()
+    queryset = Post.objects.is_published()
 
 
 class CategoryView(generic.ListView):
@@ -135,7 +135,7 @@ class PostDraftList(generic.ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.drafted()
+        return Post.objects.is_drafted()
 
 
 @login_required

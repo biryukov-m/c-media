@@ -16,8 +16,8 @@
                 {% if post.get_approved_comments.first %}
                     <span class="comments">{{ post.get_approved_comments.count }}</span>
                 {% endif %}
-                {% if post.pub_date %}
-                    {% if post.get_next_by_create_date.is_published %}
+                {% if post.published %}
+                    {% if post.get_next_by_create_date.published %}
                     <a class="next-post" href="{{ post.get_next_by_create_date.get_absolute_url }}"
                     title="{{ post.get_next_by_create_date.title }}">
                     Следующая запись >

@@ -42,26 +42,28 @@ class Tag(models.Model):
 
 
 class PostManager(models.Manager):
-    def published(self):
-        return self.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+    def is_published(self):
+        return self.filter(published=True).order_by('-pub_date')
 
-    def drafted(self):
-        return self.exclude(pub_date__lte=timezone.now()).order_by('-pub_date')
+    def is_drafted(self):
+        return self.filter(published=False).order_by('-pub_date')
 
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=130, unique=True, default='')
     text = models.TextField(max_length=60000)
-    create_date = models.DateTimeField(blank=True, auto_now_add=True)
+    create_date = models.DateTimeField(auto_now_add=True)
     pub_date = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag)
     likes = models.IntegerField(default=0)
     objects = PostManager()
+    published = models.BooleanField(default=False)
 
     def publish(self):
+        self.published = True
         self.pub_date = timezone.now()
         self.save()
 
