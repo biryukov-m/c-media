@@ -133,9 +133,7 @@ def vote_post(request, slug):
 class PostDraftList(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-
-    def get_queryset(self):
-        return Post.objects.is_drafted()
+    queryset = Post.objects.is_drafted()
 
 
 @login_required
