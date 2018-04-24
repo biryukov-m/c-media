@@ -2,6 +2,9 @@
 {% block title %}{{ block.super }} - {{ post.title }}{% endblock %}
 {% block breadcrumbs %}<a href="#" name="top"></a>{{ post.category.name }}: {{ post.title }}{% endblock %}
 {% block content %}
+    {#   reCAPTCHA    start #}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    {#   reCAPTCHA    end   #}
     {% include 'blog/post-single.html' %}
     <nav class="article-bottom">
         <div class="info">
@@ -42,6 +45,8 @@
             <label for="id_text" class="forcomment-field">Напишите хороший комментарий</label>
             <textarea id="id_text" name="text" maxlength="5000" required
                       placeholder="Я вас категорически приветствую..."></textarea>
+            {# reCAPTCHA button #}
+            <div class="g-recaptcha" data-sitekey="6LdjAlUUAAAAAOmGf3GQpwhF83JTSA7RXrCI-OLw"></div>
             <input type="submit" class="comment-submit genbutton" value="Отправить">
         </form>
     </div>

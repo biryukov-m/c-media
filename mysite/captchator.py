@@ -2,14 +2,13 @@ import requests
 import urllib.parse
 
 ''' Begin reCAPTCHA validation '''
-recaptcha_response = '1123412341234'
+recaptcha_response = request.POST.get('g-recaptcha-response')
 url = 'https://www.google.com/recaptcha/api/siteverify'
 values = {
-    'secret': '6LdjAlUUAAAAAF4h6YyWNIS0QN-2N2UCpi08gB-o',
+    'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
     'response': recaptcha_response
 }
-params = urllib.parse.urlencode(values)
-req = requests.get(url, params)
+req = requests.post(url, data=values)
 res = req.json()
 # print(type(res))
 # print(res)

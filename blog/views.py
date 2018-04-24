@@ -6,8 +6,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.conf import settings
+import requests
+from django.contrib import messages
 
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
@@ -72,9 +73,26 @@ def detail_view(request, slug):
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.save()
+            ''' Begin reCAPTCHA validation '''
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            req = requests.post(url, data=values)
+            res = req.json()
+            print(type(res))
+            print(res)
+            print(res['success'])
+            ''' End reCAPTCHA validation '''
+            if res['success']:
+                comment = form.save(commit=False)
+                messages.success(request, 'New comment added with success!')
+                comment.post = post
+                comment.save()
+            else:
+                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
             return redirect(post.get_absolute_url())
     else:
         form = CommentForm()
