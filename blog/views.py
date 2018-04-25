@@ -10,6 +10,7 @@ from django.conf import settings
 import requests
 from django.contrib import messages
 
+
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'

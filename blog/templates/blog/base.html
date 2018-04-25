@@ -27,8 +27,14 @@
                     {% if user.is_authenticated %}
                     <a href="{% url 'blog:create-post' %}" title="Создать публикацию"
                        class="add-post"></a>
-                    <a href="{% url 'blog:post-draft-list' %}" title="Ожидающие публикации"
-                       class="draft-list"></a>
+                        {% if drafted_posts_count > 0 %}
+                        <a
+                                href="{% url 'blog:post-draft-list' %}"
+                                title="Ожидающие публикации - {{ drafted_posts_count }}"
+                                class="draft-list">
+                        </a>
+                        {% endif %}
+
                     <a href="{% url 'logout' %}" title="Выйти из учетной записи"
                        class="logout-link"></a>
                     {% else %}

@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'template_context_processors.menus.get_categories',
                 'template_context_processors.menus.get_menu',
+                'template_context_processors.menus.get_drafted_posts_count',
             ],
         },
     },

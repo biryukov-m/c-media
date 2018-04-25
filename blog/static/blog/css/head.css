@@ -600,6 +600,7 @@ form.writecomment input.comment-submit{
     width: 100%;
     height: 45px;
     margin-bottom: 35px;
+    margin-top: 22px;
 }
 form.writecomment label{
     position: absolute;
@@ -621,6 +622,13 @@ form.writecomment input::placeholder,
 textarea::placeholder {
     opacity: 0.2;
 }
+
+.g-recaptcha {
+    transform:scale(1.115);
+    transform-origin:0 0;
+}
+
+
 /* End comment write */
 .main-content .login-form,
 .main-content .form-error {
