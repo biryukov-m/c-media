@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.shortcuts import reverse
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -50,9 +51,9 @@ class PostManager(models.Manager):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.SlugField(max_length=130, unique=True, default='')
-    text = models.TextField(max_length=60000)
+    text = RichTextField(blank=True, default='', max_length=60000)
     create_date = models.DateTimeField(auto_now_add=True)
     pub_date = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
