@@ -135,9 +135,16 @@ MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
        'default': {
-           'toolbar':[['Source', 'Link', 'Unlink', 'SpecialChar', 'Image', 'CodeSnippet']],
+           'toolbar': [['Source', 'Link', 'CodeSnippet', 'Unlink', 'Anchor', 'SpecialChar', 'Image', 'Preview'],
+                       ['PasteText', 'PasteFromWord', 'Undo', 'Redo' ],
+                       ['Replace'],
+                       ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+                       ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                       ['TextColor', 'BGColor']
+                       ],
+
            'height': 400,
-           'width': 900,
+           'width': 708,
            'removePlugins': 'stylesheetparser',
            'extraPlugins': 'codesnippet',
        },

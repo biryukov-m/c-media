@@ -299,6 +299,9 @@ article {
     word-wrap: break-word;
     margin-bottom: 35px;
 }
+article pre {
+    white-space: pre-wrap;
+}
 article header h1 a:hover{
     color: #eb6d4a;
 }
