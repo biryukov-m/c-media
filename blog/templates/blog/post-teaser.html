@@ -2,7 +2,7 @@
 
 {% block article_body %}
     <section class="article-content">
-        {{ post.text|linebreaks|truncatewords_html:50 }}
+        {{ post.get_preview }}
     </section>
     <a class="read-more" href="{% url 'blog:article-detail' post.slug %}#top">Читать дальше</a>
 {% endblock %}

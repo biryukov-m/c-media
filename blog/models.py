@@ -80,6 +80,9 @@ class Post(models.Model):
     def get_drafted_comments(self):
         return self.comment_set.all().exclude(approved_comment=True).order_by('-created_date')
 
+    def get_preview(self):
+        return self.text.split('</p>')[0][3:]
+
     def __str__(self):
         return self.title
 
