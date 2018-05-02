@@ -138,17 +138,17 @@ MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
        'default': {
-           'toolbar': [['Source', 'Link', 'CodeSnippet', 'Unlink', 'Anchor', 'SpecialChar', 'Image', 'Preview'],
-                       ['PasteText', 'PasteFromWord', 'Undo', 'Redo'],
-                       ['Replace'],
-                       ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
-                       ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-                       ['TextColor', 'BGColor']
+           'toolbar': [['CodeSnippet', 'Link', 'Anchor', 'Unlink', 'Image'],
+                       ['PasteText', 'PasteFromWord', 'Undo', 'Redo', 'SpecialChar'],
+                       ['Replace', 'Source', 'Preview'],
+                       ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
+                       ['Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                       ['TextColor', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
                        ],
-
-           'height': 400,
-           'width': 708,
+           'height': 500,
+           'width': '100%',
            'removePlugins': 'stylesheetparser',
-           'extraPlugins': 'codesnippet',
+           'tabSpaces': 4,
+           'extraPlugins': ','.join(['autolink', 'codesnippet'])
        },
     }
