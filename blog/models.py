@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -52,14 +53,14 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
-    slug = models.SlugField(max_length=130, unique=True, default='')
-    text = RichTextField(blank=True, default='', max_length=60000)
-    create_date = models.DateTimeField(auto_now_add=True)
-    pub_date = models.DateTimeField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT)
-    tags = models.ManyToManyField(Tag)
-    likes = models.IntegerField(default=0)
+    slug = models.SlugField(max_length=130, unique=True, default='', verbose_name='URL')
+    text = RichTextUploadingField(blank=True, default='', max_length=60000, verbose_name='Статья')
+    create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    pub_date = models.DateTimeField(blank=True, null=True, verbose_name='Дата публикации')
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория')
+    pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT, verbose_name='Автор')
+    tags = models.ManyToManyField(Tag, verbose_name='Ключевые слова')
+    likes = models.IntegerField(default=0, verbose_name='Одобрения')
     objects = PostManager()
     published = models.BooleanField(default=False)
 

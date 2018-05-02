@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}Cat Media{% endblock %}</title>
     {% load static %}
+    {# start CKEDITOR plugin: codesnippet > highlight.js #}
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    {# end CKEDITOR plugin: codesnippet > highlight.js #}
     <link rel="stylesheet" href="{% static "blog/css/head.css" %}">
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tinos&amp;subset=cyrillic" rel="stylesheet">
