@@ -83,9 +83,6 @@ def detail_view(request, slug):
             }
             req = requests.post(url, data=values)
             res = req.json()
-            print(type(res))
-            print(res)
-            print(res['success'])
             ''' End reCAPTCHA validation '''
             if res['success']:
                 comment = form.save(commit=False)
