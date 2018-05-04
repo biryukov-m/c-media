@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ block.super }} - {{ object.name }}{% endblock %}
+{% block content %}
+    {% for date, text in commits.items %}
+
+    <article>
+        <header>
+            <h1>
+                <a title="Читать полностью - {{ date|date:"d M" }}"
+                        href="#top">{{ date|date:"d M" }}</a>
+            </h1>
+        </header>
+    </article>
+
+
+{#        {% include 'blog/post-teaser.html' %}#}
+        <p>{{ text|linebreaksbr }}</p>
+        <hr>
+
+    {% endfor %}
+{#    {% include 'blog/post-paginator.html' %}#}
+
+    {#    <button type="button" class="button load-more">Ещё публикации</button>#}
+{% endblock %}

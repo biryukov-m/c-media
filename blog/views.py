@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 import requests
 from django.contrib import messages
+from blog.lib import github_getter
 
 
 class IndexView(generic.ListView):
@@ -95,6 +96,11 @@ def detail_view(request, slug):
     else:
         form = CommentForm()
     return render(request, 'blog/single.html', {'post': post, 'form': form})
+
+
+def new_commits(request):
+    commits = github_getter.get_commits()
+    return render(request, 'blog/news.html', {'commits': commits})
 
 
 @login_required
