@@ -304,6 +304,16 @@ article {
 article pre {
     white-space: pre-wrap;
 }
+article.news {
+    line-height: normal;
+}
+article.news h3{
+    color: #3eb3a5;
+    margin-left: 45px;
+}
+article.news h3:hover {
+    color: #eb6d4a;
+}
 article header h1 a:hover{
     color: #eb6d4a;
 }
@@ -336,12 +346,20 @@ article .read-more:hover {
 article a.to-git {
     display: inline-block;
     color: #3eb3a5;
+    color: rgba(0, 0, 0, 0.75);
     font-size: 1.1em;
     box-shadow: 0 1px 0 0 #bcbcbc;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 15px;
+    margin-bottom: 15px;
 }
+article a.to-git svg{
+    position: relative;
+    bottom: -3px;
+    fill: #eb6d4a;
+    fill: #3eb3a5;
+}
+
 .news-separator{
     height: 1px;
     box-sizing: border-box;
