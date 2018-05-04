@@ -88,15 +88,6 @@ class Post(models.Model):
         return self.title
 
 
-class Menu(models.Model):
-    name = models.CharField(max_length=20)
-    slug = models.SlugField(max_length=130, unique=True, default='')
-    submenu = models.ManyToManyField(Category, default='', blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.CharField(max_length=200)

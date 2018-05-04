@@ -7,12 +7,13 @@ def get_commits():
     try:
         r = get(url)
         dic = r.json()
-        output = {}
+        output = []
         for d in dic[:10]:
             date = d['commit']['committer']['date']
             date = datetime.datetime.strptime(date, "%Y-%m-%dT%H:%M:%SZ")
             message = d['commit']['message']
-            output[date] = ' '.join(message.split(' '))
+            html_url = d['html_url']
+            output.append([date, message, html_url])
         return output
     except:
         return None

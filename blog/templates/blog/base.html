@@ -20,7 +20,7 @@
 </head>
 <body>
     <header class="page-header clearfix">
-        <div class="header-container clearfix preview">
+        <div class="header-container clearfix">
             <div class="col-left">
                 <div class="row-top"></div>
                 <div class="row-bottom">
@@ -53,42 +53,27 @@
         <div class="clearfix">
         <nav class="top-menu left">
             <ul>
-                {% for menuitem in menu_left_list %}
-                    <li>
-                        <a href="/{{ menuitem.slug }}">{{ menuitem }}
-                            {% if menuitem.submenu.first %}<span class="arrow">&#9660;</span>{% endif %}
-                        </a>
-                        {% if menuitem.submenu.first %}
-                            <nav class="sub-menu">
-                                    <ul>
-                                        {% for item in menuitem.submenu.all %}
-                                            <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                            </nav>
-                        {% endif %}
-                    </li>
-                {% endfor %}
+                <li>
+                    <a href="{% url 'blog:home' %}">Главная</a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:home' %}">Разделы<span class="arrow">&#9660;</span></a>
+                    <nav class="sub-menu">
+                        <ul>
+                            {% for item in category_list %}
+                            <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </li>
             </ul>
         </nav>
         <nav class="top-menu right">
             <ul>
-                {% for menuitem in menu_right_list %}
-                    <li>
-                        <a href="/{{ menuitem.slug }}">{{ menuitem }}
-                            {% if menuitem.submenu.first %}<span class="arrow">&#9660;</span>{% endif %}
-                        </a>
-                        {% if menuitem.submenu.first %}
-                            <nav class="sub-menu">
-                                    <ul>
-                                        {% for item in menuitem.submenu.all %}
-                                            <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                            </nav>
-                        {% endif %}
-                    </li>
-                {% endfor %}
+                <li><a href="{% url 'blog:news' %}">Новости</a></li>
+                <li>
+                    <a href="{% url 'blog:home' %}">О проекте</a>
+                </li>
             </ul>
         </nav>
         </div>
