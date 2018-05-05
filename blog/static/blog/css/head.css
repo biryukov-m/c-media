@@ -433,21 +433,87 @@ button,
 }
 .content-footer {
     width: 100%;
-    height: 150px;
-    background: linear-gradient(-30deg, lightblue, #3eb3a5);
-    position: relative;
+    /*height: 100px;*/
+    /*background: linear-gradient(-30deg, lightblue, #3eb3a5);*/
+    background: url("/static/blog/img/head.png");
+
+    background-size: cover;
+}
+.content-footer .footer-layout {
+    margin: 0 auto;
+    max-width: 740px;
+    /*background: tomato;*/
+    /*opacity: 0.3;*/
+}
+.content-footer .footer-menu ul {
+    list-style: none;
+    margin: 0 0 30px 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: row;
+    /*justify-content: space-between;*/
+    align-items: baseline;
 }
-.content-footer div{
-    margin-left: 2em;
+.content-footer .footer-menu ul li a{
+    display: block;
+    margin: 4px 8px;
+    /*height: 30px;*/
+    font-family: "Open Sans";
+    /*color: #3eb3a5;*/
+	font-size: 1.1em;
+	box-shadow: 0 1px 0 0 #bcbcbc;
+	font-weight: bold;
+    color: rgba(0, 0, 0, 0.55);
+
 }
-.content-footer a {
-    font-size: 1em;
-    font-weight: bold;
-    color: white;
+.content-footer .footer-menu a.text-logo {
+    font-family: 'Audiowide', cursive;
+    font-size: 3em;
+    text-shadow: 0 0 6px -2px #34495e;
+    margin: 0;
+    margin-right: 15px;
+    box-shadow: none;
 }
+.content-footer .powered-list:before {
+    display: block;
+    content: "Сайт разработан с помощью и поддержкой:";
+    font-family: 'Open Sans';
+    font-size: 0.9em;
+    color: #34495e;
+    padding: 5px 0 10px 0;
+}
+.content-footer .powered-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.content-footer .powered-list ul li a{
+    display: block;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+.content-footer .powered-list ul li a.nginx{
+    background-image: url("/static/blog/img/NGINX-logo.png");
+    width: 120px;
+}
+.content-footer .powered-list ul li a.django {
+    background-image: url("/static/blog/img/django-logo-positive.png");
+    width: 87px;
+}
+.content-footer .powered-list ul li a.digitalocean {
+    background-image: url("/static/blog/img/DO_Logo_Horizontal_Blue.png");
+    width: 180px;
+}
+.content-footer .powered-list ul li a.icons-design {
+    background-image: url("https://e2-cdns2-fp.akamaized.net/img/logo.png");
+    width: 120px;
+}
+
 /* Single article */
 .post-container.single .article-content {
     margin-bottom: 30px;
@@ -814,14 +880,6 @@ textarea::placeholder {
         width: 670px;
         left: -70px;
     }
-    .content-footer {
-        height: 100px;
-    }
-    .content-footer .copyright-footer {
-        position: relative;
-        top: 20px;
-        text-align: center;
-}
     form.writecomment label{
         position: static;
         display: block;
@@ -872,9 +930,6 @@ textarea::placeholder {
     }
     .greeting-top {
         height: 50px;
-    }
-    .content-footer {
-        height: 100px;
     }
     .comment-container .comment-col-left .commentator-portrait{
         width: 100px;

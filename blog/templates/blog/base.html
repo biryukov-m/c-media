@@ -89,17 +89,25 @@
         {% endblock %}
     </main>
     <footer class="content-footer">
-        <div class="copyright-footer">
-            Сайт делает -
-            <a href="#">Максим</a>
-        </div>
-        <div class="icons-rights">
-            Автор иконок
-            <a href="https://www.flaticon.com/authors/chanut" title="Chanut">Chanut</a>
-            из
-            <a href="https://www.flaticon.com/" title="Flaticon">flaticon.com</a>
-            лицензия
-            <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+        <div class="footer-layout">
+            <nav class="footer-menu">
+                <ul>
+                    <li><a class="text-logo" href="{% url 'blog:home' %}">Cat media</a></li>
+                    {% for item in category_list %}
+                    <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
+                    {% endfor %}
+                    <li><a href="{% url 'blog:news' %}">Новости</a></li>
+                    <li><a href="{% url 'blog:home' %}">О проекте</a></li>
+                </ul>
+            </nav>
+            <nav class="powered-list">
+            <ul>
+                    <li><a class="nginx" href="#"></a></li>
+                    <li><a class="django" href="#"></a></li>
+                    <li><a class="digitalocean" href="#"></a></li>
+                    <li><a class="icons-design" href="#"></a></li>
+                </ul>
+            </nav>
         </div>
     </footer>
 </body>
