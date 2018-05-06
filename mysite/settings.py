@@ -19,14 +19,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7+$8&8=9$--gw6(-_bd3aum1%yu%qgk^d*(xzl2$17xq)!vi@4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
+DEBUG = True
 ALLOWED_HOSTS = []
 
+# Database
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -73,18 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -117,23 +112,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
 # CKeditor youtube lesson
-STATIC_ROOT = 'static/'
-
-LOGIN_REDIRECT_URL = '/'
-
-# Google reCAPTCHA
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LdjAlUUAAAAAF4h6YyWNIS0QN-2N2UCpi08gB-o'
-
-
-# ckEditor vars
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# ckEditor vars
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
        'default': {
@@ -151,3 +141,9 @@ CKEDITOR_CONFIGS = {
            'extraPlugins': ','.join(['autolink', 'codesnippet'])
        },
     }
+
+try:
+    from mysite.local_settings import *
+    from mysite.secret_settings import *
+except ImportError:
+    print('Error while importing secret_settings or local_settings.')
