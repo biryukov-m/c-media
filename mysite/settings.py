@@ -144,6 +144,10 @@ CKEDITOR_CONFIGS = {
 
 try:
     from mysite.local_settings import *
+except ImportError:
+    print('Error while importing local_settings.')
+
+try:
     from mysite.secret_settings import *
 except ImportError:
-    print('Error while importing secret_settings or local_settings.')
+    print('Error while importing secret_settings.')
