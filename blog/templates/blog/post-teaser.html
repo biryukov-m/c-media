@@ -1,10 +1,8 @@
 {% extends 'blog/post-base.html' %}
+{% block separator_style %} teaser{% endblock %}
 {% block article_body %}
     <section class="article-content">
         {{ post.get_preview|safe }}
     </section>
     <a class="read-more" href="{% url 'blog:article-detail' post.slug %}#top">Читать дальше</a>
-{% endblock %}
-{% block article_separator %}
-    <div class="post-container-preview-after"></div>
 {% endblock %}

@@ -5,7 +5,7 @@ input, ul, li, a, form, textarea {
     border: none;
 }
 body {
-    min-width: 320px;
+    min-width: 300px;
     max-width: 1920px;
     margin: 0 auto;
 }
@@ -193,6 +193,8 @@ a {
 }
 .round-logo-layout {
     position: relative;
+    margin-bottom: 100px;
+    border-bottom: solid 2px #dfdfdf;
 }
 .round-logo {
     position: absolute;
@@ -212,13 +214,12 @@ a {
     transform: rotate(-7214deg);
 }
 .greeting-top {
-    height: 175px;
-    border-top: solid 2px #dfdfdf;
-    width: 100%;
+    display: block;
+    margin-bottom: 60px;
 }
 .greeting-top .intro {
-    position: relative;
-    top: 85px;
+    /*position: relative;*/
+    /*top: 85px;*/
     text-align: center;
     color: #bcbcbc;
     font-size: 1.3em;
@@ -230,7 +231,7 @@ a {
 }
 .main-content {
     font-family: 'Open Sans', sans-serif;
-    min-width: 320px;
+    min-width: 300px;
     max-width: 740px;
     margin: 0 auto;
     color: #bcbcbc;
@@ -274,6 +275,9 @@ a {
     font-size: 0.90em;
     display: inline-block;
     padding: 6px 2px 4px 10px;
+}
+.post-info .indicator:first-of-type {
+    padding-left: 0;
 }
 .post-info .indicator:not(:first-of-type){
     border-left: 1px solid #ebebeb;
@@ -367,12 +371,18 @@ article a.to-git svg{
     background-size: 40px 1px;
     margin-top: 1.5em;
 }
-.main-content .post-container-preview-after {
+.main-content .post-container.teaser:after {
+    display: block;
+    content: "";
     height: 1px;
     box-sizing: border-box;
     background: linear-gradient(to right, #ebebeb 70%, white 70%, white 100%) repeat-x;
     background-size: 40px 1px;
     margin-bottom: 110px;
+}
+.main-content .post-container.teaser:last-of-type:after {
+    margin-bottom: 0;
+    background: none;
 }
 button,
 .genbutton, input[type='submit'] {
@@ -436,7 +446,6 @@ button,
     /*height: 100px;*/
     /*background: linear-gradient(-30deg, lightblue, #3eb3a5);*/
     background: url("/static/blog/img/head.png");
-
     background-size: cover;
 }
 .content-footer .footer-layout {
@@ -452,7 +461,7 @@ button,
     display: flex;
     flex-direction: row;
     /*justify-content: space-between;*/
-    align-items: baseline;
+    align-items: center;
 }
 .content-footer .footer-menu ul li a{
     display: block;
@@ -510,7 +519,7 @@ button,
     width: 180px;
 }
 .content-footer .powered-list ul li a.icons-design {
-    background-image: url("https://e2-cdns2-fp.akamaized.net/img/logo.png");
+    background-image: url("/static/blog/img/freepik_logo.png");
     width: 120px;
 }
 
@@ -831,12 +840,54 @@ textarea::placeholder {
     color: #000;
     font-size: 1.2em;
 }
+
+@media screen and (max-width: 1366px) {
+    .header-container {
+        height: 212px;
+    }
+    .header-container .col-right .right-logo {
+        background-size: 195px;
+    }
+    .header-container .col-left .row-top {
+        background-position: 10px, 65px, 120px, 175px, 230px;
+        background-size: 45px;
+    }
+    .header-container .col-right .admin-buttons {
+    bottom: -2px;
+    }
+    .header-container .col-right .admin-buttons a {
+        width: 32px;
+        height: 32px;
+    }
+    .header-container .col-right .admin-buttons a.add-post {
+        background-size: 32px;
+    }
+    .header-container .col-right .admin-buttons a.draft-list {
+        background-size: 32px;
+    }
+    .header-container .col-right .admin-buttons a.login-link {
+        background-size: 32px;
+    }
+    .header-container .col-right .admin-buttons a.logout-link {
+        background-size: 32px;
+    }
+    .greeting-top {
+        margin-bottom: 75px;
+    }
+    .main-content .post-container.teaser:after {
+    margin-bottom: 70px;
+    }
+}
 @media screen and (max-width: 1280px) {
     body {
         font-size: 15px;
     }
+    .hljs {
+        font-size: 13px;
+    }
     .header-container {
         height: 150px;
+        background-size: cover;
     }
     .header-container .col-left .row-top {
         background-position: 10px, 50px, 90px, 130px, 170px;
@@ -854,6 +905,7 @@ textarea::placeholder {
         width: 106px;
         height: 106px;
         margin-left: -53px;
+        border-width: 5px;
     }
     .top-menu.left > ul > li:last-of-type {
         margin-right: 53px;
@@ -861,24 +913,32 @@ textarea::placeholder {
     .top-menu.right > ul > li:first-of-type {
         margin-left: 53px;
     }
+    .top-menu ul li a{
+        padding: 11px 18px;
+        font-size: 1.4em;
+    }
+    .sub-menu ul li a {
+        padding: 5px 20px;
+        font-size: 1.1em;
+    }
     .greeting-top {
-        height: 130px;
-        border-top: solid 2px #bcbcbc;
-        width: 100%;
+        margin-bottom: 45px;
+    }
+    .greeting-top span{
+        box-shadow: 0 15px 0 -14px #bcbcbc;
+        line-height: 180%;
+    }
+    .round-logo-layout {
+        margin-bottom: 50px;
     }
     .post-col-left .date-circle {
         width: 90px;
         height: 90px;
         top: -10px;
-        border: 3px solid #ebebeb;
     }
     .post-col-left .date-circle span {
-        font-size: 14pt;
+        font-size: 16pt;
         top: 28%;
-    }
-    article::after {
-        width: 670px;
-        left: -70px;
     }
     form.writecomment label{
         position: static;
@@ -894,7 +954,10 @@ textarea::placeholder {
         width: 95%;
         margin-left: 10px;
         margin-right: 10px;
-
+    }
+    .g-recaptcha {
+        margin-left: 8px;
+        transform:scale(1.064);
     }
 }
 @media screen and (max-width: 740px){
@@ -905,16 +968,26 @@ textarea::placeholder {
         font-size: 3em;
     }
     .round-logo {
-        top: -68px;
+        top: -50px;
         width: 76px;
         height: 76px;
         margin-left: -38px;
-        border: 3px solid white;
+        border: 2px solid white;
+    }
+    .round-logo-layout {
+        margin-bottom: 23px;
+    }
+    .greeting-top {
+        margin-bottom: 15px;
+    }
+    .greeting-top span{
+        box-shadow: 0px 14px 0 -13px #bcbcbc;
+        line-height: 180%;
     }
     .post-container .post-col-left {
         display: none;
     }
-    .post-container .post-col-right .right-logo {
+    .post-container .post-col-right {
         float: none;
         margin: 0 auto;
     }
@@ -926,10 +999,20 @@ textarea::placeholder {
     }
     .top-menu ul li a {
         padding: 6px 12px;
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
-    .greeting-top {
-        height: 50px;
+    .main-content .post-container.teaser:after {
+        margin-bottom: 25px;
+    }
+    article
+    {
+        margin-bottom: 25px;
+    }
+    .content-footer .footer-menu a.text-logo{
+        font-size: 2em;
+    }
+    .content-footer .footer-menu ul{
+        margin-bottom: 5px;
     }
     .comment-container .comment-col-left .commentator-portrait{
         width: 100px;
@@ -957,12 +1040,33 @@ textarea::placeholder {
     .header-container .col-right .right-logo {
         background-size: 85px;
     }
+    .header-container .col-right .admin-buttons {
+        bottom: -2px;
+        left: 29px;
+        height: 29px
+    }
+    .header-container .col-right .admin-buttons a {
+        width: 25px;
+        height: 25px;
+    }
+    .header-container .col-right .admin-buttons a.add-post {
+        background-size: 25px;
+    }
+    .header-container .col-right .admin-buttons a.draft-list {
+        background-size: 25px;
+    }
+    .header-container .col-right .admin-buttons a.login-link {
+        background-size: 25px;
+    }
+    .header-container .col-right .admin-buttons a.logout-link {
+        background-size: 25px;
+    }
     .top-menu {
         font-size: 9px;
     }
     .top-menu ul li a {
-        padding: 9px 4px;
-        font-size: 1.8em;
+        padding: 8px 3px;
+        font-size: 1.7em;
     }
     .top-menu.left > ul > li:last-of-type {
         margin-right: 0;
@@ -970,14 +1074,20 @@ textarea::placeholder {
     .top-menu.right > ul > li:first-of-type {
         margin-left: 0;
     }
-    .greeting-top {
-        height: 70px;
-    }
     .round-logo {
         display: none;
     }
+    .round-logo-layout {
+        margin-bottom: 0;
+    }
+    .greeting-top span{
+        font-size: 13px;
+    }
     .post-container .post-col-right{
         margin: 0 8px;
+    }
+    .post-col-right .post-info {
+        height: auto;
     }
     .post-info .indicator {
         padding: 2px 3px 2px 3px;
@@ -993,12 +1103,43 @@ textarea::placeholder {
         background-position-y: 5px;
         padding-left: 20px;
     }
-    .content-footer {
-        height: 50px;
+
+    .content-footer .footer-menu ul li {
+        margin: 2px 3px;
     }
+    .content-footer .footer-menu ul li a {
+        font-size: 10px;
+        margin: 2px;
+
+    }
+    .content-footer .footer-menu a.text-logo{
+        font-size: 20px;
+    }
+    .content-footer .powered-list ul li a.nginx {
+        width: 60px;
+        margin-left: 20px;
+    }
+    .content-footer .powered-list ul li a.digitalocean {
+        width: 90px;
+    }
+    .content-footer .powered-list ul li a.django {
+        width: 43px;
+    }
+    .content-footer .powered-list ul li a.icons-design {
+        width: 60px;
+        margin-right: 20px;
+    }
+
     .article-bottom .info .layout .next-post {
         padding: 8px;
         font-size: 0.8rem;
         margin-top: 4px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .content-footer .footer-menu a.text-logo{
+        font-size: 11px;
+        margin-right: 0;
     }
 }

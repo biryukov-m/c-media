@@ -1,4 +1,4 @@
-<div class="post-container clearfix">
+<div class="post-container clearfix {% block separator_style %}{% endblock %}">
     <aside class="post-col-left">
             <div class="date-circle">
                 <div class="circle-date-layout">
@@ -48,10 +48,6 @@
             </header>
             {% block article_body %}
             {% endblock %}
-            {% block article_footer %}
-            {% endblock %}
         </article>
     </div>
 </div>
-{% block article_separator %}
-{% endblock %}
