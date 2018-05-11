@@ -21,19 +21,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
 DEBUG = True
 ALLOWED_HOSTS = []
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 # Application definition
 
 INSTALLED_APPS = [
@@ -144,10 +134,12 @@ CKEDITOR_CONFIGS = {
 
 try:
     from mysite.local_settings import *
+    print("local settings imported")
 except ImportError:
     print('Error while importing local_settings.')
 
 try:
     from mysite.secret_settings import *
+    print("secret settings imported")
 except ImportError:
     print('Error while importing secret_settings.')
