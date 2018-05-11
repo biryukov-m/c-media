@@ -5,7 +5,7 @@ input, ul, li, a, form, textarea {
     border: none;
 }
 body {
-    min-width: 300px;
+    min-width: 320px;
     max-width: 1920px;
     margin: 0 auto;
 }
@@ -231,7 +231,7 @@ a {
 }
 .main-content {
     font-family: 'Open Sans', sans-serif;
-    min-width: 300px;
+    min-width: 320px;
     max-width: 740px;
     margin: 0 auto;
     color: #bcbcbc;
@@ -254,7 +254,7 @@ a {
     height: 140px;
     border-radius: 50%;
     box-sizing: border-box;
-    border: 7px solid #ebebeb;
+    border: 6px solid #ebebeb;
     top: -40px;
     text-align: center;
     /*box-shadow: 0 0 6px -2px #34495e;*/
@@ -267,7 +267,7 @@ a {
 .post-col-left .date-circle span {
     display: table-cell;
     vertical-align: middle;
-    font-size: 26pt;
+    font-size: 32px;
     font-weight: bold;
     color: #3eb3a5;
 }
@@ -932,12 +932,12 @@ textarea::placeholder {
         margin-bottom: 50px;
     }
     .post-col-left .date-circle {
-        width: 90px;
-        height: 90px;
-        top: -10px;
+        width: 100px;
+        height: 100px;
+        top: -16px;
     }
     .post-col-left .date-circle span {
-        font-size: 16pt;
+        font-size: 23px;
         top: 28%;
     }
     form.writecomment label{
