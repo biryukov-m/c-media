@@ -215,7 +215,7 @@ a {
 }
 .greeting-top {
     display: block;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 .greeting-top .intro {
     /*position: relative;*/
@@ -254,7 +254,7 @@ a {
     height: 140px;
     border-radius: 50%;
     box-sizing: border-box;
-    border: 6px solid #ebebeb;
+    border: 7px solid #ebebeb;
     top: -40px;
     text-align: center;
     /*box-shadow: 0 0 6px -2px #34495e;*/
@@ -267,7 +267,7 @@ a {
 .post-col-left .date-circle span {
     display: table-cell;
     vertical-align: middle;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: bold;
     color: #3eb3a5;
 }
@@ -465,7 +465,7 @@ button,
 }
 .content-footer .footer-menu ul li a{
     display: block;
-    margin: 4px 8px;
+    margin: 0 8px;
     /*height: 30px;*/
     font-family: "Open Sans";
     /*color: #3eb3a5;*/
@@ -480,7 +480,7 @@ button,
     font-size: 3em;
     text-shadow: 0 0 6px -2px #34495e;
     margin: 0;
-    margin-right: 15px;
+    margin-right: 10px;
     box-shadow: none;
 }
 .content-footer .powered-list:before {
@@ -635,7 +635,6 @@ article a.tag:hover {
     box-shadow: 0 0 6px -2px #34495e;
 }
 /* End Single article */
-.main-content form.post-form,
 .main-content form.login-form {
     box-sizing: border-box;
     width: 100%;
@@ -647,24 +646,81 @@ article a.tag:hover {
     font-size: 1.1em;
     margin-bottom: 100px;
 }
-.main-content form textarea,
-.main-content form select,
-.main-content form input {
-    box-sizing: border-box;
+/*.main-content form textarea,*/
+/*.main-content form select,*/
+/*.main-content form input {*/
+    /*box-sizing: border-box;*/
+    /*width: 100%;*/
+    /*height: 40px;*/
+    /*box-shadow: 0 0 6px -3px #34495e;*/
+    /*padding: 10px;*/
+/*}*/
+/*.main-content form textarea {*/
+    /*height: 400px;*/
+    /*resize: vertical;*/
+    /*outline: none;*/
+    /*overflow: auto;*/
+/*}*/
+/*.main-content form select#id_tags {*/
+    /*height: 85px;*/
+/*}*/
+/* Post edit form */
+form.post-edit{
+    background: rgba(69, 179, 164, 0.14);
+    padding: 15px 25px;
+    margin-bottom: 15px;
+}
+form.post-edit p{
     width: 100%;
-    height: 40px;
-    box-shadow: 0 0 6px -3px #34495e;
+    margin: 10px auto;
+}
+form.post-edit input#id_title{
+    width: 100%;
+    display: block;
+}
+form.post-edit input {
+    box-sizing: border-box;
     padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
 }
-.main-content form textarea {
-    height: 400px;
-    resize: vertical;
-    outline: none;
-    overflow: auto;
+form.post-edit select {
+    width: 100%;
 }
-.main-content form select#id_tags {
-    height: 85px;
+form.post-edit label {
+    display: block;
+    color: #000;
+    margin-bottom: 5px;
 }
+form.post-edit select#id_tags option{
+    padding: 5px;
+}
+form.post-edit button {
+    display: inline-block;
+    border: none;
+    color: #6f7173;
+    border-radius: 0px 0px 0px 3px;
+    -webkit-border-radius: 0px 0px 0px 3px;
+    -moz-border-radius: 0px 0px 0px 3px;
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    padding: 10px 40px;
+    text-shadow: 0 1px 0 #FFFFFF;
+    background-image: linear-gradient(to left, #FDE8E8, #D4EBF7);
+    background-color: #3EB3A5;
+}
+
+/* Login form */
+
+form.login-form input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+
 /* Comment write */
 .writecomment-container {
     border-bottom: 2px solid #ebebeb;
@@ -840,7 +896,6 @@ textarea::placeholder {
     color: #000;
     font-size: 1.2em;
 }
-
 @media screen and (max-width: 1366px) {
     .header-container {
         height: 212px;
@@ -872,7 +927,7 @@ textarea::placeholder {
         background-size: 32px;
     }
     .greeting-top {
-        margin-bottom: 75px;
+        margin-bottom: 40px;
     }
     .main-content .post-container.teaser:after {
     margin-bottom: 70px;
@@ -1004,9 +1059,11 @@ textarea::placeholder {
     .main-content .post-container.teaser:after {
         margin-bottom: 25px;
     }
-    article
-    {
+    article{
         margin-bottom: 25px;
+    }
+    .content-footer .footer-layout {
+        padding: 0 8px;
     }
     .content-footer .footer-menu a.text-logo{
         font-size: 2em;
@@ -1079,6 +1136,7 @@ textarea::placeholder {
     }
     .round-logo-layout {
         margin-bottom: 0;
+        border-width: 1px;
     }
     .greeting-top span{
         font-size: 13px;
@@ -1103,21 +1161,28 @@ textarea::placeholder {
         background-position-y: 5px;
         padding-left: 20px;
     }
-
-    .content-footer .footer-menu ul li {
-        margin: 2px 3px;
-    }
     .content-footer .footer-menu ul li a {
         font-size: 10px;
-        margin: 2px;
-
+        margin-right: 3px;
     }
+    .content-footer .footer-menu ul li a:last-of-type {
+        margin-right: 0;
+    }
+
     .content-footer .footer-menu a.text-logo{
         font-size: 20px;
     }
+    .content-footer .powered-list ul {
+        justify-content: flex-start;
+    }
+    .content-footer .powered-list::before {
+        font-size: 0.8em;
+    }
+    .content-footer .powered-list ul li:not(:last-of-type){
+        margin-right: 8px;
+    }
     .content-footer .powered-list ul li a.nginx {
         width: 60px;
-        margin-left: 20px;
     }
     .content-footer .powered-list ul li a.digitalocean {
         width: 90px;
@@ -1127,7 +1192,6 @@ textarea::placeholder {
     }
     .content-footer .powered-list ul li a.icons-design {
         width: 60px;
-        margin-right: 20px;
     }
 
     .article-bottom .info .layout .next-post {
@@ -1136,10 +1200,9 @@ textarea::placeholder {
         margin-top: 4px;
     }
 }
-
 @media screen and (max-width: 400px) {
     .content-footer .footer-menu a.text-logo{
-        font-size: 11px;
+        font-size: 13px;
         margin-right: 0;
     }
 }
