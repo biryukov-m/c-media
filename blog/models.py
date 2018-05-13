@@ -103,3 +103,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return ': '.join([self.author, self.text[0:30]])
+
+
+class InfoPage(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Заголовок")
+    body = RichTextUploadingField(verbose_name="Содержимое")
+    slug = models.CharField(max_length=50, verbose_name="URL")
+
+    def __str__(self):
+        return self.title

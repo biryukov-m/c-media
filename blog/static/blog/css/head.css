@@ -149,7 +149,8 @@ a {
 .top-menu.right > ul > li:first-of-type{
     margin-left: 106px;
 }
-.top-menu ul li a {
+.top-menu ul li a,
+.submenubutton{
     display: block;
     padding: 18px 22px;
     font-size: 1.6em;
@@ -168,15 +169,19 @@ a {
 .top-menu a {
     transition: color ease-in 0.2s;
 }
-.top-menu ul li:hover .sub-menu {
-    visibility: visible;
-    opacity: 1;
+.submenubutton {
+    cursor: pointer;
 }
 .sub-menu {
-    visibility: hidden;
-    opacity: 0;
+    display: none;
     position: absolute;
     z-index: 200;
+}
+.submenubutton:focus + .sub-menu,
+.submenubutton + .sub-menu:focus,
+.submenubutton:hover + .sub-menu,
+.submenubutton + .sub-menu:hover{
+    display: block;
 }
 .sub-menu ul li {
     display: block;
@@ -308,15 +313,8 @@ article {
 article pre {
     white-space: pre-wrap;
 }
-article.news {
-    line-height: normal;
-}
-article.news h3{
-    color: #3eb3a5;
-    margin-left: 45px;
-}
-article.news h3:hover {
-    color: #eb6d4a;
+article header h1{
+    color: #000;
 }
 article header h1 a:hover{
     color: #eb6d4a;
@@ -336,7 +334,7 @@ article header h1 a.admin.remove-post {
     background: url("/static/blog/img/remove-post.png") no-repeat;
     background-size: 1em;
 }
-article .read-more {
+article a.read-more {
     display: inline-block;
     color: #3eb3a5;
     font-size: 1.1em;
@@ -344,24 +342,8 @@ article .read-more {
     font-weight: bold;
     margin-top: 15px;
 }
-article .read-more:hover {
+article a.read-more:hover {
     color: #eb6d4a;
-}
-article a.to-git {
-    display: inline-block;
-    color: #3eb3a5;
-    color: rgba(0, 0, 0, 0.75);
-    font-size: 1.1em;
-    box-shadow: 0 1px 0 0 #bcbcbc;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 15px;
-}
-article a.to-git svg{
-    position: relative;
-    bottom: -3px;
-    fill: #eb6d4a;
-    fill: #3eb3a5;
 }
 article a {
     color: #3eb3a5;
@@ -378,6 +360,30 @@ article a.article-header:hover {
 article ul{
     display: block;
     padding-left: 40px;
+}
+article.news {
+    line-height: normal;
+}
+article.news a.to-git {
+    display: inline-block;
+    color: #3eb3a5;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 1.1em;
+    box-shadow: 0 1px 0 0 #bcbcbc;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+article.news a.to-git svg{
+    position: relative;
+    bottom: -3px;
+    fill: #eb6d4a;
+    fill: #3eb3a5;
+}
+article.info,
+article.news {
+    max-width: 600px;
+    margin: 0 auto;
 }
 .news-separator{
     height: 1px;

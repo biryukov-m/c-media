@@ -57,8 +57,8 @@
                     <a href="{% url 'blog:home' %}">Главная</a>
                 </li>
                 <li>
-                    <a href="{% url 'blog:home' %}">Разделы<span class="arrow">&#9660;</span></a>
-                    <nav class="sub-menu">
+                    <div class="submenubutton " tabindex="-1">Разделы<span class="arrow">&#9660;</span></div>
+                    <nav class="sub-menu" tabindex="-1">
                         <ul>
                             {% for item in category_list %}
                             <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
@@ -72,7 +72,7 @@
             <ul>
                 <li><a href="{% url 'blog:news' %}">Новости</a></li>
                 <li>
-                    <a href="{% url 'blog:home' %}">О проекте</a>
+                    <a href="{% url 'blog:about' %}">О проекте</a>
                 </li>
             </ul>
         </nav>
@@ -97,7 +97,7 @@
                     <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
                     {% endfor %}
                     <li><a href="{% url 'blog:news' %}">Новости</a></li>
-                    <li><a href="{% url 'blog:home' %}">О проекте</a></li>
+                    <li><a href="{% url 'blog:about' %}">О проекте</a></li>
                 </ul>
             </nav>
             <nav class="powered-list">

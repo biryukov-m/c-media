@@ -1,5 +1,4 @@
-from .models import Post, Category, Tag, Pseudo, Comment
-from django.utils import timezone
+from .models import Post, Category, Tag, Pseudo, Comment, InfoPage
 from django.views import generic
 from .forms import PostForm, CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
@@ -103,6 +102,11 @@ def new_commits(request):
     return render(request, 'blog/news.html', {'commits': commits})
 
 
+def info_page(request, slug):
+    page = get_object_or_404(InfoPage, slug=slug)
+    return render(request, 'blog/info-page.html', {'page': page})
+
+
 @login_required
 def create_post(request):
     if request.method == "POST":
@@ -163,13 +167,10 @@ def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    return redirect('blog:article-detail', slug=comment.post.slug)
 
 
 @login_required
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
-    slug = comment.post.slug
     comment.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    return redirect('blog:article-detail', slug=slug)

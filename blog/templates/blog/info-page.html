@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ block.super }} - {{ page.title|lower }}{% endblock %}
+{% block breadcrumbs %}{{ page.title|title }}{% endblock %}
+{% block content %}
+    <article class="info">
+        <header><h1>{{ page.title|title }}</h1></header>
+        <section class="article-content">{{ page.body|safe|linebreaksbr }}</section>
+    </article>
+{% endblock %}
+
