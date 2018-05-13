@@ -215,7 +215,7 @@ a {
 }
 .greeting-top {
     display: block;
-    margin-bottom: 50px;
+    margin-bottom: 75px;
 }
 .greeting-top .intro {
     /*position: relative;*/
@@ -363,7 +363,22 @@ article a.to-git svg{
     fill: #eb6d4a;
     fill: #3eb3a5;
 }
-
+article a {
+    color: #3eb3a5;
+}
+article a:hover {
+    color: #FF6347;
+}
+article a.article-header{
+    color: black;
+}
+article a.article-header:hover {
+    color: #FF6347;
+}
+article ul{
+    display: block;
+    padding-left: 40px;
+}
 .news-separator{
     height: 1px;
     box-sizing: border-box;
@@ -552,7 +567,6 @@ article a.tag{
 article a.tag:first-of-type{
     /*margin-left: 0;*/
 }
-
 article a.tag:hover {
     opacity: 1;
     color: tomato;
@@ -925,9 +939,6 @@ textarea::placeholder {
     }
     .header-container .col-right .admin-buttons a.logout-link {
         background-size: 32px;
-    }
-    .greeting-top {
-        margin-bottom: 40px;
     }
     .main-content .post-container.teaser:after {
     margin-bottom: 70px;
