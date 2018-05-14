@@ -121,14 +121,14 @@ CKEDITOR_CONFIGS = {
                        ['PasteText', 'PasteFromWord', 'Undo', 'Redo', 'SpecialChar'],
                        ['Replace', 'Source', 'Preview'],
                        ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
-                       ['Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                       ['Format', 'Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                        ['TextColor', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
                        ],
            'height': 500,
            'width': '100%',
            'removePlugins': 'stylesheetparser',
            'tabSpaces': 4,
-           'extraPlugins': ','.join(['autolink', 'codesnippet'])
+           'extraPlugins': ','.join(['autolink', 'codesnippet', 'format'])
        },
     }
 

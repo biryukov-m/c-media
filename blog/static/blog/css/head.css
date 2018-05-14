@@ -487,8 +487,7 @@ button,
     padding: 0;
     display: flex;
     flex-direction: row;
-    /*justify-content: space-between;*/
-    align-items: center;
+    align-items: baseline;
 }
 .content-footer .footer-menu ul li a{
     display: block;
