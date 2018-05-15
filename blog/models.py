@@ -105,6 +105,12 @@ class Comment(models.Model):
         return ': '.join([self.author, self.text[0:30]])
 
 
+class PostLike(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    liked_date = models.DateTimeField(verbose_name='Дата и время', default=timezone.now)
+    user_ip = models.GenericIPAddressField(verbose_name='IP посетителя')
+
+
 class InfoPage(models.Model):
     title = models.CharField(max_length=100, verbose_name="Заголовок")
     body = RichTextUploadingField(verbose_name="Содержимое")

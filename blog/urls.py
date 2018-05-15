@@ -11,6 +11,7 @@ urlpatterns = [
     path('article/<slug:slug>/edit/', views.edit_post, name='article-edit'),
     path('article/<slug:slug>/remove/', views.remove_post, name='article-remove'),
     path('article/<slug:slug>/vote/', views.vote_post, name='article-vote'),
+    path('article/<slug:slug>/like/', views.like_post, name='article-like'),
     path('category/<slug:slug>/', views.CategoryView.as_view(), name='by-category'),
     path('tag/<slug:slug>/', views.TagView.as_view(), name='by-tag'),
     path('author/<slug:slug>/', views.PseudoView.as_view(), name='by-author'),

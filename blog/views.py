@@ -1,4 +1,4 @@
-from .models import Post, Category, Tag, Pseudo, Comment, InfoPage
+from .models import Post, Category, Tag, Pseudo, Comment, InfoPage, PostLike
 from django.views import generic
 from .forms import PostForm, CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
@@ -9,6 +9,7 @@ from django.conf import settings
 import requests
 from django.contrib import messages
 from blog.lib import github_getter
+from django.utils import timezone
 
 
 class IndexView(generic.ListView):
@@ -152,6 +153,21 @@ def vote_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.likes += 1
     post.save()
+    return redirect(post.get_absolute_url())
+
+
+def like_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    like = PostLike()
+    like.post = post
+    like.liked_date = timezone.now()
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ipaddress = x_forwarded_for.split(',')[-1].strip()
+    else:
+        ipaddress = request.META.get('REMOTE_ADDR')
+    like.user_ip = ipaddress
+    like.save()
     return redirect(post.get_absolute_url())
 
 

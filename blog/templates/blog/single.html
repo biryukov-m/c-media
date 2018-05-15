@@ -15,7 +15,7 @@
                     {% else %}
                         <span>Лайк!</span>
                     {% endif %}
-                </a>
+                <a class="article-like" href="{% url 'blog:article-like' post.slug %}">ARTICLE_LIKE</a>
                 {% if post.get_approved_comments.first %}
                     <span class="comments">{{ post.get_approved_comments.count }}</span>
                 {% endif %}
