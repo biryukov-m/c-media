@@ -32,7 +32,7 @@ class CategoryView(generic.ListView):
 
     def get_queryset(self):
         query = get_object_or_404(Category, slug=self.kwargs['slug'])
-        return query.get_related_posts()
+        return query.get_related_posts().filter(published=True)
 
 
 class TagView(generic.ListView):
