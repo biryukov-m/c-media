@@ -59,7 +59,6 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория')
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT, verbose_name='Автор')
     tags = models.ManyToManyField(Tag, verbose_name='Ключевые слова')
-    likes = models.IntegerField(default=0, verbose_name='Одобрения')
     objects = PostManager()
     published = models.BooleanField(default=False)
 
