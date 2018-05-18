@@ -112,6 +112,14 @@ class PostLike(models.Model):
     liked_date = models.DateTimeField(verbose_name='Дата и время', default=timezone.now)
     user_ip = models.GenericIPAddressField(verbose_name='IP посетителя')
 
+    def __str__(self):
+        output = ','.join(
+            [self.post.title,
+             self.liked_date.strftime('%H:%m:%S %e.%m.%y'),
+             self.user_ip]
+        )
+        return output
+
 
 class InfoPage(models.Model):
     title = models.CharField(max_length=100, verbose_name="Заголовок")
