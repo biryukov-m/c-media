@@ -321,7 +321,6 @@ article pre {
 }
 article header h1{
     color: #000;
-
 }
 article header h1 a:hover{
     color: #eb6d4a;
@@ -360,7 +359,6 @@ article a:hover {
 }
 article a.article-header{
     color: black;
-    line-height: normal;
 }
 article a.article-header:hover {
     color: #FF6347;
