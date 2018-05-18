@@ -10,7 +10,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=60, unique=True, default='')
 
     def get_related_posts(self):
-        query = self.post_set.all().order_by('-pub_date')
+        query = self.post_set.all().filter(published=True).order_by('-pub_date')
         return query
 
     def __str__(self):
@@ -23,7 +23,7 @@ class Pseudo(models.Model):
     create_date = models.DateField(auto_created=True)
 
     def get_related_posts(self):
-        query = self.post_set.all().order_by('-pub_date')
+        query = self.post_set.all().filter(published=True).order_by('-pub_date')
         return query
 
     def __str__(self):
@@ -35,7 +35,7 @@ class Tag(models.Model):
     slug = models.SlugField(max_length=60, unique=True, default='')
 
     def get_related_posts(self):
-        query = self.post_set.all().order_by('-pub_date')
+        query = self.post_set.all().filter(published=True).order_by('-pub_date')
         return query
 
     def __str__(self):
