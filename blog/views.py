@@ -10,7 +10,6 @@ import requests
 from django.contrib import messages
 from blog.lib import github_getter
 from django.utils import timezone
-from django.contrib.auth.models import User
 from django.http import Http404
 
 
@@ -152,13 +151,6 @@ def remove_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('blog:home')
-
-
-def vote_post(request, slug):
-    post = get_object_or_404(Post, slug=slug)
-    post.likes += 1
-    post.save()
-    return redirect(post.get_absolute_url())
 
 
 def like_post(request, slug):

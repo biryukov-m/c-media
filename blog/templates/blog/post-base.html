@@ -13,10 +13,10 @@
                 <a class="category-name" title="Перейти к разделу - {{ post.category.name.lower }}"
                    href="{% url 'blog:by-category' post.category.slug %}">{{ post.category.name.capitalize }}</a>
             </div>
-            {% if post.likes %}
+            {% if post.get_likes %}
             <div class="likes indicator">
                 <div class="indicator-icon-heart"></div>
-                <span class="likes-counter">{{ post.likes }}</span>
+                <span class="likes-counter">{{ post.get_likes.count}}</span>
             </div>
             {% endif %}
             {% if post.get_approved_comments.last %}

@@ -9,12 +9,13 @@
     <nav class="article-bottom">
         <div class="info">
             <div class="layout">
-                <a class="article-like" href="{% url 'blog:article-like' post.slug %}"></a>
+                <a class="article-like" href="{% url 'blog:article-like' post.slug %}">
                     {% if post.get_likes %}
                         {{ post.get_likes.count }}
                     {% else %}
                         <span>Лайк!</span>
                     {% endif %}
+                </a>
                 {% if post.get_approved_comments.first %}
                     <span class="comments">{{ post.get_approved_comments.count }}</span>
                 {% endif %}
