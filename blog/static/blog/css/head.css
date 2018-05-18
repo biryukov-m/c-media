@@ -359,6 +359,7 @@ article a:hover {
 }
 article a.article-header{
     color: black;
+    line-height: normal;
 }
 article a.article-header:hover {
     color: #FF6347;
