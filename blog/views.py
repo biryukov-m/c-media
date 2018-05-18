@@ -10,6 +10,8 @@ import requests
 from django.contrib import messages
 from blog.lib import github_getter
 from django.utils import timezone
+from django.contrib.auth.models import User
+from django.http import Http404
 
 
 class IndexView(generic.ListView):
@@ -95,7 +97,10 @@ def detail_view(request, slug):
             return redirect(post.get_absolute_url())
     else:
         form = CommentForm()
-    return render(request, 'blog/single.html', {'post': post, 'form': form})
+    if not post.published and not request.user.is_authenticated:
+        raise Http404
+    else:
+        return render(request, 'blog/single.html', {'post': post, 'form': form})
 
 
 def new_commits(request):

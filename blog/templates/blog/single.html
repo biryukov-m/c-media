@@ -9,13 +9,12 @@
     <nav class="article-bottom">
         <div class="info">
             <div class="layout">
-                <a class="article-vote" href="{% url 'blog:article-vote' post.slug %}">
-                    {% if post.likes %}
-                        {{ post.likes }}
+                <a class="article-like" href="{% url 'blog:article-like' post.slug %}"></a>
+                    {% if post.get_likes %}
+                        {{ post.get_likes.count }}
                     {% else %}
                         <span>Лайк!</span>
                     {% endif %}
-                <a class="article-like" href="{% url 'blog:article-like' post.slug %}">ARTICLE_LIKE</a>
                 {% if post.get_approved_comments.first %}
                     <span class="comments">{{ post.get_approved_comments.count }}</span>
                 {% endif %}
@@ -26,11 +25,10 @@
                     Следующая запись >
                     </a>
                     {% endif %}
-                {% else %}
+                {% elif user.is_authenticated %}
                     Создан: {{ post.create_date|date:"j E H:i" }}
                     <a href="{% url 'blog:publish-post' slug=post.slug %}" title="{{ datetime.now }}">
-                    Опубликовать сейчас
-                    </a>
+                        Опубликовать сейчас</a>
                 {% endif %}
             </div>
         </div>

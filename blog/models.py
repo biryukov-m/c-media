@@ -83,6 +83,9 @@ class Post(models.Model):
     def get_preview(self):
         return self.text.split('</p>')[0][3:]
 
+    def get_likes(self):
+        return self.postlike_set.all().order_by('-liked_date')
+
     def __str__(self):
         return self.title
 

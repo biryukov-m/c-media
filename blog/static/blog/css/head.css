@@ -615,12 +615,12 @@ article a.tag:hover {
 .article-bottom .info .layout > span {
     margin-left: 5px;
 }
-.article-bottom .info .layout a.article-vote {
+.article-bottom .info .layout a.article-like {
     padding-left: 40px;
     color: black;
     position: relative;
 }
-.article-bottom .info .layout a.article-vote:before{
+.article-bottom .info .layout a.article-like:before{
     content: "";
     display: block;
     position: absolute;
@@ -631,7 +631,7 @@ article a.tag:hover {
     background: url("/static/blog/img/heart_vote.png") left no-repeat;
     background-size: 32px;
 }
-.article-bottom .info .layout a.article-vote:active {
+.article-bottom .info .layout a.article-like:active {
     transform: scale(1.3);
     /*box-shadow: 0 0 1px 1px rgba(62, 179, 165, 1);*/
     box-shadow: none;
