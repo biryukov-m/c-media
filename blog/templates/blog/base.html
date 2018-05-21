@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}Cat Media{% endblock %}</title>
     {% load static %}
+    <link rel="stylesheet" href="{% static "blog/css/head.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&amp;subset=cyrillic" rel="stylesheet">
+    {#   reCAPTCHA    start #}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    {#   reCAPTCHA    end   #}
     {# start CKEDITOR plugin: codesnippet > highlight.js #}
     <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     {# end CKEDITOR plugin: codesnippet > highlight.js #}
-    <link rel="stylesheet" href="{% static "blog/css/head.css" %}">
-    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&amp;subset=cyrillic" rel="stylesheet">
 </head>
 <body>
     <header class="page-header clearfix">
