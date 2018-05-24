@@ -3,8 +3,7 @@
 {% block breadcrumbs %}{{ page.title|title }}{% endblock %}
 {% block content %}
     <article class="info">
-        <header><h1>{{ page.title|title }}</h1></header>
-        <section class="article-content">{{ page.body|safe|linebreaksbr }}</section>
+        <section class="article-content">{{ page.body|safe }}</section>
     </article>
 {% endblock %}
 
