@@ -6,9 +6,17 @@
     <title>{% block title %}Cat Media{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static "blog/css/head.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/hover.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/like.css" %}">
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&amp;subset=cyrillic" rel="stylesheet">
+    {#  start  https://fontawesome.com #}
+    <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    {#  end  https://fontawesome.com #}
     {#   reCAPTCHA    start #}
     <script src='https://www.google.com/recaptcha/api.js'></script>
     {#   reCAPTCHA    end   #}
@@ -18,6 +26,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     {# end CKEDITOR plugin: codesnippet > highlight.js #}
+    {# JQuery start #}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    {# JQuery end #}
 </head>
 <body>
     <header class="page-header clearfix">
@@ -25,44 +36,57 @@
             <div class="col-left">
                 <div class="row-top"></div>
                 <div class="row-bottom">
-                    <div class="text-logo"><a href="{% url 'blog:home' %}">Cat media</a></div>
+                    <div class="text-logo"><a class="hvr-skew" href="{% url 'blog:home' %}">Cat media</a></div>
                 </div>
             </div>
             <div class="col-right">
-            <div class="right-logo"></div>
-                <div class="admin-buttons">
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'blog:create-post' %}" title="Создать публикацию"
-                       class="add-post"></a>
-                        {% if drafted_posts_count > 0 %}
-                        <a
-                                href="{% url 'blog:post-draft-list' %}"
-                                title="Ожидающие публикации - {{ drafted_posts_count }}"
-                                class="draft-list">
-                        </a>
-                        {% endif %}
+            {% if not user.is_authenticated %}
+                <div class="right-logo"></div>
+            {% endif %}
 
-                    <a href="{% url 'logout' %}" title="Выйти из учетной записи"
-                       class="logout-link"></a>
-                    {% else %}
-                    <a href="{% url 'login' %}" title="Войти с учетной записью"
-                       class="login-link"></a>
+                {% if user.is_authenticated %}
+                <div class="admin-buttons fa-2x">
+                    <a href="{% url 'blog:create-post' %}"
+                       title="Создать публикацию"
+                       class="add-post hvr-icon-pulse-grow">
+                        <i class="fas fa-plus-circle hvr-icon"></i>
+                    </a>
+                    {% if drafted_posts_count > 0 %}
+                    <a
+                            href="{% url 'blog:post-draft-list' %}"
+                            title="Ожидающие публикации - {{ drafted_posts_count }}"
+                            class="draft-list hvr-icon-pulse-grow">
+                            <i class="fas fa-list-ul hvr-icon"></i>
+                            <span class="counter hvr-icon">{{ drafted_posts_count }}</span>
+                    </a>
                     {% endif %}
+                    <a href="{% url 'logout' %}" title="Выйти из учетной записи"
+                       class="logout-link hvr-icon-pulse-grow">
+                        <i class="fas fa-sign-out-alt hvr-icon"></i>
+                    </a>
                 </div>
+                {% else %}
+                    <a href="{% url 'login' %}" title="Войти с учетной записью"
+                       class="login-link hvr-icon-pulse-grow">
+                        <i class="fas fa-sign-in-alt fa-lg hvr-icon"></i>
+                    </a>
+                {% endif %}
             </div>
         </div>
         <div class="top-menu-container clearfix">
         <nav class="top-menu left">
             <ul>
                 <li>
-                    <a href="{% url 'blog:home' %}">Главная</a>
+                    <a class="hvr-push" href="{% url 'blog:home' %}">Главная</a>
                 </li>
                 <li class="have-submenu">
-                    <div class="submenubutton " tabindex="-1">Разделы<span class="arrow">&#9660;</span></div>
+                    <div class="submenubutton hvr-icon-hang" tabindex="-1">
+                        Разделы<i class="fas fa-angle-down fa-xs hvr-icon"></i>
+                    </div>
                     <nav class="sub-menu" tabindex="-1">
                         <ul>
                             {% for item in category_list %}
-                            <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
+                            <li><a class="hvr-push" href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
                             {% endfor %}
                         </ul>
                     </nav>
@@ -71,9 +95,9 @@
         </nav>
         <nav class="top-menu right">
             <ul>
-                <li><a href="{% url 'blog:news' %}">Новости</a></li>
+                <li><a class="hvr-push" href="{% url 'blog:news' %}">Новости</a></li>
                 <li>
-                    <a href="{% url 'blog:about' %}">О проекте</a>
+                    <a class="hvr-push" href="{% url 'blog:about' %}">О проекте</a>
                 </li>
             </ul>
         </nav>
@@ -93,20 +117,20 @@
         <div class="footer-layout">
             <nav class="footer-menu">
                 <ul>
-                    <li><a class="text-logo" href="{% url 'blog:home' %}">Cat media</a></li>
+                    <li><a class="text-logo hvr-push" href="{% url 'blog:home' %}">Cat media</a></li>
                     {% for item in category_list %}
-                    <li><a href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
+                    <li><a class="hvr-push" href="{% url 'blog:by-category' item.slug %}">{{ item }}</a></li>
                     {% endfor %}
-                    <li><a href="{% url 'blog:news' %}">Новости</a></li>
-                    <li><a href="{% url 'blog:about' %}">О проекте</a></li>
+                    <li><a class="hvr-push" href="{% url 'blog:news' %}">Новости</a></li>
+                    <li><a class="hvr-push" href="{% url 'blog:about' %}">О проекте</a></li>
                 </ul>
             </nav>
             <nav class="powered-list">
             <ul>
-                    <li><a class="nginx" href="https://nginx.org/ru/"></a></li>
-                    <li><a class="django" href="https://www.djangoproject.com/"></a></li>
-                    <li><a class="digitalocean" href="http://gunicorn.org/"></a></li>
-                    <li><a class="icons-design" href="https://www.freepik.com/"></a></li>
+                    <li><a class="nginx hvr-push" href="https://nginx.org/ru/"></a></li>
+                    <li><a class="django hvr-push" href="https://www.djangoproject.com/"></a></li>
+                    <li><a class="digitalocean hvr-push" href="http://gunicorn.org/"></a></li>
+                    <li><a class="icons-design hvr-push" href="https://www.freepik.com/"></a></li>
                 </ul>
             </nav>
         </div>

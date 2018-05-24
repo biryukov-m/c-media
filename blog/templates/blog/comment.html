@@ -11,14 +11,20 @@
                 {% if user.is_authenticated %}
                     {% if not comment.approved_comment %}
                         <a title="Подтвердить комментарий"
-                       href="{% url 'blog:comment_approve' comment.pk %}" class="admin approve-comment"></a>
+                           href="{% url 'blog:comment_approve' comment.pk %}"
+                           class="admin approve-comment hvr-push">
+                        <i class="fas fa-check"></i>
+                        </a>
                     {% endif %}
                     <a title="Удалить комментарий"
-                       href="{% url 'blog:comment_remove' comment.pk %}" class="admin remove-comment"></a>
+                       href="{% url 'blog:comment_remove' comment.pk %}"
+                       class="admin remove-comment hvr-push">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
                 {% endif %}
             </span>
         </div>
         <div class="comment-text">{{ comment.text|linebreaks }}</div>
-        <a href ="#" class="comment-reply">Ответить</a>
+        <a href ="#" class="comment-reply hvr-push">Ответить</a>
     </div>
 </div>

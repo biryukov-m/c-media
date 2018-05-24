@@ -4,5 +4,5 @@
     <section class="article-content">
         {{ post.get_preview|safe }}
     </section>
-    <a class="read-more" href="{% url 'blog:article-detail' post.slug %}#top">Читать дальше</a>
+    <a class="read-more hvr-push" href="{% url 'blog:article-detail' post.slug %}#top">Читать дальше</a>
 {% endblock %}
