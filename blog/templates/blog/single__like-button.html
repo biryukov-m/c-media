@@ -1,0 +1,223 @@
+<div class="like-button-wrapper">
+    <div class="like-button">
+        <div class='wrapper'>
+            <div class='wrapper_content'>
+                <div class='wrapper_content__inner'>
+                    <input
+                            {% if liked %}checked disabled readonly{% endif %}
+                            id='click'
+                            type='checkbox'
+                            onclick="location.href='{% url 'blog:article-like' post.slug %}';">
+                    <label for='click'>
+                        <div class='favourite{% if not liked %} hide-counter{% endif %}'>
+                            <div class='spinner'>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                                <div class='spinner_part'></div>
+                            </div>
+                            <div class='favourite_heart'>
+                                <div class='favourite_heart__left'></div>
+                                <div class='favourite_heart__right'></div>
+                            </div>
+                            <div class='favourite_text'>
+                                <span>Мне нравится!</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="like-counter">
+                    {% if post.get_likes.count > 0 %}
+                        {{ post.get_likes.count}}
+                    {% endif %}
+                </span>
+    <script type="text/javascript">
+        $( ".like-button .favourite.hide-counter" ).hover(
+            function() {
+                $( ".like-button ~ .like-counter" ).css('opacity', '0');
+            },
+            function() {
+                $( ".like-button ~ .like-counter" ).css('opacity', '1');
+            }
+        );
+    </script>
+</div>

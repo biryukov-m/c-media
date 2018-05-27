@@ -11,7 +11,12 @@ from django.contrib import messages
 from blog.lib import github_getter
 from django.utils import timezone
 from django.http import Http404, HttpResponse
-from blog.lib.session_checks import post_liked
+from blog.lib.session_checks import post_liked, get_ip
+from blog.lib.validate_recaptcha import validate_recaptcha
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
 
 
 class IndexView(generic.ListView):
@@ -21,7 +26,6 @@ class IndexView(generic.ListView):
     queryset = Post.objects.is_published()
     disqus_enabled = settings.ENABLE_DISQUS
     extra_context = {'disqus_enabled': disqus_enabled}
-
 
 
 class CategoryView(generic.ListView):
@@ -82,31 +86,19 @@ def detail_view(request, slug):
     disqus_enabled = settings.ENABLE_DISQUS
     if request.method == "POST":
         form = CommentForm(request.POST)
-        if form.is_valid():
-            ''' Begin reCAPTCHA validation '''
-            recaptcha_response = request.POST.get('g-recaptcha-response')
-            url = 'https://www.google.com/recaptcha/api/siteverify'
-            values = {
-                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-                'response': recaptcha_response
-            }
-            req = requests.post(url, data=values)
-            res = req.json()
-            ''' End reCAPTCHA validation '''
-            if res['success']:
-                comment = form.save(commit=False)
-                messages.success(request, 'New comment added with success!')
-                comment.post = post
-                comment.save()
-            else:
-                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-            return redirect(post.get_absolute_url())
+        if form.is_valid() and validate_recaptcha(request):
+            comment = form.save(commit=False)
+            messages.success(request, 'New comment added with success!')
+            comment.post = post
+            comment.save()
+        else:
+            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+        return redirect(post.get_absolute_url())
     else:
         form = CommentForm()
     if not post.published and not request.user.is_authenticated:
         raise Http404
-    else:
-        return render(request, 'blog/single.html', {'post': post,
+    return render(request, 'blog/single.html', {'post': post,
                                                     'form': form,
                                                     'liked': liked,
                                                     'disqus_enabled': disqus_enabled,
@@ -175,17 +167,72 @@ def like_post(request, slug):
         request.session.save()
     else:
         request.session['liked_posts'] = [slug, ]
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ipaddress = x_forwarded_for.split(',')[-1].strip()
-    else:
-        ipaddress = request.META.get('REMOTE_ADDR')
+        request.session.save()
     like = PostLike()
     like.post = post
     like.liked_date = timezone.now()
-    like.user_ip = ipaddress
+    like.user_ip = get_ip(request)
     like.save()
     return response
+
+
+class PostLikeToggle(generic.RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        slug = self.kwargs.get("slug")
+        obj = get_object_or_404(Post, slug=slug)
+        url_ = obj.get_absolute_url()
+        if 'liked_posts' in self.request.session:
+            if slug in self.request.session['liked_posts']:
+                return url_
+            self.request.session['liked_posts'].append(slug)
+            self.request.session.save()
+        else:
+            self.request.session['liked_posts'] = [slug, ]
+            self.request.session.save()
+        like = PostLike()
+        like.post = obj
+        like.liked_date = timezone.now()
+        like.user_ip = get_ip(self.request)
+        like.save()
+        return url_
+
+
+class PostLikeAPIToggle(APIView):
+    """
+    Adds like to post with given slug.
+
+    * Can't like more than once in one session.
+    """
+    authentication_classes = (authentication.SessionAuthentication,)
+    permission_classes = (permissions.AllowAny,)
+
+    def get(self, request, slug=None):
+        obj = get_object_or_404(Post, slug=slug)
+        url_ = obj.get_absolute_url()
+        r = request.session.get('liked_posts', '')
+        if r:
+            if slug in r:
+                updated = True
+                liked = False
+                return Response({'updated': updated, 'liked': liked, })
+            self.request.session['liked_posts'].append(slug)
+            self.request.session.save()
+        else:
+            self.request.session['liked_posts'] = [slug, ]
+            self.request.session.save()
+        like = PostLike()
+        like.post = obj
+        like.liked_date = timezone.now()
+        like.user_ip = get_ip(self.request)
+        like.save()
+        liked = True
+        updated = True
+        data = {
+            'updated': updated,
+            'liked': liked,
+        }
+        return Response(data)
+
 
 
 @method_decorator(login_required, name='dispatch')

@@ -68,7 +68,13 @@ class Post(models.Model):
         self.save()
 
     def get_absolute_url(self):
-        return reverse('blog:article-detail', args=[str(self.slug)])
+        return reverse('blog:article-detail', kwargs={"slug": self.slug})
+
+    def get_like_url(self):
+        return reverse('blog:like-toggle', kwargs={"slug": self.slug})
+
+    def get_api_like_url(self):
+        return reverse('blog:like-api-toggle', kwargs={"slug": self.slug})
 
     def get_comments(self):
         return self.comment_set.all().order_by('-created_date')
