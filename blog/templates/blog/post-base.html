@@ -1,10 +1,10 @@
 <div class="post-container clearfix {% block separator_style %}{% endblock %}">
     <aside class="post-col-left">
-            <div class="date-circle">
-                <div class="circle-date-layout">
-                    <span>{{ post.pub_date|date:"d M" }}</span>
-                </div>
+        <div class="date-circle">
+            <div class="circle-date-layout">
+                <span>{{ post.pub_date|date:"d M" }}</span>
             </div>
+        </div>
     </aside>
     <div class="post-col-right">
         <div class="post-info">
@@ -13,40 +13,45 @@
                 <a class="category-name hvr-push" title="Перейти к разделу - {{ post.category.name.lower }}"
                    href="{% url 'blog:by-category' post.category.slug %}">{{ post.category.name.capitalize }}</a>
             </div>
-            {% if post.get_likes %}
             <div class="likes indicator">
                 <i class="fas fa-heart fa-lg"></i>
-                <span class="likes-counter">{{ post.get_likes.count}}</span>
+                <span class="likes-counter">
+                    {{ post.get_likes.count}}
+                </span>
             </div>
-            {% endif %}
-            {% if post.get_approved_comments.last %}
             <div class="comments indicator">
                 <i class="fas fa-comments fa-lg"></i>
-                <span class="comment-counter">{{ post.get_approved_comments.count }}</span>
+                <span class="comment-counter">
+                    {% if disqus_enabled %}
+                        <a href="{% url 'blog:article-detail' post.slug %}#disqus_thread"
+                           data-disqus-identifier="{{ post.title }}">0</a>
+                    {% else %}
+                        {{ post.get_approved_comments.count }}
+                        {% if post.get_drafted_comments.first and user.is_authenticated %}
+                            <div class="comments indicator">
+                                <i class="fas fa-comments fa-lg"></i>
+                                <span class="comment-counter"></span>
+                                <span>{{ post.get_drafted_comments.count }} ожидают</span>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </span>
             </div>
-            {% endif %}
-            {% if post.get_drafted_comments.first and user.is_authenticated %}
-                <div class="comments indicator">
-                    <i class="fas fa-comments fa-lg"></i>
-                    <span class="comment-counter"></span>
-                    <span>{{ post.get_drafted_comments.count }} ожидают</span>
-                </div>
-            {% endif %}
         </div>
         <article>
             <header>
                 <h1>
                     <a class="article-header" title="Читать полностью - {{ post.title|truncatechars:"30" }}"
-                            href="{% url 'blog:article-detail' post.slug %}#top">{{ post.title }}</a>
+                       href="{% url 'blog:article-detail' post.slug %}#top">{{ post.title }}</a>
                     {% if user.is_authenticated %}
-                    <a title="Редактировать публикацию"
-                       href="{% url 'blog:article-edit' post.slug %}" class="hvr-icon-bob admin edit-post">
-                        <i class="fas fa-edit hvr-icon"></i>
-                    </a>
-                    <a title="Удалить публикацию"
-                       href="{% url 'blog:article-remove' post.slug %}" class="admin remove-post hvr-icon-shrink">
-                        <i class="fas fa-trash-alt hvr-icon"></i>
-                    </a>
+                        <a title="Редактировать публикацию"
+                           href="{% url 'blog:article-edit' post.slug %}" class="hvr-icon-bob admin edit-post">
+                            <i class="fas fa-edit hvr-icon"></i>
+                        </a>
+                        <a title="Удалить публикацию"
+                           href="{% url 'blog:article-remove' post.slug %}" class="admin remove-post hvr-icon-shrink">
+                            <i class="fas fa-trash-alt hvr-icon"></i>
+                        </a>
                     {% endif %}
                 </h1>
             </header>

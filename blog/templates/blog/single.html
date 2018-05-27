@@ -228,7 +228,7 @@
                     );
                 </script>
             </div>
-            {% if post.get_approved_comments.first %}
+            {% if not disqus_enabled %}
                 <div class="comments-counter-wrapper">
                     <i class="fas fa-comments fa-lg"></i>
                     <span class="counter">
@@ -253,29 +253,33 @@
             {% endif %}
         </div>
     </nav>
-    <div class="writecomment-container">
-        <form class="writecomment clearfix" id="writecomment" action="" method="post">
-            {% csrf_token %}
-            <label for="id_author" class="forname">Как вас зовут?</label>
-            <input id="id_author" name="author" maxlength="200" required placeholder="Онуфрий">
-            <label for="id_email" class="foremail">Мы не украдем ваш E-mail<br>(и никому не покажем)</label>
-            <input id="id_email" name="email" type="email" maxlength="254" placeholder="otec.onufree@gmail.com" required>
-            <label for="id_text" class="forcomment-field">Напишите хороший комментарий</label>
-            <textarea id="id_text" name="text" maxlength="5000" required
-                      placeholder="Я вас категорически приветствую..."></textarea>
-            {# reCAPTCHA button #}
-            <div class="g-recaptcha" data-sitekey="6LcaHVoUAAAAAAAGWYb5r4830nRVMi6tvy2Xcon_"></div>
-            <input id="submit-comment" type="submit" class="comment-submit genbutton hvr-push" value="Отправить">
-            <label for="submit-comment"><i class="fas fa-share-square"></i></label>
-        </form>
-    </div>
-    <div class="comments-container">
-        {% for comment in post.get_comments %}
-            {% if user.is_authenticated or comment.approved_comment %}
-                {% include 'blog/comment.html' %}
-            {% endif %}
-        {% empty %}
-            <p class="no_comments">Ваш комментарий будет первым!</p>
-        {% endfor %}
-    </div>
+    {% if disqus_enabled %}
+        {% include 'blog/disqus_comments.html' %}
+    {% else %}
+        <div class="writecomment-container">
+            <form class="writecomment clearfix" id="writecomment" action="" method="post">
+                {% csrf_token %}
+                <label for="id_author" class="forname">Как вас зовут?</label>
+                <input id="id_author" name="author" maxlength="200" required placeholder="Онуфрий">
+                <label for="id_email" class="foremail">Мы не украдем ваш E-mail<br>(и никому не покажем)</label>
+                <input id="id_email" name="email" type="email" maxlength="254" placeholder="otec.onufree@gmail.com" required>
+                <label for="id_text" class="forcomment-field">Напишите хороший комментарий</label>
+                <textarea id="id_text" name="text" maxlength="5000" required
+                          placeholder="Я вас категорически приветствую..."></textarea>
+                {# reCAPTCHA button #}
+                <div class="g-recaptcha" data-sitekey="6LcaHVoUAAAAAAAGWYb5r4830nRVMi6tvy2Xcon_"></div>
+                <input id="submit-comment" type="submit" class="comment-submit genbutton hvr-push" value="Отправить">
+                <label for="submit-comment"><i class="fas fa-share-square"></i></label>
+            </form>
+        </div>
+        <div class="comments-container">
+            {% for comment in post.get_comments %}
+                {% if user.is_authenticated or comment.approved_comment %}
+                    {% include 'blog/comment.html' %}
+                {% endif %}
+            {% empty %}
+                <p class="no_comments">Ваш комментарий будет первым!</p>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

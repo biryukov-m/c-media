@@ -12,6 +12,9 @@ body {
 a {
     color: inherit;
 }
+#disqus_thread {
+    margin: 0 8px 50px;
+}
 
 .header-container {
     height: 300px;
@@ -857,6 +860,8 @@ textarea::placeholder {
     transform:scale(1.115);
     transform-origin:0 0;
 }
+
+
 
 /* End comment write */
 .main-content .login-form,

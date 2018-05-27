@@ -133,6 +133,8 @@ CKEDITOR_CONFIGS = {
        },
     }
 
+ENABLE_DISQUS = True
+
 try:
     from mysite.local_settings import *
 except ImportError:

@@ -11,6 +11,7 @@ from django.contrib import messages
 from blog.lib import github_getter
 from django.utils import timezone
 from django.http import Http404, HttpResponse
+from blog.lib.session_checks import post_liked
 
 
 class IndexView(generic.ListView):
@@ -18,6 +19,9 @@ class IndexView(generic.ListView):
     context_object_name = 'posts'
     paginate_by = 10
     queryset = Post.objects.is_published()
+    disqus_enabled = settings.ENABLE_DISQUS
+    extra_context = {'disqus_enabled': disqus_enabled}
+
 
 
 class CategoryView(generic.ListView):
@@ -73,10 +77,9 @@ class PseudoView(generic.ListView):
 
 def detail_view(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    if 'liked_posts' in request.session and slug in request.session['liked_posts']:
-        liked = True
-    else:
-        liked = False
+    liked = post_liked(request, slug)
+    absolute_url = request.build_absolute_uri()
+    disqus_enabled = settings.ENABLE_DISQUS
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -103,16 +106,23 @@ def detail_view(request, slug):
     if not post.published and not request.user.is_authenticated:
         raise Http404
     else:
-        return render(request, 'blog/single.html', {'post': post, 'form': form, 'liked':liked})
+        return render(request, 'blog/single.html', {'post': post,
+                                                    'form': form,
+                                                    'liked': liked,
+                                                    'disqus_enabled': disqus_enabled,
+                                                    'absolute_url': absolute_url
+                                                    })
 
 
 def new_commits(request):
     commits = github_getter.get_commits()
     return render(request, 'blog/news.html', {'commits': commits})
 
+
 def info_page(request, slug):
     page = get_object_or_404(InfoPage, slug=slug)
     return render(request, 'blog/info-page.html', {'page': page})
+
 
 @login_required
 def create_post(request):
@@ -125,6 +135,7 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+
 
 @login_required
 def edit_post(request, slug):
@@ -139,17 +150,20 @@ def edit_post(request, slug):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
+
 @login_required
 def publish_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.publish()
     return redirect(post.get_absolute_url())
 
+
 @login_required
 def remove_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('blog:home')
+
 
 def like_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
@@ -179,7 +193,6 @@ class PostDraftList(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     queryset = Post.objects.is_drafted()
-
 
 
 @login_required
