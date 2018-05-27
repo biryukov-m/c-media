@@ -1,27 +1,1127 @@
-/*@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);*/
-.like-button {
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -o-font-smoothing: antialiased;
-}
-
-.like-button .wrapper {
-  position: relative;
-}
-.like-button .wrapper_content {
-  background-color: transparent;
-  border-radius: 1px;
-}
-
-.like-button input {
+.article-bottom .layout .like-button input {
   display: none;
+}
+input[type='checkbox']:checked + label > .favourite .favourite_text {
+  top: 7px;
+  opacity: 0;
+  transition-property: top,opacity;
+  transition-duration: 0.3s;
+  transition-delay: .0s;
+}
+
+input[type='checkbox']:checked + label > .favourite {
+  width: 20px;
+  transition-delay: .2s;
+  box-shadow: 0px 0px 0px 0px transparent;
+}
+
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(1) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.702s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(2) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.704s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(3) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.706s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(4) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.708s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(5) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.71s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(6) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.712s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(7) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.714s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(8) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.716s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(9) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.718s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(10) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.72s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(11) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.722s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(12) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.724s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(13) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.726s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(14) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.728s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(15) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.73s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(16) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.732s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(17) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.734s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(18) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.736s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(19) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.738s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(20) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.74s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(21) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.742s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(22) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.744s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(23) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.746s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(24) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.748s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(25) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.75s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(26) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.752s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(27) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.754s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(28) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.756s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(29) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.758s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(30) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.76s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(31) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.762s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(32) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.764s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(33) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.766s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(34) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.768s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(35) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.77s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(36) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.772s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(37) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.774s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(38) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.776s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(39) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.778s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(40) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.78s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(41) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.782s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(42) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.784s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(43) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.786s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(44) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.788s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(45) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.79s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(46) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.792s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(47) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.794s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(48) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.796s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(49) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.798s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(50) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.8s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(51) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.802s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(52) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.804s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(53) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.806s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(54) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.808s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(55) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.81s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(56) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.812s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(57) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.814s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(58) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.816s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(59) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.818s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(60) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.82s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(61) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.822s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(62) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.824s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(63) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.826s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(64) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.828s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(65) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.83s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(66) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.832s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(67) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.834s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(68) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.836s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(69) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.838s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(70) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.84s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(71) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.842s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(72) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.844s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(73) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.846s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(74) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.848s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(75) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.85s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(76) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.852s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(77) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.854s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(78) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.856s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(79) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.858s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(80) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.86s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(81) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.862s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(82) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.864s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(83) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.866s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(84) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.868s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(85) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.87s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(86) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.872s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(87) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.874s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(88) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.876s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(89) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.878s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(90) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.88s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(91) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.882s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(92) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.884s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(93) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.886s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(94) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.888s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(95) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.89s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(96) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.892s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(97) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.894s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(98) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.896s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(99) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.898s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(100) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.9s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(101) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.902s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(102) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.904s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(103) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.906s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(104) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.908s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(105) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.91s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(106) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.912s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(107) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.914s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(108) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.916s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(109) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.918s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(110) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.92s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(111) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.922s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(112) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.924s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(113) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.926s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(114) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.928s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(115) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.93s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(116) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.932s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(117) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.934s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(118) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.936s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(119) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.938s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(120) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.94s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(121) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.942s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(122) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.944s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(123) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.946s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(124) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.948s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(125) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.95s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(126) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.952s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(127) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.954s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(128) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.956s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(129) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.958s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(130) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.96s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(131) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.962s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(132) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.964s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(133) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.966s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(134) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.968s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(135) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.97s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(136) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.972s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(137) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.974s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(138) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.976s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(139) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.978s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(140) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.98s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(141) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.982s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(142) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.984s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(143) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.986s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(144) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.988s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(145) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.99s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(146) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.992s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(147) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.994s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(148) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.996s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(149) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 0.998s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(150) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(151) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.002s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(152) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.004s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(153) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.006s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(154) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.008s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(155) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.01s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(156) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.012s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(157) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.014s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(158) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.016s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(159) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.018s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(160) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.02s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(161) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.022s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(162) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.024s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(163) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.026s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(164) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.028s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(165) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.03s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(166) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.032s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(167) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.034s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(168) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.036s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(169) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.038s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(170) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.04s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(171) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.042s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(172) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.044s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(173) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.046s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(174) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.048s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(175) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.05s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(176) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.052s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(177) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.054s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(178) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.056s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(179) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.058s;
+}
+input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(180) {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-delay: 1.06s;
+}
+
+input[type='checkbox']:checked + label > .favourite .favourite_heart .favourite_heart__left {
+  width: 6px;
+  height: 12px;
+  left: 3px;
+  top: 0px;
+  margin-top: 8px;
+  transition-property: width,height,left,top,margin-top;
+  transition-duration: .2s;
+  transition-delay: 1.2s;
+}
+
+input[type='checkbox']:checked + label > .favourite .favourite_heart .favourite_heart__right {
+  width: 6px;
+  transition-property: width,height,left,margin-top;
+  transition-duration: .2s;
+  transition-delay: 1.2s;
+  height: 17px;
+  left: 10px;
+  margin-top: 4px;
 }
 
 .spinner_part {
   width: 2px;
   height: 2px;
   opacity: 0;
-  background: #CB3D3D;
+  background: #ebebeb;
   position: absolute;
   top: 55px;
   left: 20px;
@@ -570,22 +1670,23 @@
 
 .favourite {
   border-radius: 100px;
-  width: 16px;
+  width: 20px;
   overflow: hidden;
-  height: 16px;
+  height: 20px;
   cursor: pointer;
   -webkit-animation: pop .6s;
-  padding: 16px;
-  box-shadow: 0px 0px 0px 3px black;
-  color: black;
+  padding: 20px;
+  box-shadow: 0px 0px 0px 3px white;
+  color: white;
   transition-property: width;
   transition-duration: .2s,.2s;
   -webkit-transition-timing-function: cubic-bezier(0.38, -0.35, 0.265, 1.15);
-    background: white;
 }
+
 .favourite:hover {
   width: 146px;
-  box-shadow: 0px 0px 0px 3px black;
+  box-shadow: 0px 0px 0px 3px white;
+  background: #f3e4b2;
 }
 .favourite:hover > .favourite_heart .favourite_heart__left {
   transform: scale(1.1) rotate(-45deg);
@@ -593,11 +1694,11 @@
   transition-duration: .1s;
 }
 .favourite:hover > .favourite_text {
-    top: -11px;
-    opacity: 1;
-    transition-property: top,opacity;
-    transition-duration: 0.3s;
-    transition-delay: .3s;
+  top: 1px;
+  opacity: 1;
+  transition-property: top,opacity;
+  transition-duration: 0.3s;
+  transition-delay: .3s;
 }
 .favourite:hover > .favourite_heart .favourite_heart__right {
   transform: scale(1.1) rotate(45deg);
@@ -611,16 +1712,19 @@
   position: relative;
 }
 .favourite_text span {
-    color: black;
+  color: white;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 12px;
 }
 .favourite_heart {
   position: absolute;
-  top: 14px;
-  left: 13px;
+  top: 19px;
+  left: 20px;
   margin-right: 10px;
 }
 .favourite_heart__left {
-  background: #3EB3A5;
+  background: #3eb3a5;
   width: 14px;
   height: 24px;
   transform: rotate(-45deg);
@@ -630,7 +1734,7 @@
   border-top-left-radius: 30px;
 }
 .favourite_heart__right {
-  background: #3EB3A5;
+  background: #3eb3a5;
   width: 14px;
   height: 24px;
   transform: rotate(45deg);
@@ -638,9 +1742,6 @@
   left: 8px;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
-}
-.wrapper_content__inner {
-    position: relative;
 }
 
 input[type='checkbox']:not(:checked) + label > .favourite .spinner_part:nth-of-type(1) {
@@ -1723,13 +2824,15 @@ input[type='checkbox']:not(:checked) + label > .favourite .spinner_part:nth-of-t
   transition-duration: .1s;
   transition-delay: 0.36s;
 }
+
 input[type='checkbox']:not(:checked) + label > .favourite {
   transition-property: box-shadow,width;
   transition-duration: 0s,.2s;
   transition-delay: 0s,0s;
-  box-shadow: 0px 0px 0px 3px #dfdfdf;
+  box-shadow: 0px 0px 0px 3px white;
 }
 
+/* Animations */
 @keyframes pop {
   0% {
     transform: scale(0);

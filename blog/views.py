@@ -10,7 +10,7 @@ import requests
 from django.contrib import messages
 from blog.lib import github_getter
 from django.utils import timezone
-from django.http import Http404
+from django.http import Http404, HttpResponse
 
 
 class IndexView(generic.ListView):
@@ -73,6 +73,10 @@ class PseudoView(generic.ListView):
 
 def detail_view(request, slug):
     post = get_object_or_404(Post, slug=slug)
+    if 'liked_posts' in request.session and slug in request.session['liked_posts']:
+        liked = True
+    else:
+        liked = False
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -99,18 +103,16 @@ def detail_view(request, slug):
     if not post.published and not request.user.is_authenticated:
         raise Http404
     else:
-        return render(request, 'blog/single.html', {'post': post, 'form': form})
+        return render(request, 'blog/single.html', {'post': post, 'form': form, 'liked':liked})
 
 
 def new_commits(request):
     commits = github_getter.get_commits()
     return render(request, 'blog/news.html', {'commits': commits})
 
-
 def info_page(request, slug):
     page = get_object_or_404(InfoPage, slug=slug)
     return render(request, 'blog/info-page.html', {'page': page})
-
 
 @login_required
 def create_post(request):
@@ -123,7 +125,6 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
-
 
 @login_required
 def edit_post(request, slug):
@@ -138,13 +139,11 @@ def edit_post(request, slug):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
-
 @login_required
 def publish_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.publish()
     return redirect(post.get_absolute_url())
-
 
 @login_required
 def remove_post(request, slug):
@@ -152,20 +151,27 @@ def remove_post(request, slug):
     post.delete()
     return redirect('blog:home')
 
-
 def like_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    like = PostLike()
-    like.post = post
-    like.liked_date = timezone.now()
+    response = redirect(post.get_absolute_url())
+    if 'liked_posts' in request.session:
+        if slug in request.session['liked_posts']:
+            return response
+        request.session['liked_posts'].append(slug)
+        request.session.save()
+    else:
+        request.session['liked_posts'] = [slug, ]
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ipaddress = x_forwarded_for.split(',')[-1].strip()
     else:
         ipaddress = request.META.get('REMOTE_ADDR')
+    like = PostLike()
+    like.post = post
+    like.liked_date = timezone.now()
     like.user_ip = ipaddress
     like.save()
-    return redirect(post.get_absolute_url())
+    return response
 
 
 @method_decorator(login_required, name='dispatch')
@@ -173,6 +179,7 @@ class PostDraftList(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     queryset = Post.objects.is_drafted()
+
 
 
 @login_required

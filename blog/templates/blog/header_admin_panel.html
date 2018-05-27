@@ -1,0 +1,26 @@
+<div class="admin-panel">
+    <div class="admin-info">
+        <span><i class="fas fa-user"></i> {{ username }}</span>
+        <a class = "hvr-icon-pulse-grow" href="{% url 'admin:index' %}"> > <i class="fas fa-door-open hvr-icon"></i></a>
+    </div>
+    <div class="admin-buttons fa-2x">
+        <a href="{% url 'blog:create-post' %}"
+           title="Создать публикацию"
+           class="add-post hvr-icon-pulse-grow">
+            <i class="fas fa-plus-circle hvr-icon"></i>
+        </a>
+        {% if drafted_posts_count > 0 %}
+            <a class="draft-list hvr-icon-pulse-grow"
+               href="{% url 'blog:post-draft-list' %}"
+               title="Ожидающие публикации - {{ drafted_posts_count }}"
+            >
+                <i class="fas fa-list-ul hvr-icon"></i>
+                <span class="counter hvr-icon">{{ drafted_posts_count }}</span>
+            </a>
+        {% endif %}
+        <a href="{% url 'logout' %}" title="Выйти из учетной записи"
+           class="logout-link hvr-icon-pulse-grow">
+            <i class="fas fa-sign-out-alt hvr-icon"></i>
+        </a>
+    </div>
+</div>
