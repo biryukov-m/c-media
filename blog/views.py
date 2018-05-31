@@ -38,6 +38,7 @@ class CategoryView(generic.ListView):
         model_attribute = get_object_or_404(Category, slug=self.kwargs['slug'])
         context['model_attribute'] = model_attribute
         context['type'] = "категория"
+        context['disqus_enabled'] = settings.ENABLE_DISQUS
         return context
 
     def get_queryset(self):
@@ -55,6 +56,7 @@ class TagView(generic.ListView):
         model_attribute = get_object_or_404(Tag, slug=self.kwargs['slug'])
         context['model_attribute'] = model_attribute
         context['type'] = "#тэг"
+        context['disqus_enabled'] = settings.ENABLE_DISQUS
         return context
 
     def get_queryset(self):
@@ -72,6 +74,7 @@ class PseudoView(generic.ListView):
         model_attribute = get_object_or_404(Pseudo, slug=self.kwargs['slug'])
         context['model_attribute'] = model_attribute
         context['type'] = "автор"
+        context['disqus_enabled'] = settings.ENABLE_DISQUS
         return context
 
     def get_queryset(self):
