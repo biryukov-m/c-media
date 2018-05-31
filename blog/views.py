@@ -99,11 +99,11 @@ def detail_view(request, slug):
     if not post.published and not request.user.is_authenticated:
         raise Http404
     return render(request, 'blog/single.html', {'post': post,
-                                                    'form': form,
-                                                    'liked': liked,
-                                                    'disqus_enabled': disqus_enabled,
-                                                    'absolute_url': absolute_url
-                                                    })
+                                                'form': form,
+                                                'liked': liked,
+                                                'disqus_enabled': disqus_enabled,
+                                                'absolute_url': absolute_url
+                                                })
 
 
 def new_commits(request):
@@ -208,10 +208,9 @@ class PostLikeAPIToggle(APIView):
 
     def get(self, request, slug=None):
         obj = get_object_or_404(Post, slug=slug)
-        url_ = obj.get_absolute_url()
-        r = request.session.get('liked_posts', '')
-        if r:
-            if slug in r:
+        s = request.session.get('liked_posts', '')
+        if s:
+            if slug in s:
                 updated = True
                 liked = False
                 return Response({'updated': updated, 'liked': liked, })
@@ -232,7 +231,6 @@ class PostLikeAPIToggle(APIView):
             'liked': liked,
         }
         return Response(data)
-
 
 
 @method_decorator(login_required, name='dispatch')

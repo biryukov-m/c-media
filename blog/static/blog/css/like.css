@@ -8,13 +8,11 @@ input[type='checkbox']:checked + label > .favourite .favourite_text {
   transition-duration: 0.3s;
   transition-delay: .0s;
 }
-
 input[type='checkbox']:checked + label > .favourite {
   width: 20px;
   transition-delay: .2s;
   box-shadow: 0px 0px 0px 0px transparent;
 }
-
 input[type='checkbox']:checked + label > .favourite .spinner_part:nth-of-type(1) {
   opacity: 1;
   transition-property: opacity;

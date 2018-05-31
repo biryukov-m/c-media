@@ -8,7 +8,6 @@
     {% endif %}
 {% endblock %}
 {% block breadcrumbs %}
-    <a href="#" name="top"></a>
     {% if type %}
         {{ type.lower }}: {{ model_attribute.name}} | публикаций - {{ model_attribute.get_related_posts.count }}
     {% else %}

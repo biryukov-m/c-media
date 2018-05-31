@@ -5,30 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}Cat Media{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static "blog/css/head.css" %}">
-    <link rel="stylesheet" href="{% static "blog/css/hover.css" %}">
-    <link rel="stylesheet" href="{% static "blog/css/like.css" %}">
-    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&amp;subset=cyrillic" rel="stylesheet">
-    {#  start  https://fontawesome.com #}
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-          crossorigin="anonymous">
-    {#  end  https://fontawesome.com #}
-    {#   reCAPTCHA    start #}
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    {#   reCAPTCHA    end   #}
-    {# start CKEDITOR plugin: codesnippet > highlight.js #}
-    <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    {# end CKEDITOR plugin: codesnippet > highlight.js #}
-    {# JQuery start #}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    {# JQuery end #}
+    {% include 'blog/base/css.html' %}
+    {% include 'blog/base/js.html' %}
 </head>
 <body>
 <header class="page-header clearfix">
@@ -84,12 +62,17 @@
         <div class="round-logo"></div>
     </div>
     <section class="greeting-top">
-        <div class="intro"><span>{% block breadcrumbs %}cледуй за нами{% endblock %}</span></div>
+        <div class="intro">
+            <span>
+                <a href="#" name="top">
+                {% block breadcrumbs %}cледуй за нами{% endblock %}
+                </a>
+            </span>
+        </div>
     </section>
 </header>
 <main class="main-content">
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 </main>
 <footer class="content-footer">
     <div class="footer-layout">
@@ -114,5 +97,6 @@
     </div>
 </footer>
 <script id="dsq-count-scr" src="//catmedia.disqus.com/count.js" async></script>
+{% block jquery %}{% endblock %}
 </body>
 </html>

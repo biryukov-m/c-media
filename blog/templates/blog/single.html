@@ -1,11 +1,69 @@
 {% extends 'blog/base.html' %}
+{% block jquery %}
+    <script>
+        $(document).ready(function(){
+
+            function updateText(btn, counter, newText){
+                counter.text(newText);
+                btn.attr("data-likes", newText)
+            }
+
+            var likeButton = $("#click");
+            if (!likeButton[0].hasAttribute('readonly')) {
+                $(".like-button .favourite").hover(
+                    function() {
+                        $(".like-button ~ .like-counter").css('opacity', '0');
+                    },
+                    function() {
+                        $(".like-button ~ .like-counter").css('opacity', '1');
+                    }
+                );
+
+                likeButton.click(function () {
+                    var this_ = $(this);
+                    var likeUrl = this_.attr("data-href");
+                    var likeCount = this_.attr("data-likes");
+                    var counter = $("span.like-counter");
+
+                    $.ajax({
+                        method: "GET",
+                        url: likeUrl,
+                        data: {},
+                        success: function (data) {
+                            if (data.liked) {
+                                {#    add like   #}
+                                var newText = parseInt(likeCount) + 1;
+                                updateText(this_, counter, newText)
+                            }
+                            console.log("Success, post liked");
+                            console.log(data)
+                        },
+                        error: function (error) {
+                            console.log(error);
+                            console.log("Error while liking post")
+                        }
+                    });
+
+                    this_.attr({
+                        "readonly" : "",
+                        "disabled" : ""
+                    });
+
+                    $(".like-button ~ .like-counter").css('opacity', '1');
+                    $(".like-button .favourite").unbind('mouseenter mouseleave')
+                });
+
+            }
+        })
+    </script>
+{% endblock %}
 {% block title %}{{ block.super }} - {{ post.title }}{% endblock %}
-{% block breadcrumbs %}<a href="#" name="top"></a>{{ post.category.name }}: {{ post.title }}{% endblock %}
+{% block breadcrumbs %}{{ post.category.name }}: {{ post.title }}{% endblock %}
 {% block content %}
     {% include 'blog/post-single.html' %}
     <nav class="article-bottom">
         <div class="layout">
-{#        {% include 'blog/single__like-button.html' %}#}
+            {% include 'blog/single__like-button.html' %}
             {% if not disqus_enabled %}
                 <div class="comments-counter-wrapper">
                     <i class="fas fa-comments fa-lg"></i>
@@ -29,8 +87,6 @@
                     <i class="far fa-calendar-check fa-lg"></i>
                 </a>
             {% endif %}
-                <a href="{{ post.get_like_url }}">LIKE!</a>
-
         </div>
     </nav>
     {% if disqus_enabled %}

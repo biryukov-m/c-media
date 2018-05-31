@@ -7,7 +7,7 @@ from .views import (
     publish_post,
     edit_post,
     remove_post,
-    like_post,
+    # like_post,
     CategoryView,
     TagView,
     PseudoView,
