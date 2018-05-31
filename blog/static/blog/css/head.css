@@ -12,9 +12,6 @@ body {
 a {
     color: inherit;
 }
-#disqus_thread {
-    margin: 0 8px 50px;
-}
 
 .header-container {
     height: 300px;
@@ -89,9 +86,9 @@ a {
     padding: 5px 15px 2px 15px;
 }
 .header-container .col-right .admin-panel .admin-info {
-	box-shadow: 0 1px 0 0 black;
-	margin-bottom: 10px;
-	padding: 10px 0 5px 0;
+    box-shadow: 0 1px 0 0 black;
+    margin-bottom: 10px;
+    padding: 10px 0 5px 0;
 }
 .header-container .col-right .admin-panel .admin-info i {
     color: #0009;
@@ -112,7 +109,7 @@ a {
     top: 15px;
     border-radius: 100px;
     padding: 8px 6px 6px 7px;
-        color: rgba(239, 242, 245, 0.9);
+    color: rgba(239, 242, 245, 0.9);
     background: #9fa2a5;
 }
 
@@ -120,23 +117,23 @@ a.login-link:focus .hvr-icon,
 a.login-link:active .hvr-icon,
 a.logout-link:active .hvr-icon,
 a.logout-link:active .hvr-icon {
-  -webkit-transform: translateX(4px);
-  transform: translateX(4px);
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
 }
 
 .header-container .col-right .admin-buttons span.counter {
-	position: absolute;
-	z-index: 500;
-	top: -7px;
-	right: -9px;
-	padding: 0px 6px 1px 7px;
-	border-radius: 100px;
-	background: tomato;
-	font-family: "Open Sans";
-	font-size: 11pt;
-	font-style: normal;
-	font-weight: 400;
-	color: white;
+    position: absolute;
+    z-index: 500;
+    top: -7px;
+    right: -9px;
+    padding: 0px 6px 1px 7px;
+    border-radius: 100px;
+    background: tomato;
+    font-family: "Open Sans";
+    font-size: 11pt;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
 }
 
 .clearfix::after {
@@ -218,8 +215,8 @@ a.logout-link:active .hvr-icon {
     border-top: solid 2px #dfdfdf;
 }
 .sub-menu ul li a {
-	padding: 5px 22px;
-	font-size: 1.3em;
+    padding: 5px 22px;
+    font-size: 1.3em;
     background: #FFFFFF;
     opacity: 0.8;
 }
@@ -523,17 +520,17 @@ button,
     display: block;
     margin: 0 8px;
     font-family: "Open Sans";
-	font-size: 1.1em;
-	box-shadow: 0 1px 0 0 #bcbcbc;
-	font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: 0 1px 0 0 #bcbcbc;
+    font-weight: bold;
     color: rgba(0, 0, 0, 0.55);
 
 }
 .content-footer .footer-menu ul li a:hover{
     color: #3EB3A5;
 }.content-footer .footer-menu ul li a.text-logo:hover{
-    color: #FF6347;
-}
+     color: #FF6347;
+ }
 .content-footer .footer-menu a.text-logo {
     font-family: 'Audiowide', cursive;
     font-size: 3em;
@@ -623,18 +620,20 @@ article a.tag:hover {
 
 .article-bottom {
     border-top: 1px solid #ebebeb;
-    border-bottom: 2px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
     margin-bottom: 35px;
 }
 .article-bottom .layout {
     display: flex;
     align-items: center;
     /*justify-content: space-between;*/
-    height: 48px;
+    /*height: 48px;*/
+    height: 57px;
     color: black;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     font-size: 18pt;
     position: relative;
+    border-bottom: 1px solid #ebebeb;
 }
 .article-bottom .layout > div > span.counter {
     position: relative;
@@ -643,6 +642,8 @@ article a.tag:hover {
 .article-bottom .layout > div + div {
     margin-left: 36px;
     display: inline-block;
+    position: relative;
+    top: -5px;
 }
 .article-bottom .layout i {
     color: #3EB3A5;
@@ -669,24 +670,26 @@ article a.tag:hover {
     top: -10px;
 }
 .article-bottom .layout .like-button-wrapper .like-counter {
-	font-size: 18pt;
-	position: relative;
+    font-size: 18pt;
+    position: relative;
     left: 65px;
+    top: -5px;
 }
 
 .article-bottom .layout .comments-counter-wrapper .comment-counter {
-	margin-left: 20px;
+    margin-left: 20px;
 }
 
 .article-bottom .layout .next-post {
-	display: block;
-	padding: 14px 5px;
-	background: #3eb3a5;
-	color: white;
-	border-radius: 3px;
-	font-size: 10pt;
-	position: absolute;
-	right: 0;
+    display: block;
+    padding: 14px 5px;
+    background: #3eb3a5;
+    color: white;
+    border-radius: 3px;
+    font-size: 10pt;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 .article-bottom .layout .next-post i {
     color: white;
@@ -702,8 +705,23 @@ article a.tag:hover {
     transform: scale(0.95);
 }
 
-
-
+.article-bottom .related-posts {
+    border-bottom: 2px solid #ebebeb;
+    display: flex;
+    flex-direction: column;
+}
+.article-bottom .related-posts .related-post:not(:last-of-type) {
+    border-bottom: 1px solid #ebebeb;
+}
+.article-bottom .related-posts .related-post {
+    padding: 15px 0;
+}
+.article-bottom .related-posts .related-post a {
+    color: #3EB3A5;
+}
+.article-bottom .related-posts .related-post a:hover {
+    color: #FF6347;
+}
 /* End Single article */
 .main-content form.login-form {
     box-sizing: border-box;
@@ -774,6 +792,9 @@ form.login-form input {
 
 
 /* Comment write */
+#disqus_thread {
+    margin: 0 8px 50px;
+}
 .writecomment-container {
     border-bottom: 2px solid #ebebeb;
     margin-bottom: 10px;
@@ -846,9 +867,9 @@ form.writecomment label[for="id_text"]{
     left: -302px;
 }
 form.writecomment label[for="submit-comment"] {
-	top: 384px;
-	left: 98px;
-	color: white;
+    top: 384px;
+    left: 98px;
+    color: white;
     cursor: pointer;
 }
 form.writecomment input::placeholder,
@@ -963,161 +984,161 @@ textarea::placeholder {
     cursor: pointer;
 }
 @-webkit-keyframes hvr-icon-pulse-grow {
-  to {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
-  }
+    to {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
 }
 @keyframes hvr-icon-pulse-grow {
-  to {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
-  }
+    to {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
 }
 .hvr-icon-pulse-grow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 .hvr-icon-pulse-grow .hvr-icon {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
 }
 .hvr-icon-pulse-grow:hover .hvr-icon, .hvr-icon-pulse-grow:focus .hvr-icon, .hvr-icon-pulse-grow:active .hvr-icon {
-  -webkit-animation-name: hvr-icon-pulse-grow;
-  animation-name: hvr-icon-pulse-grow;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
+    -webkit-animation-name: hvr-icon-pulse-grow;
+    animation-name: hvr-icon-pulse-grow;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
 }
 /* Icon Hang */
 @-webkit-keyframes hvr-icon-hang {
-  0% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-  }
-  50% {
-    -webkit-transform: translateY(2px);
-    transform: translateY(2px);
-  }
-  100% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-  }
+    0% {
+        -webkit-transform: translateY(6px);
+        transform: translateY(6px);
+    }
+    50% {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+    }
+    100% {
+        -webkit-transform: translateY(6px);
+        transform: translateY(6px);
+    }
 }
 @keyframes hvr-icon-hang {
-  0% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-  }
-  50% {
-    -webkit-transform: translateY(2px);
-    transform: translateY(2px);
-  }
-  100% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-  }
+    0% {
+        -webkit-transform: translateY(6px);
+        transform: translateY(6px);
+    }
+    50% {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+    }
+    100% {
+        -webkit-transform: translateY(6px);
+        transform: translateY(6px);
+    }
 }
 .hvr-icon-hang {
-  /*display: inline-block;*/
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  /*box-shadow: 0 0 1px rgba(0, 0, 0, 0);*/
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+    /*display: inline-block;*/
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    /*box-shadow: 0 0 1px rgba(0, 0, 0, 0);*/
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
 .hvr-icon-hang .hvr-icon {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 .hvr-icon-hang:hover .hvr-icon, .hvr-icon-hang:focus .hvr-icon, .hvr-icon-hang:active .hvr-icon {
-  -webkit-animation-name: hvr-icon-hang-sink, hvr-icon-hang;
-  animation-name: hvr-icon-hang-sink, hvr-icon-hang;
-  -webkit-animation-duration: .3s, 1.5s;
-  animation-duration: .3s, 1.5s;
-  -webkit-animation-delay: 0s, .3s;
-  animation-delay: 0s, .3s;
-  -webkit-animation-timing-function: ease-out, ease-in-out;
-  animation-timing-function: ease-out, ease-in-out;
-  -webkit-animation-iteration-count: 1, infinite;
-  animation-iteration-count: 1, infinite;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-direction: normal, alternate;
-  animation-direction: normal, alternate;
+    -webkit-animation-name: hvr-icon-hang-sink, hvr-icon-hang;
+    animation-name: hvr-icon-hang-sink, hvr-icon-hang;
+    -webkit-animation-duration: .3s, 1.5s;
+    animation-duration: .3s, 1.5s;
+    -webkit-animation-delay: 0s, .3s;
+    animation-delay: 0s, .3s;
+    -webkit-animation-timing-function: ease-out, ease-in-out;
+    animation-timing-function: ease-out, ease-in-out;
+    -webkit-animation-iteration-count: 1, infinite;
+    animation-iteration-count: 1, infinite;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-direction: normal, alternate;
+    animation-direction: normal, alternate;
 }
 /* Icon Shrink */
 .hvr-icon-shrink {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
 .hvr-icon-shrink .hvr-icon {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
 }
 .hvr-icon-shrink:hover .hvr-icon, .hvr-icon-shrink:focus .hvr-icon, .hvr-icon-shrink:active .hvr-icon {
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
 }
 /* Push */
 @-webkit-keyframes hvr-push {
-  50% {
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
+    50% {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }
 @keyframes hvr-push {
-  50% {
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
+    50% {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }
 .hvr-push {
-  /*display: inline-block;*/
-  /*vertical-align: middle;*/
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 .hvr-push:active {
-  -webkit-animation-name: hvr-push;
-  animation-name: hvr-push;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
+    -webkit-animation-name: hvr-push;
+    animation-name: hvr-push;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
 }
 
 @media screen and (max-width: 1366px) {
@@ -1132,7 +1153,7 @@ textarea::placeholder {
         background-size: 45px;
     }
     .main-content .post-container.teaser:after {
-    margin-bottom: 70px;
+        margin-bottom: 70px;
     }
 }
 @media screen and (max-width: 1280px) {
@@ -1288,12 +1309,10 @@ textarea::placeholder {
         margin-bottom: 25px;
     }
     .article-bottom {
-        margin-bottom: 95px;
+        margin-bottom: 10px;
     }
     .article-bottom .layout .next-post {
-        bottom: -68px;
-        left: 0;
-        text-align: center;
+        display: none;
     }
     .article-bottom .layout .next-post::after {
         display: block;

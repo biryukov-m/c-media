@@ -91,6 +91,9 @@ class Post(models.Model):
     def get_likes(self):
         return self.postlike_set.all().order_by('-liked_date')
 
+    def get_related_posts(self):
+        return self.category.get_related_posts().exclude(id=self.id)[:3]
+
     def __str__(self):
         return self.title
 

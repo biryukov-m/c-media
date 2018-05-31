@@ -88,6 +88,11 @@
                 </a>
             {% endif %}
         </div>
+        {% for post in post.get_related_posts %}
+            <div class="related-posts">
+                <div class="related-post"><a href="{{ post.get_absolute_url }}" title="">{{ post.title }}</a></div>
+            </div>
+        {% endfor %}
     </nav>
     {% if disqus_enabled %}
         {% include 'blog/disqus_comments.html' %}
