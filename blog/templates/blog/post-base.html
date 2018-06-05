@@ -13,14 +13,20 @@
                 <a class="category-name hvr-push" title="Перейти к разделу - {{ post.category.name.lower }}"
                    href="{% url 'blog:by-category' post.category.slug %}">{{ post.category.name.capitalize }}</a>
             </div>
+            <div class="read_time indicator">
+                <i class="far fa-clock fa-lg"></i>
+                <span class="likes-counter">
+                    {{ post.read_time }}
+                </span>
+            </div>
             <div class="likes indicator">
-                <i class="fas fa-heart fa-lg"></i>
+                <i class="far fa-heart fa-lg"></i>
                 <span class="likes-counter">
                     {{ post.get_likes.count}}
                 </span>
             </div>
             <div class="comments indicator">
-                <i class="fas fa-comments fa-lg"></i>
+                <i class="far fa-comments fa-lg"></i>
                 <span class="comment-counter">
                     {% if disqus_enabled %}
                         <a href="{% url 'blog:article-detail' post.slug %}#disqus_thread"

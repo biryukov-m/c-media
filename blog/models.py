@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.shortcuts import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.html import strip_tags
 
 
 class Category(models.Model):
@@ -61,6 +62,11 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, verbose_name='Ключевые слова')
     objects = PostManager()
     published = models.BooleanField(default=False)
+    read_time = models.CharField(default='', max_length=20, verbose_name='Время на прочтение')
+
+    def save(self, *args, **kwargs):
+        self.update_read_time()
+        super(Post, self).save(*args, **kwargs)
 
     def publish(self):
         self.published = True
@@ -93,6 +99,27 @@ class Post(models.Model):
 
     def get_related_posts(self):
         return self.category.get_related_posts().exclude(id=self.id)[:3]
+
+    def get_word_count(self):
+        text = strip_tags(self.text)
+        words = text.split(' ')
+        return len(words)
+
+    def update_read_time(self):
+        min_read_speed = 120
+        max_read_speed = 180
+        word_count = self.get_word_count()
+        min_minutes = round(word_count / max_read_speed)
+        max_minutes = round(word_count / min_read_speed)
+        if 5 <= max_minutes <= 20 or max_minutes % 10 == 0 or 5 <= max_minutes % 10 <= 9:
+            word_ending = ''
+        elif 2 <= max_minutes % 10 <= 4:
+            word_ending = 'ы'
+        elif max_minutes % 10 == 1:
+            word_ending = 'а'
+
+        out = "{} - {} минут{}".format(min_minutes, max_minutes, word_ending)
+        self.read_time = out
 
     def __str__(self):
         return self.title
