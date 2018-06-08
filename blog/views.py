@@ -1,112 +1,83 @@
-from .models import Post, Category, Tag, Pseudo, Comment, InfoPage, PostLike
-from django.views import generic
-from .forms import PostForm, CommentForm
+from django.views import generic, View
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.conf import settings
-import requests
 from django.contrib import messages
-from blog.lib import github_getter
 from django.utils import timezone
-from django.http import Http404, HttpResponse
-from blog.lib.session_checks import post_liked, get_ip
-from blog.lib.validate_recaptcha import validate_recaptcha
+from django.http import Http404
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
-from django.contrib.auth.models import User
+
+from blog.lib.session_checks import post_liked, get_ip
+from blog.lib.validate_recaptcha import validate_recaptcha
+from blog.lib import github_getter
+
+from .models import Post, Comment, InfoPage, PostLike
+from .forms import PostForm, CommentForm
 
 
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     paginate_by = 10
-    queryset = Post.objects.is_published()
+    queryset = Post.objects.published()
+
+
+class AttributeView(generic.ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    paginate_by = 10
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(AttributeView, self).get_context_data(*args, **kwargs)
+        obj = get_object_or_404(self.model, slug=self.kwargs['slug'])
+        context['obj'] = obj
+        context['type'] = self.kwargs['type']
+        return context
+
+    def get_queryset(self):
+        query = get_object_or_404(self.model, slug=self.kwargs['slug'])
+        return query.get_related_posts().filter(is_published=True)
+
+
+class DetailView(View):
     disqus_enabled = settings.ENABLE_DISQUS
-    extra_context = {'disqus_enabled': disqus_enabled}
 
+    def get(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+        liked = post_liked(request, slug)
+        absolute_url = request.build_absolute_uri()
+        context = {'post': post, 'liked': liked, 'absolute_url': absolute_url}
+        if self.disqus_enabled:
+            form = CommentForm()
+            context['form'] = form
+        if not post.is_published and not request.user.is_authenticated:
+            raise Http404
+        return render(request, 'blog/single.html', context)
 
-class CategoryView(generic.ListView):
-    template_name = 'blog/index.html'
-    context_object_name = 'posts'
-    paginate_by = 10
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        model_attribute = get_object_or_404(Category, slug=self.kwargs['slug'])
-        context['model_attribute'] = model_attribute
-        context['type'] = "категория"
-        context['disqus_enabled'] = settings.ENABLE_DISQUS
-        return context
-
-    def get_queryset(self):
-        query = get_object_or_404(Category, slug=self.kwargs['slug'])
-        return query.get_related_posts().filter(published=True)
-
-
-class TagView(generic.ListView):
-    template_name = 'blog/index.html'
-    context_object_name = 'posts'
-    paginate_by = 10
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        model_attribute = get_object_or_404(Tag, slug=self.kwargs['slug'])
-        context['model_attribute'] = model_attribute
-        context['type'] = "#тэг"
-        context['disqus_enabled'] = settings.ENABLE_DISQUS
-        return context
-
-    def get_queryset(self):
-        query = get_object_or_404(Tag, slug=self.kwargs['slug'])
-        return query.get_related_posts()
-
-
-class PseudoView(generic.ListView):
-    template_name = 'blog/index.html'
-    context_object_name = 'posts'
-    paginate_by = 10
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        model_attribute = get_object_or_404(Pseudo, slug=self.kwargs['slug'])
-        context['model_attribute'] = model_attribute
-        context['type'] = "автор"
-        context['disqus_enabled'] = settings.ENABLE_DISQUS
-        return context
-
-    def get_queryset(self):
-        query = get_object_or_404(Pseudo, slug=self.kwargs['slug'])
-        return query.get_related_posts()
-
-
-def detail_view(request, slug):
-    post = get_object_or_404(Post, slug=slug)
-    liked = post_liked(request, slug)
-    absolute_url = request.build_absolute_uri()
-    disqus_enabled = settings.ENABLE_DISQUS
-    if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid() and validate_recaptcha(request):
-            comment = form.save(commit=False)
-            messages.success(request, 'New comment added with success!')
-            comment.post = post
-            comment.save()
-        else:
-            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+        if self.disqus_enabled:
+            form = CommentForm(request.POST)
+            if form.is_valid() and validate_recaptcha(request):
+                comment = form.save(commit=False)
+                messages.success(request, 'New comment added with success!')
+                comment.post = post
+                comment.save()
+            else:
+                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
         return redirect(post.get_absolute_url())
-    else:
-        form = CommentForm()
-    if not post.published and not request.user.is_authenticated:
-        raise Http404
-    return render(request, 'blog/single.html', {'post': post,
-                                                'form': form,
-                                                'liked': liked,
-                                                'disqus_enabled': disqus_enabled,
-                                                'absolute_url': absolute_url
-                                                })
+
+
+@method_decorator(login_required, name='dispatch')
+class PostDraftList(generic.ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    queryset = Post.objects.drafted()
 
 
 def new_commits(request):
@@ -234,13 +205,6 @@ class PostLikeAPIToggle(APIView):
             'liked': liked,
         }
         return Response(data)
-
-
-@method_decorator(login_required, name='dispatch')
-class PostDraftList(generic.ListView):
-    template_name = 'blog/index.html'
-    context_object_name = 'posts'
-    queryset = Post.objects.is_drafted()
 
 
 @login_required

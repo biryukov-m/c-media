@@ -72,7 +72,7 @@
                 </span>
                 </div>
             {% endif %}
-            {% if post.published %}
+            {% if post.is_published %}
                 {% if post.get_next_by_create_date.published %}
                     <a class="next-post hvr-push hvr-icon-forward" href="{{ post.get_next_by_create_date.get_absolute_url }}"
                        title="">

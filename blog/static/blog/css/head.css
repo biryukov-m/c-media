@@ -211,9 +211,6 @@ a.logout-link:active .hvr-icon {
 .sub-menu ul li {
     display: block;
 }
-.sub-menu ul li:first-of-type {
-    border-top: solid 2px #dfdfdf;
-}
 .sub-menu ul li a {
     padding: 5px 22px;
     font-size: 1.3em;

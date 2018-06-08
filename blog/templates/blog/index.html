@@ -2,14 +2,14 @@
 {% block title %}
     {{ block.super }} -
     {% if type %}
-        {{ model_attribute.name }}
+        {{ obj.name }}
     {% else %}
         главная
     {% endif %}
 {% endblock %}
 {% block breadcrumbs %}
     {% if type %}
-        {{ type.lower }}: {{ model_attribute.name}} | публикаций - {{ model_attribute.get_related_posts.count }}
+        {{ type.lower }}: {{ obj.name}} | публикаций - {{ obj.get_related_posts.count }}
     {% else %}
         {{ block.super }}
     {% endif %}

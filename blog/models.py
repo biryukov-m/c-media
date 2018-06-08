@@ -11,7 +11,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=60, unique=True, default='')
 
     def get_related_posts(self):
-        query = self.post_set.all().filter(published=True).order_by('-pub_date')
+        query = self.post_set.all().filter(is_published=True).order_by('-pub_date')
         return query
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Pseudo(models.Model):
     create_date = models.DateField(auto_created=True)
 
     def get_related_posts(self):
-        query = self.post_set.all().filter(published=True).order_by('-pub_date')
+        query = self.post_set.all().filter(is_published=True).order_by('-pub_date')
         return query
 
     def __str__(self):
@@ -36,7 +36,7 @@ class Tag(models.Model):
     slug = models.SlugField(max_length=60, unique=True, default='')
 
     def get_related_posts(self):
-        query = self.post_set.all().filter(published=True).order_by('-pub_date')
+        query = self.post_set.all().filter(is_published=True).order_by('-pub_date')
         return query
 
     def __str__(self):
@@ -44,11 +44,11 @@ class Tag(models.Model):
 
 
 class PostManager(models.Manager):
-    def is_published(self):
-        return self.filter(published=True).order_by('-pub_date')
+    def published(self):
+        return self.filter(is_published=True).order_by('-pub_date')
 
-    def is_drafted(self):
-        return self.filter(published=False).order_by('-pub_date')
+    def drafted(self):
+        return self.filter(is_published=False).order_by('-pub_date')
 
 
 class Post(models.Model):
@@ -61,7 +61,7 @@ class Post(models.Model):
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT, verbose_name='Автор')
     tags = models.ManyToManyField(Tag, verbose_name='Ключевые слова')
     objects = PostManager()
-    published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)
     read_time = models.CharField(default='', max_length=20, verbose_name='Время на прочтение')
 
     def save(self, *args, **kwargs):
@@ -69,7 +69,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def publish(self):
-        self.published = True
+        self.is_published = True
         self.pub_date = timezone.now()
         self.save()
 
