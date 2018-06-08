@@ -199,7 +199,7 @@ a.logout-link:active .hvr-icon {
     display: none;
     position: absolute;
     z-index: 200;
-    top: 67px;
+    top: 62px;
 }
 .submenubutton:focus + .sub-menu,
 .submenubutton + .sub-menu:focus,
@@ -214,8 +214,6 @@ a.logout-link:active .hvr-icon {
 .sub-menu ul li a {
     padding: 5px 22px;
     font-size: 1.3em;
-    background: #FFFFFF;
-    opacity: 0.8;
 }
 .sub-menu ul li a:hover {
     background: #3eb3a5;
@@ -1198,7 +1196,7 @@ textarea::placeholder {
         font-size: 1.4em;
     }
     .sub-menu {
-        top: 47px;
+        top: 44px;
     }
     .sub-menu ul li a {
         padding: 8px 18px;
@@ -1297,7 +1295,7 @@ textarea::placeholder {
         opacity: 0.8;
     }
     .sub-menu {
-        top: 30px;
+        top: 28px;
     }
     .main-content .post-container.teaser:after {
         margin-bottom: 25px;
@@ -1373,7 +1371,7 @@ textarea::placeholder {
         font-size: 1.4em;
     }
     .sub-menu {
-        top: 34px;
+        top: 32px;
         background: #fff;
         border: 1px solid #dfdfdf;
         opacity: 1;
