@@ -13,13 +13,15 @@ from .views import (
     PostLikeToggle,
     PostLikeAPIToggle,
     DetailView,
-    AttributeView
 )
 from .models import Category, Tag, Pseudo
 
 
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
+    path('category/<slug:slug>/', IndexView.as_view(model=Category), {'type': 'категория'}, name='by-category'),
+    path('tag/<slug:slug>/', IndexView.as_view(model=Tag), {'type': 'тэг'}, name='by-tag'),
+    path('author/<slug:slug>/', IndexView.as_view(model=Pseudo), {'type': 'автор'}, name='by-author'),
     path('draft/', PostDraftList.as_view(), name='post-draft-list'),
     path('article/new/', create_post, name='create-post'),
     path('article/<slug:slug>/', DetailView.as_view(), name='article-detail'),
@@ -28,9 +30,6 @@ urlpatterns = [
     path('article/<slug:slug>/remove/', remove_post, name='article-remove'),
     path('article/<slug:slug>/like/', PostLikeToggle.as_view(), name='like-toggle'),
     path('api/article/<slug:slug>/like/', PostLikeAPIToggle.as_view(), name='like-api-toggle'),
-    path('category/<slug:slug>/', AttributeView.as_view(model=Category), {'type': 'категория'}, name='by-category'),
-    path('tag/<slug:slug>/', AttributeView.as_view(model=Tag), {'type': 'тэг'}, name='by-tag'),
-    path('author/<slug:slug>/', AttributeView.as_view(model=Pseudo), {'type': 'автор'}, name='by-author'),
     path('comment/<int:pk>/approve/', comment_approve, name='comment_approve'),
     path('comment/<int:pk>/remove/', comment_remove, name='comment_remove'),
     path('news/', new_commits, name='news'),

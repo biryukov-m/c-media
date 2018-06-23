@@ -56,6 +56,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=130, unique=True, default='', verbose_name='URL')
     text = RichTextUploadingField(blank=True, default='', max_length=60000, verbose_name='Статья')
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    updated = models.DateTimeField(auto_now=True)
     pub_date = models.DateTimeField(blank=True, null=True, verbose_name='Дата публикации')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория')
     pseudo = models.ForeignKey(Pseudo, on_delete=models.PROTECT, verbose_name='Автор')

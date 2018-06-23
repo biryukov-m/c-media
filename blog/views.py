@@ -24,24 +24,23 @@ class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     paginate_by = 10
-    queryset = Post.objects.published()
-
-
-class AttributeView(generic.ListView):
-    template_name = 'blog/index.html'
-    context_object_name = 'posts'
-    paginate_by = 10
 
     def get_context_data(self, *args, **kwargs):
-        context = super(AttributeView, self).get_context_data(*args, **kwargs)
-        obj = get_object_or_404(self.model, slug=self.kwargs['slug'])
-        context['obj'] = obj
-        context['type'] = self.kwargs['type']
+        context = super(IndexView, self).get_context_data(*args, **kwargs)
+        slug = self.kwargs.get("slug")
+        if slug:
+            obj = get_object_or_404(self.model, slug=self.kwargs['slug'])
+            context['obj'] = obj
+            context['type'] = self.kwargs['type']
         return context
 
     def get_queryset(self):
-        query = get_object_or_404(self.model, slug=self.kwargs['slug'])
-        return query.get_related_posts().filter(is_published=True)
+        slug = self.kwargs.get("slug")
+        if slug:
+            query = get_object_or_404(self.model, slug=slug).get_related_posts().filter(is_published=True)
+        else:
+            query = Post.objects.published()
+        return query
 
 
 class DetailView(View):
